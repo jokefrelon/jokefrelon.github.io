@@ -6,7 +6,7 @@
     <atom:link href="https://jokefrelon.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>记录精彩的Debug人生</description>
     <generator>Solo, v3.7.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Wed, 15 Jan 2020 14:51:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2020 15:17:39 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>nginx反向代理</title>
@@ -15,8 +15,8 @@
 <img src="https://img.hacpai.com/bing/20190903.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
       <author>lixuanliming</author>
       <guid>https://jokefrelon.github.io/articles/2020/01/10/1578638927507.html</guid>
-      <category>Linux</category>
       <category>nginx</category>
+      <category>Linux</category>
       <pubDate>Fri, 10 Jan 2020 16:28:10 +0800</pubDate>
     </item>
     <item>
@@ -26,8 +26,8 @@
 <img src="https://img.hacpai.com/bing/20180629.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
       <author>lixuanliming</author>
       <guid>https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</guid>
-      <category>WeChat</category>
       <category>LittleProgram</category>
+      <category>WeChat</category>
       <pubDate>Fri, 10 Jan 2020 11:24:29 +0800</pubDate>
     </item>
     <item>
@@ -82,9 +82,9 @@
       <description><![CDATA[<p>Java 时间类API的使用,主要是Date 和 Calendar ,其中DateFormat 方法要掌握牢靠<img src="https://img.hacpai.com/bing/20180203.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
       <author>lixuanliming</author>
       <guid>https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</guid>
-      <category>Date</category>
       <category>Java</category>
       <category>Calendar</category>
+      <category>Date</category>
       <pubDate>Sun, 22 Dec 2019 04:10:48 +0800</pubDate>
     </item>
     <item>
@@ -93,9 +93,9 @@
       <description><![CDATA[<p>equals() &amp;&amp; contains()为什么要重写<img src="https://img.hacpai.com/file/2019/12/snow-7c741923.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="snow.jpg"></p>]]></description>
       <author>lixuanliming</author>
       <guid>https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html</guid>
-      <category>equals</category>
       <category>contains</category>
       <category>Java</category>
+      <category>equals</category>
       <pubDate>Fri, 20 Dec 2019 00:58:04 +0800</pubDate>
     </item>
     <item>
@@ -106,8 +106,8 @@ Solo最简安装❤️</p>]]></description>
       <author>lixuanliming</author>
       <guid>https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html</guid>
       <category>WSL2</category>
-      <category>Docker</category>
       <category>Linux</category>
+      <category>Docker</category>
       <category>Solo</category>
       <pubDate>Fri, 20 Dec 2019 00:57:01 +0800</pubDate>
     </item>
