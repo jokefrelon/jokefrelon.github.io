@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>微信小程序遇到的坑🕳 - Frelon-Lee 的个人博客</title><meta name="description" content="微信小程序遇到的坑🕳"/><meta property="og:description" content="微信小程序遇到的坑🕳"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="微信小程序遇到的坑🕳 - Frelon-Lee 的个人博客"/><meta property="og:site_name" content="Frelon-Lee 的个人博客"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="微信小程序遇到的坑🕳 - Frelon-Lee 的个人博客" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1579067796905"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1579067796905">
+    <script type="text/javascript" src="https://www.jokeme.top/js/love.js"></script>
+</head>
+<body class="mdui-drawer-body-left mdui-loaded">
+<div id="nexmoe-background">
+    <canvas id="c_n1" class="nexmoe-bg"></canvas>
+<div class="mdui-appbar mdui-shadow-0">
+    <div class="mdui-toolbar">
+        <a href="#" mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon  iconfont solo-list"></i>
+        </a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/" title="Frelon-Lee 的个人博客" class="mdui-btn mdui-btn-icon">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt="Frelon-Lee 的个人博客"></a>
+        </a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-header">
+<div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt=""></a>
+    </div>
+    <div class="nexmoe-count">
+        <div>
+            <span>文章</span>
+            13
+        </div>
+        <div>
+            <span>评论</span>
+            5
+        </div>
+        <div>
+            <span>浏览</span>
+            1685
+        </div>
+    </div>
+    <div class="list-content">
+        <ul class="nexmoe-list mdui-list header__nav" mdui-collapse="{accordion: true}">
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-home"></i>
+                <div class="mdui-list-item-content">回到首页</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/links.html"
+               title="友情链接 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-list"></i>
+                <div class="mdui-list-item-content">友情链接</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/tags.html"
+               title="标签 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-tags"></i>
+                <div class="mdui-list-item-content">标签</div>
+            </a>
+                <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/my-github-repos"
+                   title="我的开源" target="_self">
+                    <i class="mdui-list-item-icon iconfont solo-/images/github-icon.png"></i>
+                    <div class="mdui-list-item-content">我的开源</div>
+                </a>
+        </ul>
+    </div>
+    <aside id="nexmoe-sidebar">
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">功能按钮</h3>
+            <div class="nexmoe-widget nexmoe-social features">
+                <a href="https://jokefrelon.github.io/search" title="搜索">
+                    <i class="mdui-list-item-icon iconfont solo-search"></i>
+                    <div class="mdui-list-item-content">搜索</div>
+                </a>
+                <a href="https://jokefrelon.github.io/rss.xml" title="RSS">
+                    <i class="mdui-list-item-icon iconfont solo-rss"></i>
+                </a>
+                    <a href="https://jokefrelon.github.io/start" title="开始使用">
+                        <i class="mdui-list-item-icon iconfont solo-login"></i>
+                        <div class="mdui-list-item-content"> 开始使用</div>
+                    </a>
+            </div>
+        </div>
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">社交按钮</h3>
+            <div class="nexmoe-widget nexmoe-social">
+    <a href="https://hacpai.com/member/lixuanliming"
+       title="https://hacpai.com/member/lixuanliming"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/lixuanliming"
+           title="https://github.com/lixuanliming"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+            </div>
+        </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">标签</h3>
+                <div class="nexmoe-widget tagcloud">
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Java"
+                           title="标签:Java - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Java</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Linux"
+                           title="标签:Linux - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Linux</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Solo"
+                           title="标签:Solo - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Solo</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Collection"
+                           title="标签:Collection - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Collection</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/GitHub"
+                           title="标签:GitHub - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            GitHub</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Set"
+                           title="标签:Set - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Set</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/contains"
+                           title="标签:contains - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            contains</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/python"
+                           title="标签:python - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            python</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/nginx"
+                           title="标签:nginx - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            nginx</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Docker"
+                           title="标签:Docker - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Docker</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/List"
+                           title="标签:List - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            List</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Date"
+                           title="标签:Date - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Date</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WeChat"
+                           title="标签:WeChat - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WeChat</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                           title="标签:开源 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            开源</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WSL2"
+                           title="标签:WSL2 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WSL2</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/equals"
+                           title="标签:equals - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            equals</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Calendar"
+                           title="标签:Calendar - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Calendar</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/LittleProgram"
+                           title="标签:LittleProgram - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            LittleProgram</a>
+                </div>
+            </div>
+
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">分类</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Java"
+                                   title="java - Frelon-Lee 的个人博客">
+                                    java</a>
+                                <span class="category-list-count">7</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/python"
+                                   title="Python - Frelon-Lee 的个人博客">
+                                    Python</a>
+                                <span class="category-list-count">1</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Linux"
+                                   title="Linux - Frelon-Lee 的个人博客">
+                                    Linux</a>
+                                <span class="category-list-count">2</span>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">存档</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/01"
+                                       title="2020 年 01 月 存档 - Frelon-Lee 的个人博客">
+                                        2020 年 01 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2019/12"
+                                       title="2019 年 12 月 存档 - Frelon-Lee 的个人博客">
+                                        2019 年 12 月</a>
+                                    <span class="category-list-count">11</span>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+
+    </aside>
+    <div class="nexmoe-copyright">
+        © 2020 <a href="https://jokefrelon.github.io">Frelon-Lee 的个人博客</a> <br/>
+        <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a> <br>
+        Powered by <a href="https://solo.b3log.org" target="_blank">Solo</a> <br>
+        Theme <a rel="friend" href="https://github.com/InkDP/solo-nexmoe" target="_blank">solo-nexmoe</a>
+        by <a rel="friend" href="https://www.inkdp.cn" target="_blank">InkDP</a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <main id="pjax" class="fn__flex-1">
+            
+            <div class="nexmoe-post">
+                <div class="nexmoe-post-cover">
+                    <img src="https://img.hacpai.com/bing/20180629.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="微信小程序遇到的坑🕳"
+                         data-src="https://img.hacpai.com/bing/20180629.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" class=" ls-is-cached lazyloaded">
+                    <h1>微信小程序遇到的坑🕳</h1>
+                </div>
+                <div class="nexmoe-post-meta">
+                <span>
+                    <i class="nexmoefont iconfont solo-calendarl"></i>2020年01月10日
+                </span>
+
+                    <span>
+                    <i class="nexmoefont iconfont solo-heat"></i>8 °C
+                </span>
+                        <span>
+                        <i class="nexmoefont iconfont solo-comment"></i>4
+                    </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/WeChat">WeChat</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/LittleProgram">LittleProgram</a>
+                </span>
+
+                </div>
+                <article>
+                    <div class="vditor-reset">
+                        <p><img src="https://img.hacpai.com/bing/20180629.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h1 id="b3_solo_h1_0">微信小程序遇到的坑🕳</h1>
+<p>微信小程序其实很简单,和 <strong>HTML</strong> 差不多,但是又加入了微信的很多特色,我也是本着写着玩的心态写了几天的小程序,发现有很多坑哦,和 <strong>HTML</strong>还是有点差距的</p>
+<h2 id="b3_solo_h2_1">1 文本超出隐藏并加…</h2>
+<p>其实在html里面这段代码很简单,只要在父元素里面定义</p>
+<pre><code class="language-css">overflow:hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+</code></pre>
+<p>但是微信小程序就邪了门了,在电脑上看的好好的,可到了真机预览就失效了,</p>
+<p>而且还只是IOS平台出现问题,Android并没有问题,这就见鬼了吗!!同样的代码,还能有不同疗效的???</p>
+<h3 id="b3_solo_h3_2">1.1 Answer :</h3>
+<p>然后百度,得答案:子元素还必须是 <strong>text</strong> 元素才会生效,这是因为IOS的 <strong>Safari</strong> 浏览器的特立独行吧,</p>
+<p>还有的说需要设置一下宽度就可以解决,反正这个方法我没有试,懒得试</p>
+<h2 id="b3_solo_h2_3">2 background-attachment:fixed</h2>
+<p>这个属性是用来设置背景图的,但是还是在 <strong>IOS</strong> 这里出现了问题,反观 <strong>Android</strong> 那边一切都很正常😂</p>
+<p>本来固定背景图片就是一个常用的功能,但是 <strong>IOS</strong> 这边就是死活不兼容这个属性,一开始我这样写,出错了我还以为是我自己の问题,在哪里倒腾了大半天,无果,百度发现这是一个很普遍的现象,那些大神解决问题的方式倒也很直接,不用这个属性,自己在写一个 <strong>view</strong> 放在最下面一层</p>
+<h3 id="b3_solo_h3_4">2.1 Answer :</h3>
+<pre><code class="language-css">  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url('http://172.17.150.251:8080/pic/bk7.jpg') no-repeat #000;
+  background-size:cover;
+  z-index:-1;
+</code></pre>
+<h2 id="b3_solo_h2_5">3 wx : for</h2>
+<pre><code class="language-html">&lt;view class="acf" wx:for="{{heloi}}" wx:key="index"&gt;
+		&lt;view class="bhk" data-arturl="{{item.article}}" bindtap="showNextPage"&gt;
+			&lt;div class="guli"&gt;&lt;text class="intro"&gt;{{item.introduce}}&lt;/text&gt;&lt;/div&gt;
+			&lt;div class="ddas"&gt;
+				&lt;image class="pic" src='{{item.picurl}}'&gt;&lt;/image&gt;
+			&lt;/div&gt;
+		&lt;/view&gt;
+	&lt;/view&gt;
+</code></pre>
+<pre><code class="language-javascript">  onLoad: function () {
+    var _self = this
+    wx.request({
+      url: "http://172.17.150.251:8080/as.json",
+      success: function (qum) {
+        _self.setData({
+          heloi: qum.data.page,
+        })
+      }
+    })
+  },
+</code></pre>
+<p>wx:for用来解析服务器返回的 <strong>json</strong> 是真的很棒的,可以一键迭代生成很多的内容</p>
+<h2 id="b3_solo_h2_6">4 不同页面间传参</h2>
+<p>这是困扰我最长时间的一个问题了,因为不太熟悉小程序,只能看别人怎么写,我就跟着这样写,毫无灵魂,也上网百度了,都是看的一知半解,就目前而言,我还不是特别会页面间的传参,但是,还是可以写出来点东西的</p>
+<p>上代码:</p>
+<pre><code class="language-html">&lt;view class="bhk" data-arturl="{{item.article}}" bindtap="showNextPage"&gt;LOL😁&lt;/view&gt;
+</code></pre>
+<p>不知道为什么这个 <strong>data-arturl</strong> 必须要和 <strong>bindtap</strong> 一起才可以读取到数据,如果把 <strong>bingtap</strong> 定义在 <strong>data-arturl</strong> 上面,我怎么样都拿不到数据,实在是搞不懂啥原因🍖</p>
+<pre><code class="language-javascript">showNextPage: function (event) {
+  var url = event.currentTarget.dataset.arturl
+  console.log(url)
+  wx.navigateTo({
+    url: "/pages/aitrcle/aitrcle?url="+url,
+    success: function () { 
+      console.log("Success! Congratulate!")
+    },
+    fail: function () { console.log("faild!!!") },
+  })
+}
+</code></pre>
+<p>下面是 <strong>article</strong> 的 <strong>js</strong></p>
+<pre><code class="language-javascript">onLoad: function (options) {
+    var that = this
+    that.data.paurl =options.url
+    console.log(that.data.paurl)
+
+    wx.request({
+      url:that.data.paurl,
+      success:function(){
+        console.log("Yes! U did")
+      },
+      false:function(){
+        console.log("false")
+      }
+    })
+  }
+</code></pre>
+<p>我只会这种简单的页面传参,还有别的传参方法,比如:</p>
+<pre><code class="language-log">使用数据库传递数据,
+
+全局变量使用方法
+
+使用缓存传递参数,使用组件模板 template传递参数
+</code></pre>
+<h2 id="b3_solo_h2_7">5 小程序页面跳转</h2>
+<p>常见的有四种方法</p>
+<table>
+<thead>
+<tr><th align="center">wx.navigateTo({})</th><th align="center">保留当前页面，跳转到应用内的某个页面，使用 wx.navigateBack 可以返回;</th></tr>
+</thead>
+<tbody>
+<tr><td align="center"><strong>wx.redirectTo()</strong></td><td align="center"><strong>关闭当前页面，跳转到非tabBar的某个页面</strong></td></tr>
+<tr><td align="center"><strong><navigator></navigator></strong></td><td align="center"><strong><navigator url="../test/test">点击跳转</navigator></strong></td></tr>
+<tr><td align="center"><strong>wx.switchTab</strong></td><td align="center"><strong>跳转到tabBar的某个页面</strong></td></tr>
+</tbody>
+</table>
+<p>举个例子🌰</p>
+<pre><code class="language-javascript">wx.navigateTo({
+	url:'../test/test?id=1&amp;page=4',  //跳转页面的路径，可带参数 ？隔开，不同参数用 &amp; 分隔；相对路径，不需要.wxml后缀
+	success:function(){}        //成功后的回调；
+	fail：function(){}          //失败后的回调；
+	complete：function(){}      //结束后的回调(成功，失败都会执行)
+})
+ 
+//传递的参数在接收页面onLoad()函数中得到值：option.id就可以得到了
+onLoad: function (option) {
+	console.log(option)//可以打印一下option看查看参数
+	this.setData({
+		id:option.id,
+});
+</code></pre>
+<p>这大概就是这几天踩得坑,虽然都不难,但是对于我们这种初学者还是有一点难度的🍓,暂时就更新到这里,过几天遇到了坑,再继续更新</p>
+                    </div>
+                </article>
+                    <div class="nexmoe-post-copyright">
+                        <i class="mdui-list-item-icon iconfont solo-about2"></i>
+                        <hr>
+
+标题：微信小程序遇到的坑🕳<br>
+作者：<a href="https://jokefrelon.github.io" target="_blank">lixuanliming</a><br>
+地址：<a href="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html" target="_blank">https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </div>
+            <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#b3_solo_h1_0">微信小程序遇到的坑🕳</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_1">1 文本超出隐藏并加…</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_2">1.1 Answer :</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_3">2 background-attachment:fixed</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_4">2.1 Answer :</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_5">3 wx : for</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_6">4 不同页面间传参</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_7">5 小程序页面跳转</a>
+        </li>
+</ul>            </div>
+        <div class="nexmoe-comment">
+                <textarea rows="3" placeholder="评论内容只能为 2 到 500 个字符！" id="comment" readonly="readonly"></textarea>
+            <ul class="comments" id="comments">
+<li id="1579067460466" class="fn-clear">
+    <img class="avatar-48" title="lixuanliming" src="https://img.hacpai.com/avatar/1575322384198?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <div class="comment-body">
+        <div class="fn-clear comment-meta">
+                <span class="fn-left">
+                        <a href="http://www.jokeme.top" target="_blank">lixuanliming</a>
+                        @
+                    <a href="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html#1579067205223"
+                       onmouseover="page.showComment(this, '1579067205223', 23);"
+                       onmouseout="page.hideComment('1579067205223')"
+                    >caibutou580</a>
+                        <time>2020-01-15 13:51</time>
+                </span>
+            <a class="fn-right" href="javascript:page.toggleEditor('1579067460466', 'lixuanliming')">回复»</a>
+        </div>
+        <div class="comment-content post-body vditor-reset">
+        <p>🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇 🎇🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶🧶</p>
+        </div>
+    </div>
+</li><li id="1579067298928" class="fn-clear">
+    <img class="avatar-48" title="lixuanliming" src="https://img.hacpai.com/avatar/1575322384198?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <div class="comment-body">
+        <div class="fn-clear comment-meta">
+                <span class="fn-left">
+                        <a href="http://www.jokeme.top" target="_blank">lixuanliming</a>
+                        @
+                    <a href="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html#1579067205223"
+                       onmouseover="page.showComment(this, '1579067205223', 23);"
+                       onmouseout="page.hideComment('1579067205223')"
+                    >caibutou580</a>
+                        <time>2020-01-15 13:48</time>
+                </span>
+            <a class="fn-right" href="javascript:page.toggleEditor('1579067298928', 'lixuanliming')">回复»</a>
+        </div>
+        <div class="comment-content post-body vditor-reset">
+        <p>那是必须的啊，🎆叼毛</p>
+        </div>
+    </div>
+</li><li id="1579067205223" class="fn-clear">
+    <img class="avatar-48" title="caibutou580" src="https://img.hacpai.com/avatar/1578976539454.jpg?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <div class="comment-body">
+        <div class="fn-clear comment-meta">
+                <span class="fn-left">
+                        <a href="https://www.jokeme.top" target="_blank">caibutou580</a>
+                        @
+                    <a href="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html#1579001508693"
+                       onmouseover="page.showComment(this, '1579001508693', 23);"
+                       onmouseout="page.hideComment('1579001508693')"
+                    >lixuanliming</a>
+                        <time>2020-01-15 13:46</time>
+                </span>
+            <a class="fn-right" href="javascript:page.toggleEditor('1579067205223', 'caibutou580')">回复»</a>
+        </div>
+        <div class="comment-content post-body vditor-reset">
+        <p>厉害 ！ 😄 😄</p>
+        </div>
+    </div>
+</li><li id="1579001508693" class="fn-clear">
+    <img class="avatar-48" title="lixuanliming" src="https://img.hacpai.com/avatar/1575322384198?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <div class="comment-body">
+        <div class="fn-clear comment-meta">
+                <span class="fn-left">
+                        <a href="http://www.jokeme.top" target="_blank">lixuanliming</a>
+                        <time>2020-01-14 19:31</time>
+                </span>
+            <a class="fn-right" href="javascript:page.toggleEditor('1579001508693', 'lixuanliming')">回复»</a>
+        </div>
+        <div class="comment-content post-body vditor-reset">
+        <p>我真厉害❤</p>
+        </div>
+    </div>
+</li>            </ul>
+        </div>
+            
+        </main>
+
+            <div class="nexmoe-hitokoto">
+                <p id="hitokoto">记录精彩的Debug人生</p>
+            </div>
+        <div class="back-to-top iconfont solo-gotop" onclick="Util.goTop()"></div>
+    </div>
+</div>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/canvas.js?1579067796905"
+            charset="utf-8"></script>
+
+<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1579067796905"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1579067796905"
+        charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
+<script>
+    var Label = {
+        servePath: "https://jokefrelon.github.io",
+        staticServePath: "https://jokefrelon.github.io",
+        luteAvailable: false,
+        hljsStyle: 'github',
+        langLabel: "zh_CN",
+        version: "3.7.0",
+    }
+    Util.init()
+</script>
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1579067796905', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1578626602884",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 355ms, 2020/01/15 14:51:43 -->

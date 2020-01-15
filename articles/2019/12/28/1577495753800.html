@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Java IO 文件的读写与高效率IO - Frelon-Lee 的个人博客</title><meta name="description" content="Java IO重在对文件的读写,以及怎样高效率读写"/><meta property="og:description" content="Java IO重在对文件的读写,以及怎样高效率读写"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Java IO 文件的读写与高效率IO - Frelon-Lee 的个人博客"/><meta property="og:site_name" content="Frelon-Lee 的个人博客"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Java IO 文件的读写与高效率IO - Frelon-Lee 的个人博客" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1579067796905"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1579067796905">
+    <script type="text/javascript" src="https://www.jokeme.top/js/love.js"></script>
+</head>
+<body class="mdui-drawer-body-left mdui-loaded">
+<div id="nexmoe-background">
+    <canvas id="c_n1" class="nexmoe-bg"></canvas>
+<div class="mdui-appbar mdui-shadow-0">
+    <div class="mdui-toolbar">
+        <a href="#" mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon  iconfont solo-list"></i>
+        </a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/" title="Frelon-Lee 的个人博客" class="mdui-btn mdui-btn-icon">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt="Frelon-Lee 的个人博客"></a>
+        </a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-header">
+<div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt=""></a>
+    </div>
+    <div class="nexmoe-count">
+        <div>
+            <span>文章</span>
+            13
+        </div>
+        <div>
+            <span>评论</span>
+            5
+        </div>
+        <div>
+            <span>浏览</span>
+            1685
+        </div>
+    </div>
+    <div class="list-content">
+        <ul class="nexmoe-list mdui-list header__nav" mdui-collapse="{accordion: true}">
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-home"></i>
+                <div class="mdui-list-item-content">回到首页</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/links.html"
+               title="友情链接 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-list"></i>
+                <div class="mdui-list-item-content">友情链接</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/tags.html"
+               title="标签 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-tags"></i>
+                <div class="mdui-list-item-content">标签</div>
+            </a>
+                <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/my-github-repos"
+                   title="我的开源" target="_self">
+                    <i class="mdui-list-item-icon iconfont solo-/images/github-icon.png"></i>
+                    <div class="mdui-list-item-content">我的开源</div>
+                </a>
+        </ul>
+    </div>
+    <aside id="nexmoe-sidebar">
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">功能按钮</h3>
+            <div class="nexmoe-widget nexmoe-social features">
+                <a href="https://jokefrelon.github.io/search" title="搜索">
+                    <i class="mdui-list-item-icon iconfont solo-search"></i>
+                    <div class="mdui-list-item-content">搜索</div>
+                </a>
+                <a href="https://jokefrelon.github.io/rss.xml" title="RSS">
+                    <i class="mdui-list-item-icon iconfont solo-rss"></i>
+                </a>
+                    <a href="https://jokefrelon.github.io/start" title="开始使用">
+                        <i class="mdui-list-item-icon iconfont solo-login"></i>
+                        <div class="mdui-list-item-content"> 开始使用</div>
+                    </a>
+            </div>
+        </div>
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">社交按钮</h3>
+            <div class="nexmoe-widget nexmoe-social">
+    <a href="https://hacpai.com/member/lixuanliming"
+       title="https://hacpai.com/member/lixuanliming"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/lixuanliming"
+           title="https://github.com/lixuanliming"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+            </div>
+        </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">标签</h3>
+                <div class="nexmoe-widget tagcloud">
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Java"
+                           title="标签:Java - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Java</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Linux"
+                           title="标签:Linux - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Linux</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Solo"
+                           title="标签:Solo - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Solo</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Collection"
+                           title="标签:Collection - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Collection</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/GitHub"
+                           title="标签:GitHub - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            GitHub</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Set"
+                           title="标签:Set - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Set</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/contains"
+                           title="标签:contains - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            contains</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/python"
+                           title="标签:python - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            python</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/nginx"
+                           title="标签:nginx - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            nginx</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Docker"
+                           title="标签:Docker - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Docker</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/List"
+                           title="标签:List - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            List</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Date"
+                           title="标签:Date - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Date</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WeChat"
+                           title="标签:WeChat - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WeChat</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                           title="标签:开源 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            开源</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WSL2"
+                           title="标签:WSL2 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WSL2</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/equals"
+                           title="标签:equals - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            equals</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Calendar"
+                           title="标签:Calendar - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Calendar</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/LittleProgram"
+                           title="标签:LittleProgram - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            LittleProgram</a>
+                </div>
+            </div>
+
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">分类</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Java"
+                                   title="java - Frelon-Lee 的个人博客">
+                                    java</a>
+                                <span class="category-list-count">7</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/python"
+                                   title="Python - Frelon-Lee 的个人博客">
+                                    Python</a>
+                                <span class="category-list-count">1</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Linux"
+                                   title="Linux - Frelon-Lee 的个人博客">
+                                    Linux</a>
+                                <span class="category-list-count">2</span>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">存档</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/01"
+                                       title="2020 年 01 月 存档 - Frelon-Lee 的个人博客">
+                                        2020 年 01 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2019/12"
+                                       title="2019 年 12 月 存档 - Frelon-Lee 的个人博客">
+                                        2019 年 12 月</a>
+                                    <span class="category-list-count">11</span>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+
+    </aside>
+    <div class="nexmoe-copyright">
+        © 2020 <a href="https://jokefrelon.github.io">Frelon-Lee 的个人博客</a> <br/>
+        <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a> <br>
+        Powered by <a href="https://solo.b3log.org" target="_blank">Solo</a> <br>
+        Theme <a rel="friend" href="https://github.com/InkDP/solo-nexmoe" target="_blank">solo-nexmoe</a>
+        by <a rel="friend" href="https://www.inkdp.cn" target="_blank">InkDP</a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <main id="pjax" class="fn__flex-1">
+            
+            <div class="nexmoe-post">
+                <div class="nexmoe-post-cover">
+                    <img src="https://img.hacpai.com/bing/20180903.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="Java IO 文件的读写与高效率IO"
+                         data-src="https://img.hacpai.com/bing/20180903.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" class=" ls-is-cached lazyloaded">
+                    <h1>Java IO 文件的读写与高效率IO</h1>
+                </div>
+                <div class="nexmoe-post-meta">
+                <span>
+                    <i class="nexmoefont iconfont solo-calendarl"></i>2019年12月31日
+                </span>
+
+                    <span>
+                    <i class="nexmoefont iconfont solo-heat"></i>43 °C
+                </span>
+                                <span>
+                            <a class="nexmoefont iconfont solo-category "
+                               href="https://jokefrelon.github.io/category/Java">java</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Java">Java</a>
+                </span>
+
+                </div>
+                <article>
+                    <div class="vditor-reset">
+                        <p><img src="https://img.hacpai.com/bing/20180903.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h1 id="b3_solo_h1_0">Java-IO💻 Part 1</h1>
+<p>Java Input-Output 主要是用于文件的存储和读取,相关操作一般都会放在Java.io包中</p>
+<h2 id="b3_solo_h2_1">1 File类</h2>
+<p>file类的方法是我们操作文件必不可少的,是必须要学习的类</p>
+<h3 id="b3_solo_h3_2">1.1 使用示例:</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.IOException;
+
+public class fileClass {
+	public static void main(String[] args) throws IOException {
+		
+		File se = new File("D:\\Frelon.txt");
+		File we = new File("D:\\","sda.py");
+		System.out.println(se+"~~~~"+we);
+		
+		File dir = new File("D:\\KW"+File.separator);
+		File sdCard = new File (dir,"a.java");
+		if(sdCard.createNewFile()) {
+			System.out.println("Create File Successfully ! "+sdCard);
+		}else {
+			System.out.println("Filed!");
+		}
+	}
+}
+</code></pre>
+<h3 id="b3_solo_h3_3">1.2 <strong>File</strong>类常见方法</h3>
+<h4 id="b3_solo_h4_4">1.2.1 获取文件路径</h4>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+
+public class filePath {
+	public static void main(String[] args) {
+		File file = new File("a.sh");
+		String str = file.getAbsolutePath();
+		String str1 = file.getPath();
+		System.out.println(str+"~~~~~"+str1);
+	}
+}
+​~~~~~~~~~~~~~~~~~~
+D:\github\Hadoop_build\JavaLearn\a.sh~~~~~a.sh
+</code></pre>
+<p>getPath()只是获取相对路径&lt;程序在哪运行,路径就是那里&gt;</p>
+<p>getAbsolutePath()表示获取绝对路径</p>
+<h4 id="b3_solo_h4_5">1.2.2 获取文件修改时间</h4>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.text.DateFormat;
+import java.util.Date;
+
+public class filePath {
+	public static void main(String[] args) {
+		File file = new File(".classpath");
+		Long lon = file.lastModified();
+		Date date = new Date(lon);
+		String mod_time = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG).format(date);
+		System.out.println(lon+" &gt;&gt;&gt;&gt;&gt; "+mod_time);
+	}
+}
+</code></pre>
+<pre><code class="language-log">1575876750643 &gt;&gt;&gt;&gt;&gt; 2019年12月9日 下午03时32分30秒
+</code></pre>
+<p>该方法并不困难,稍稍有难度的是如何把获取到的 <strong>Long</strong> 类型的数字转化为具体的时间</p>
+<pre><code class="language-java">Date date = new Date(1575876750643l);
+DateFormat time = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
+String str = time.format(date);
+System.out.println(str);
+</code></pre>
+<h4 id="b3_solo_h4_6">1.2.3 常见操作</h4>
+<pre><code class="language-Java">boolean boof = file.createNewFile();     
+boolean boo  = file.canExecute();        
+boolean booa = file.canRead();           
+boolean bood = file.canWrite();          
+boolean booh = file.exists();            
+boolean booj = file.isAbsolute();        
+boolean book = file.isDirectory();       
+boolean bool = file.isFile();            
+boolean booz = file.isHidden();          
+</code></pre>
+<p>认识即可,没有难度</p>
+<h4 id="b3_solo_h4_7">1.2.4 获取文件夹内容</h4>
+<p>当操作文件夹时,肯定要知道这个文件夹里面有什么东西,我们才好操作,常用的方法有两种 <strong>list()</strong> , <strong>listFile()</strong> 但是建议用后者,因为<strong>list()</strong> 有的它也有,他有的方法**list()**没有</p>
+<pre><code class="language-Java">package Java_IO;
+
+import java.io.File;
+
+public class visitFile {
+	public static void main(String[] args) {
+		File alean = new File("c:\\");
+		if (alean.exists()) {
+			String[] dd = alean.list();
+			for (String ss : dd) {
+				System.out.println(ss);
+			}
+System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
+			File[] fo = alean.listFiles();
+			for (File fs : fo) {
+				if(fs.getName().contains("Logs")) {
+					System.out.println(fs+" ~~~ "+fs.getName());
+				}
+			}
+System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
+			Long sis = alean.getFreeSpace();
+			System.out.println(alean + " " + sis / Math.pow(1024, 3) + "Gb" + " free!");
+		} else {
+			System.out.println("No this file");
+		}
+	}
+}
+</code></pre>
+<h4 id="b3_solo_h4_8">1.2.5 文件过滤器</h4>
+<pre><code class="language-Java">File[] str1  =  dir.listFiles(new fileFilterByName());
+for (File strr : str1) {
+	System.out.println(strr);
+}
+​~~~~
+package Java_IO;
+
+import java.io.File;
+import java.io.FileFilter;
+
+public class fileFilterByName implements FileFilter {
+	@Override
+	public boolean accept(File arg0) {
+		return arg0.isDirectory();
+	}
+}
+</code></pre>
+<p>它可以过滤出该📂内的📂,还可以过滤出📂内的📄,只需要把 <strong>fileFilterByName</strong> の <strong>accept()</strong> 方法改一下即可</p>
+<pre><code class="language-java">public boolean accept(File arg0) {
+	return arg0.isDirectory();
+//	return arg0.isFile();
+//  return arg0.isFile();
+//  return arg0.getName().endSWith(".java")
+}
+</code></pre>
+<h5 id="b3_solo_h5_9">1.2.5.1 文件名过滤器</h5>
+<pre><code class="language-Java">package Java_IO;
+
+import java.io.File;
+import java.io.FilenameFilter;
+
+public class filterByName implements FilenameFilter {
+	private String se="";
+	
+	public filterByName(String se) {
+		super();
+		this.se = se;
+	}
+	public filterByName() {
+		super();
+	}
+	
+	@Override
+	public boolean accept(File arg0, String arg1) {
+		
+		return arg1.endsWith(se);
+	}
+
+}
+​~~~~~~~~~~~~~~~~~~~~~~
+package Java_IO;
+
+import java.io.File;
+
+public class FileFilter {
+	public static void main(String[] args) {
+		File file = new File("D:\\hadoop-2.8.5");
+		String[] str = file.list(new filterByName(".txt"));
+		for (String name : str) {
+			System.out.println(name);
+		}
+	}
+}
+
+</code></pre>
+<p>这种过滤器不常用,因为需要一个过滤器实现<strong>FileNameFilter</strong>, 实际coding 我们可以使用<strong>FileFilter</strong> 替代,它不仅仅可以过滤文件夹📂还可以过滤文件📃</p>
+<h3 id="b3_solo_h3_10">1.3 递归 获取📂内的内容</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.NoSuchFileException;
+
+public class getAllFiles {
+
+	public static void main(String[] args) throws IOException {
+		File dir = new File("D:\\github");
+		getAllFile(dir);
+	}
+
+	public static void getAllFile(File se) throws IOException {
+		File[] dir1 = se.listFiles();
+		if(!se.exists()) {
+			throw new NoSuchFileException("No such Path");
+		}
+		for (File der : dir1) {
+			if (der.isDirectory()) {
+				getAllFile(der);
+			} else {
+				System.out.println("Visited " + der);
+			}
+		}
+	}
+}
+</code></pre>
+<p>什么是递归?</p>
+<p>其实 递归就是在方法内部调用该方法,该方法不断地进栈,在使用递归时,一定要有判断条件,否则一直递归下去会导致内存溢出</p>
+<pre><code class="language-java">public void met(){
+	void show();
+}
+
+public void show(){
+	void met();
+}
+</code></pre>
+<p>这就是一种递归,但是它是错误❌的递归,两个方法相互调用会导致栈内存溢出,</p>
+<pre><code class="language-java">public void show(){
+	void show();
+}
+</code></pre>
+<p>这也是一种错误❌的递归,方法内部无线调用自己✌会导致栈内存溢出</p>
+<h4 id="b3_solo_h4_11">1.3.1 使用递归删除📂</h4>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.nio.file.NoSuchFileException;
+
+public class deleteFiles {
+	public static void main(String[] args) throws NoSuchFileException {
+		File dir = new File("D:\\KWS");
+		removeFiles(dir);
+	}
+	public static void removeFiles(File se) throws NoSuchFileException {
+		File [] wow = se.listFiles();
+		for(File wo : wow) {
+			if(!wo.exists()) {
+				throw new NoSuchFileException(null);
+			}
+			if(wo.isDirectory()) {
+				removeFiles(wo);
+			}else {
+				Boolean esc = wo.delete();
+				System.out.println("delete the file "+wo+" "+esc);
+			}
+		}
+		Boolean esc = se.delete();
+		System.out.println("delete the file "+se+" "+esc);
+	}
+}
+</code></pre>
+<p>递归删除很简单,只是需要注意,这个删除是不经过回收站的,会被直接删除,不可找回</p>
+<p>还有就是需要判断该 📂有没有权限访问,要不然会报 <strong>java.lang.NullPointerException</strong> 异常,甚至还需要我们自己来抛一些 <strong>IO</strong> 异常</p>
+<h3 id="b3_solo_h3_12">1.4 前三 part 测试</h3>
+<p>需求:</p>
+<pre><code>获取某个📂内所有文件的集合
+获取该📂内某个📂内的.txt文件,并存储到集合中打印🖨出来
+</code></pre>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.List;
+
+public class IO_Test1 {
+	public static void main(String[] args) {
+		File dir = new File("c:\\tempfile");
+
+		List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+
+		fileFilterByName filter = new fileFilterByName(".txt");
+
+		getFile(dir, filter, list);
+
+		for (String ser : list) {
+			System.out.println(ser);
+		}
+	}
+
+	private static void getFile(File file, fileFilterByName filter, List&lt;String&gt; list) {
+		File[] fileName = file.listFiles();
+		for (File se : fileName) {
+			if (se.isDirectory()) {
+				getFile(se, filter, list);
+			} else {
+				if (filter.accept(se)) {
+					list.add(se.getPath());
+				}
+			}
+		}
+	}
+}
+​~~~~~~~~~~~~~~~~~~~~
+package Java_IO;
+
+import java.io.File;
+import java.io.FileFilter;
+
+public class fileFilterByName implements FileFilter {
+	private String str;
+    
+	public fileFilterByName(String str) {
+		super();
+		this.str = str;
+	}
+    
+	public fileFilterByName() {
+		super();
+	}
+	
+	
+	@Override
+	public boolean accept(File arg0) {
+		return arg0.getName().endsWith(this.str);
+	}
+
+}
+</code></pre>
+<p>给自己点个赞👍,我真厉害🥰</p>
+<h2 id="b3_solo_h2_13">2 FileOutputStream 向📄内写入内容</h2>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class writeIntoFile {
+	private static final String Line_separator = System.getProperty("line.separator");
+
+	public static void main(String[] args) throws IOException {
+		File dir = new File("c:\\tempfile");
+		if(!dir.exists()) {
+			dir.mkdir();
+		}
+		String str ="i Love Java";
+		FileOutputStream fops = null;
+		try {
+			fops = new FileOutputStream("c:\\tempfile\\fops.java",true);
+			String ssr = Line_separator+"Hello World"+Line_separator;
+			fops.write(ssr.getBytes());
+			fops.write(str.getBytes());
+			fops.write(ssr.getBytes());
+			System.out.println("写入成功");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(fops!=null) {}
+			fops.close();
+		}
+	}
+}
+</code></pre>
+<p>写入内容很容易,只需要调用一下<strong>write()<strong>方法即可,但是难点就是处理各种</strong>Exception</strong> ,我们需要考虑到各种各样的异常</p>
+<p>比如 FileNotFoundException,,,NullPointerException等等等, 因为一旦出现了这些问题我们的代码可能就占用了相关的系统资源,但是程序执行失败后,我们并没有释放该资源,如此循环往复就会导致系统的卡慢,甚至死机重启,这里我们经常使用<strong>try catch finally</strong> 方法来解决,需要执行的代码放在<strong>try</strong> 里面,在<strong>finally</strong> 里面放 <strong>close()<strong>方法,保证我们的代码在申请完资源以后,无论是否报错,都可以被释放掉,还有一点就是如果我们使用 <strong>try catch finally</strong> 那我们一定不能在</strong>try</strong>里面 <strong>new</strong> 对象,因为到时候<strong>finally</strong> 关闭资源时会<strong>找不到对象</strong> 🤣的</p>
+<p>还有<strong>write()</strong> 方法是会覆盖掉文件内部的内容的,如果我们需要在当前内容上继续添加内容,那就需要在创建对象时加一个<strong>true</strong> 表示续写该文件,代码如下</p>
+<pre><code class="language-java">FileOutputStream fops = new FileOutputStream("c:\\tempfile\\fops.java",true);
+</code></pre>
+<h2 id="b3_solo_h2_14">3 FileInputStream 读取📄内容</h2>
+<p>FileInputStream类和FileOutputStream类有许多的共同点,都需要传一个File类的对象(new 对象时要保证Path✔无误,要不然很容易造成空指针异常) 还有就是在使用完资源以后要及时释放掉资源,还有要注意的是异常の处理,如果没有处理好异常也会导致我们无法释放掉资源,导致程序占用过多的系统资源,使系统卡慢</p>
+<h3 id="b3_solo_h3_15">3.1❌read() 入门级读取</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class readFile {
+	private static final int LIMSize = 8192;
+
+	public static void main(String[] args) throws IOException {
+		File dir = new File("c:\\tempfile\\fops.java");
+
+		FileInputStream fipts = new FileInputStream(dir);
+
+		int byt;
+		while ((byt = fipts.read()) != -1) {
+			System.out.println(byt);
+		}
+
+		fipts.close();
+	}
+}        
+</code></pre>
+<p>日常开发中,基本上用不上 PASS ❌</p>
+<h3 id="b3_solo_h3_16">3.2❌read() 初级读取</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class readFile {
+	private static final int LIMSize = 8192;
+
+	public static void main(String[] args) throws IOException {
+		File dir = new File("c:\\tempfile\\fops.java");
+		byte[] buf = new byte[2];
+
+		FileInputStream fip = new FileInputStream(dir);
+
+		int len = fip.read(buf);
+		System.out.println(len + "~~~" + new String(buf));
+
+		fip.close();
+	}
+}            
+</code></pre>
+<p>日常开发中,基本上用不上 PASS ❌</p>
+<h3 id="b3_solo_h3_17">3.3 ✔ read() 进阶级读取</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class readFile {
+	private static final int LIMSize = 8192;
+
+	public static void main(String[] args) throws IOException {
+		File dir = new File("c:\\tempfile\\fops.java");
+				FileInputStream fips = new FileInputStream(dir);
+		byte[] by = new byte[LIMSize];
+
+		int length = 0;
+
+		while ((length = fips.read(by)) != -1) {
+			System.out.println(new String(by, 0, length));
+		}
+		fips.close();
+
+	}
+}
+</code></pre>
+<p>日常开发中可以使用,✔建议根据需要改变缓冲区的大小,一般建议设置成 :8192</p>
+<h3 id="b3_solo_h3_18">3.4 ✔ read()高级读取</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class readFileAdvantage {
+	public static void main(String[] args) throws IOException {
+		File dir = new File("c:\\tempfile\\fops.java");
+		FileInputStream fips = new FileInputStream(dir);
+		byte [] byt = new byte [fips.available()];
+		fips.read(byt);
+		System.out.println(new String(byt));
+		fips.close();
+	}
+}
+</code></pre>
+<p>✔这种是我比较喜欢的一种方法,简洁好用,也不用考虑缓冲区大小😀,而且一般File对象没有问题也就不会出错啊(相对于前面几个),这是重点✔,圈起来!下次会考!!!</p>
+<p>但是!!但是!!但是! 这种方法只是比较适合处理比较小的文件,如果处理好几个G的文件,当场挂..所以呢,还是 进阶 和 高级 一起用</p>
+<h2 id="b3_solo_h2_19">4 FileOutputStream和FileInputStream一起读写文件</h2>
+<h3 id="b3_solo_h3_20">4.1 低级写法</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class IO_CopyFile {
+
+	public static void main(String[] args) throws IOException {
+		File dir = new File("C:\\tempfile\\fops.java");
+		FileInputStream fis = new FileInputStream(dir);
+
+		File dir1 = new File("C:\\tempfile\\fops.txt");
+		FileOutputStream fos = new FileOutputStream(dir1);
+		int len = 0;
+		while ((len = fis.read()) != -1) {
+			fos.write(len);
+		}
+		fis.close();
+		fos.close();
+	}
+}
+</code></pre>
+<p>不推荐这种写法,因为效率比较低,读取一个写入一个,太浪费时间</p>
+<h3 id="b3_solo_h3_21">4.2 高级写法</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import APICourceCode.dateAPI;
+
+public class copyFileByBuf {
+	public static void main(String[] args) throws IOException {
+		dateAPI date = new dateAPI();
+		date.getDate();
+		File dir = new File("d:\\tempfile\\idea.exe");
+		FileOutputStream fos = null;
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(dir);
+			fos = new FileOutputStream("d:\\tempfile\\idea.wilu");
+
+			byte[] buf = new byte[10240];
+
+			int len = 0;
+			while ((len = fis.read(buf)) != -1) {
+				fos.write(buf, 0, len);
+			}
+		} catch (IOException e) {
+			throw new IOException();
+		} finally {
+			fis.close();
+			fos.close();
+			date.getDate();
+			System.out.println("Copy Over");
+		}
+
+	}
+}
+
+</code></pre>
+<p>我无聊就试了试,这个<strong>byte</strong> 数组の长度对<strong>IO</strong> の性能影响有多大,就把长度从10,102,1024,2048,4096,8192,10240 都试了个遍,得出以下答案:</p>
+<table>
+<thead>
+<tr><th align="center">时间\byte长度</th><th align="center">10</th><th align="center">102</th><th align="center">1024</th><th align="center">2048</th><th align="center">4096</th><th align="center">8192</th><th align="center">10240</th><th align="center">20480</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">Start</td><td align="center">19:38:27</td><td align="center">19:53:42</td><td align="center">19:54:52</td><td align="center">19:55:50</td><td align="center">19:56:25</td><td align="center">19:57:05</td><td align="center">19:57:40</td><td align="center">19:58:16</td></tr>
+<tr><td align="center">Stop</td><td align="center">19:44:33</td><td align="center">19:54:19</td><td align="center">19:54:57</td><td align="center">19:55:54</td><td align="center">19:56:28</td><td align="center">19:57:08</td><td align="center">19:57:42</td><td align="center">19:58:18</td></tr>
+<tr><td align="center">time</td><td align="center">366s</td><td align="center">37s</td><td align="center">5s</td><td align="center">4s</td><td align="center">3s</td><td align="center">3s</td><td align="center">2s</td><td align="center">2s</td></tr>
+</tbody>
+</table>
+<p>测试所使用的文件大小为: 584935KB 大约是571MB</p>
+<p>可以看出byte数组的长度也是越大越好的,只要你内存足够大,磁盘性能足够强,理论上是可以做到一秒内复制任何文件的,可是!! 科技日益发达的今天电脑内存和磁盘还依然是一个瓶颈,有待我们突破啊,So 为了适应各种大小的文件,还是选择大小为<strong>8192</strong> 或者<strong>10240</strong> 也是可以的</p>
+<h2 id="b3_solo_h2_22">5 Buffer缓冲区</h2>
+<p>buffer原理就是调用一片内存,作为缓冲区,然后再为FileInput/OutputStream使用,原理和上面的相似</p>
+<h3 id="b3_solo_h3_23">5.1 使用示例</h3>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class buffer {
+	public static void main(String[] args) throws IOException {
+				copyfile();
+	}
+	public static void copyfile() throws IOException {
+		File dir  = new File("d:\\LinuxSoftware_VariedOS\\Python-3.8.0.tgz");
+		
+		FileInputStream pis = new FileInputStream(dir);
+		FileOutputStream pos = new FileOutputStream("d:\\tempfile\\Python.wilu");
+		
+		BufferedInputStream bufpis = new BufferedInputStream(pis);
+		BufferedOutputStream bufpos = new BufferedOutputStream(pos);
+		
+		byte [] buf = new byte[8192];
+		int len = 0;
+		while((len=bufpis.read(buf))!=-1) {
+			bufpos.write(buf,0,len);
+		}
+		bufpis.close();
+		bufpos.close();
+		System.out.println("Copy over");
+	}  
+}
+</code></pre>
+<h2 id="b3_solo_h2_24">6 字符读写</h2>
+<h3 id="b3_solo_h3_25">6.1 使用 I/O-Stream-Reader/Writer</h3>
+<p>由于中文一个字符占两字节,所以我们不能像读写英文那样,直接操作数据了,</p>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class StreamReader {
+	public static void main(String[] args) throws IOException {
+		FileInputStream fis = new FileInputStream("D:\\tempfile\\fpos.java");
+		FileOutputStream fos = new FileOutputStream("D:\\tempfile\\pofs.c",true);
+		
+		InputStreamReader isr = new InputStreamReader(fis);
+		OutputStreamWriter osw = new OutputStreamWriter(fos,"utf-8");
+		
+		int in ;
+		while((in = isr.read()) != -1) {
+			osw.write(in);
+		}
+		
+		isr.close();
+		osw.close();
+		System.out.println("Copy over");
+	}
+}
+</code></pre>
+<p>中文处理时比较的麻烦,因为各种电脑支持的编码可能不一样,就导致乱码问题,这时候我们在<strong>new</strong> 对象的时候就需要指定我们所需要的编码方式,今天就因为编码就倒腾了半天的时间⏰</p>
+<p>所以为了保险起见,在创建 <strong>FileOutputStream</strong> 的时候还是加上 <strong>UTF-8</strong> 好一点</p>
+<h3 id="b3_solo_h3_26">6.2 FileReader/FileWriter类</h3>
+<p><strong>FileReader/FileWriter</strong> 其实就是简化了<strong>FileOutputStream</strong> ＆ <strong>FileOutputStream</strong> の 使用过程,但是缺点( •̀ ω •́ )y 非常明显,就是不支持设置编码方式,默认的是 <strong>ISO-8859-1 or US-ASCII</strong> ,非常容易导致乱码 ~%?…,# *'☆&amp;℃$︿★?</p>
+<p>处理乱码也不难,就是不用这个类 🤣</p>
+<p>way 1</p>
+<pre><code class="language-java">BufferedWriter writer = new BufferedWriter (new OutputStreamWriter (new FileOutputStream (filePath,true),"UTF-8"));
+</code></pre>
+<p>虽然这也是一种解决办法吧,但是如果一点要用的话那就只能用下面这种方法了</p>
+<p>way 2</p>
+<pre><code class="language-java">Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream ("String"), "UTF-8"));
+</code></pre>
+<p>让<strong>FileWriter</strong> 继承 <strong>Write</strong> の 编码方式,不过也不好用</p>
+<h4 id="b3_solo_h4_27">6.2.1 FileReader /  FileWrite 初级写法</h4>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+public class fileWriter {
+	public static void main(String[] args) throws IOException {
+		FileOutputStream fos = new FileOutputStream("D:\\tempfile\\pofs.c");
+		OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
+		
+		FileReader fr = new FileReader("D:\\tempfile\\fpos.java");
+		FileWriter fw = new FileWriter("D:\\tempfile\\pofs.c");
+		
+		int in;
+		while((in=fr.read())!=-1) {
+			fw.write((char)in);
+		}
+		fr.close();
+		System.out.println(fw.getEncoding());
+		fw.close();
+		osw.close();
+		System.out.println("Copy over");
+	}
+}
+</code></pre>
+<h4 id="b3_solo_h4_28">6.2.2 FileReader /  FileWrite 高级写法</h4>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class IO_SimplifyChinese {
+	public static void main(String[] args) throws IOException {
+		copyChineseChar();
+	}
+	public static void copyChineseChar() throws IOException {
+		FileReader fr = new FileReader("D:\\LinuxSoftware_VariedOS\\jdk-8u231-linux-x64.tar.gz");
+		FileWriter fw = new FileWriter("D:\\tempfile\\jdk8.wuli");
+		
+		char [] chara = new char[2048];
+		int len ;
+		while ((len=fr.read(chara))!= -1) {
+			fw.write(chara,0,len);
+		}
+		fr.close();
+		fw.close();
+		System.out.println("copy over");
+	}
+}
+</code></pre>
+<h3 id="b3_solo_h3_29">6.3 BufferedReader / BufferedWriter</h3>
+<p>主要是利用缓冲区来提高读写效率,也没有啥难处,会用就可以了</p>
+<pre><code class="language-java">package Java_IO;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Buffered_IO {
+	public static void main(String[] args) throws IOException {
+		buff();
+	}
+	public static void buff() throws IOException {
+		FileReader fr = new FileReader("D:\\tempfile\\fos.java");
+		BufferedReader br = new BufferedReader(fr);
+		
+		FileWriter fw = new FileWriter("D:\\tempfile\\copyed_fos.wuli");
+		BufferedWriter bw = new BufferedWriter(fw);
+		
+		char [] chara = new char[2048];
+		
+		int in ;
+		while((in=fr.read(chara))!= -1) {
+			bw.write(chara,0,in);
+		}
+		br.close();
+		bw.close();
+		System.out.println("Copy over");
+	}
+}
+
+</code></pre>
+<h2 id="b3_solo_h2_30">Final	写在最后:</h2>
+<p>在经过学习后,我发现字节流和字符流都用于复制文件,但字符流的出现主要是为了解决与字符相关的问题,所以不适合复制文件(编码原因),字符流复制文件时可能会出现莫名其妙的问题导致复制后的文件破损无法使用,但字节流就不存在这种问题所以得出</p>
+<pre><code class="language-properties">复制文件时使用字节流:复制文本文件时使用字符流
+</code></pre>
+                    </div>
+                </article>
+                    <div class="nexmoe-post-copyright">
+                        <i class="mdui-list-item-icon iconfont solo-about2"></i>
+                        <hr>
+
+标题：Java IO 文件的读写与高效率IO<br>
+作者：<a href="https://jokefrelon.github.io" target="_blank">lixuanliming</a><br>
+地址：<a href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html" target="_blank">https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </div>
+            <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#b3_solo_h1_0">Java-IO💻 Part 1</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_1">1 File类</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_2">1.1 使用示例:</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_3">1.2 File类常见方法</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_4">1.2.1 获取文件路径</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_5">1.2.2 获取文件修改时间</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_6">1.2.3 常见操作</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_7">1.2.4 获取文件夹内容</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_8">1.2.5 文件过滤器</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#b3_solo_h5_9">1.2.5.1 文件名过滤器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_10">1.3 递归 获取📂内的内容</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_11">1.3.1 使用递归删除📂</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_12">1.4 前三 part 测试</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_13">2 FileOutputStream 向📄内写入内容</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_14">3 FileInputStream 读取📄内容</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_15">3.1❌read() 入门级读取</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_16">3.2❌read() 初级读取</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_17">3.3 ✔ read() 进阶级读取</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_18">3.4 ✔ read()高级读取</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_19">4 FileOutputStream和FileInputStream一起读写文件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_20">4.1 低级写法</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_21">4.2 高级写法</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_22">5 Buffer缓冲区</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_23">5.1 使用示例</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_24">6 字符读写</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_25">6.1 使用 I/O-Stream-Reader/Writer</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_26">6.2 FileReader/FileWriter类</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_27">6.2.1 FileReader / FileWrite 初级写法</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_28">6.2.2 FileReader / FileWrite 高级写法</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_29">6.3 BufferedReader / BufferedWriter</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_30">Final 写在最后:</a>
+        </li>
+</ul>            </div>
+        <div class="nexmoe-comment">
+                <textarea rows="3" placeholder="评论内容只能为 2 到 500 个字符！" id="comment" readonly="readonly"></textarea>
+            <ul class="comments" id="comments">
+            </ul>
+        </div>
+            
+        </main>
+
+            <div class="nexmoe-hitokoto">
+                <p id="hitokoto">记录精彩的Debug人生</p>
+            </div>
+        <div class="back-to-top iconfont solo-gotop" onclick="Util.goTop()"></div>
+    </div>
+</div>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/canvas.js?1579067796905"
+            charset="utf-8"></script>
+
+<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1579067796905"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1579067796905"
+        charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
+<script>
+    var Label = {
+        servePath: "https://jokefrelon.github.io",
+        staticServePath: "https://jokefrelon.github.io",
+        luteAvailable: false,
+        hljsStyle: 'github',
+        langLabel: "zh_CN",
+        version: "3.7.0",
+    }
+    Util.init()
+</script>
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1579067796905', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1577495753800",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 167ms, 2020/01/15 14:51:42 -->

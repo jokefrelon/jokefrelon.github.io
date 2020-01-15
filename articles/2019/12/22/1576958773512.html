@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Java 时间类API的使用 - Frelon-Lee 的个人博客</title><meta name="description" content="Java 时间类API的使用,主要是Date 和 Calendar ,其中DateFormat 方法要掌握牢靠"/><meta property="og:description" content="Java 时间类API的使用,主要是Date 和 Calendar ,其中DateFormat 方法要掌握牢靠"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Java 时间类API的使用 - Frelon-Lee 的个人博客"/><meta property="og:site_name" content="Frelon-Lee 的个人博客"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Java 时间类API的使用 - Frelon-Lee 的个人博客" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1579067796905"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1579067796905">
+    <script type="text/javascript" src="https://www.jokeme.top/js/love.js"></script>
+</head>
+<body class="mdui-drawer-body-left mdui-loaded">
+<div id="nexmoe-background">
+    <canvas id="c_n1" class="nexmoe-bg"></canvas>
+<div class="mdui-appbar mdui-shadow-0">
+    <div class="mdui-toolbar">
+        <a href="#" mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon  iconfont solo-list"></i>
+        </a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/" title="Frelon-Lee 的个人博客" class="mdui-btn mdui-btn-icon">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt="Frelon-Lee 的个人博客"></a>
+        </a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-header">
+<div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt=""></a>
+    </div>
+    <div class="nexmoe-count">
+        <div>
+            <span>文章</span>
+            13
+        </div>
+        <div>
+            <span>评论</span>
+            5
+        </div>
+        <div>
+            <span>浏览</span>
+            1685
+        </div>
+    </div>
+    <div class="list-content">
+        <ul class="nexmoe-list mdui-list header__nav" mdui-collapse="{accordion: true}">
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-home"></i>
+                <div class="mdui-list-item-content">回到首页</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/links.html"
+               title="友情链接 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-list"></i>
+                <div class="mdui-list-item-content">友情链接</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/tags.html"
+               title="标签 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-tags"></i>
+                <div class="mdui-list-item-content">标签</div>
+            </a>
+                <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/my-github-repos"
+                   title="我的开源" target="_self">
+                    <i class="mdui-list-item-icon iconfont solo-/images/github-icon.png"></i>
+                    <div class="mdui-list-item-content">我的开源</div>
+                </a>
+        </ul>
+    </div>
+    <aside id="nexmoe-sidebar">
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">功能按钮</h3>
+            <div class="nexmoe-widget nexmoe-social features">
+                <a href="https://jokefrelon.github.io/search" title="搜索">
+                    <i class="mdui-list-item-icon iconfont solo-search"></i>
+                    <div class="mdui-list-item-content">搜索</div>
+                </a>
+                <a href="https://jokefrelon.github.io/rss.xml" title="RSS">
+                    <i class="mdui-list-item-icon iconfont solo-rss"></i>
+                </a>
+                    <a href="https://jokefrelon.github.io/start" title="开始使用">
+                        <i class="mdui-list-item-icon iconfont solo-login"></i>
+                        <div class="mdui-list-item-content"> 开始使用</div>
+                    </a>
+            </div>
+        </div>
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">社交按钮</h3>
+            <div class="nexmoe-widget nexmoe-social">
+    <a href="https://hacpai.com/member/lixuanliming"
+       title="https://hacpai.com/member/lixuanliming"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/lixuanliming"
+           title="https://github.com/lixuanliming"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+            </div>
+        </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">标签</h3>
+                <div class="nexmoe-widget tagcloud">
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Java"
+                           title="标签:Java - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Java</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Collection"
+                           title="标签:Collection - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Collection</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Linux"
+                           title="标签:Linux - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Linux</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Solo"
+                           title="标签:Solo - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Solo</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                           title="标签:开源 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            开源</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WSL2"
+                           title="标签:WSL2 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WSL2</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/equals"
+                           title="标签:equals - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            equals</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Calendar"
+                           title="标签:Calendar - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Calendar</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/LittleProgram"
+                           title="标签:LittleProgram - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            LittleProgram</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/GitHub"
+                           title="标签:GitHub - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            GitHub</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Set"
+                           title="标签:Set - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Set</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/contains"
+                           title="标签:contains - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            contains</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/python"
+                           title="标签:python - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            python</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/nginx"
+                           title="标签:nginx - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            nginx</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Docker"
+                           title="标签:Docker - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Docker</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/List"
+                           title="标签:List - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            List</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Date"
+                           title="标签:Date - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Date</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WeChat"
+                           title="标签:WeChat - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WeChat</a>
+                </div>
+            </div>
+
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">分类</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Java"
+                                   title="java - Frelon-Lee 的个人博客">
+                                    java</a>
+                                <span class="category-list-count">7</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/python"
+                                   title="Python - Frelon-Lee 的个人博客">
+                                    Python</a>
+                                <span class="category-list-count">1</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Linux"
+                                   title="Linux - Frelon-Lee 的个人博客">
+                                    Linux</a>
+                                <span class="category-list-count">2</span>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">存档</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/01"
+                                       title="2020 年 01 月 存档 - Frelon-Lee 的个人博客">
+                                        2020 年 01 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2019/12"
+                                       title="2019 年 12 月 存档 - Frelon-Lee 的个人博客">
+                                        2019 年 12 月</a>
+                                    <span class="category-list-count">11</span>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+
+    </aside>
+    <div class="nexmoe-copyright">
+        © 2020 <a href="https://jokefrelon.github.io">Frelon-Lee 的个人博客</a> <br/>
+        <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a> <br>
+        Powered by <a href="https://solo.b3log.org" target="_blank">Solo</a> <br>
+        Theme <a rel="friend" href="https://github.com/InkDP/solo-nexmoe" target="_blank">solo-nexmoe</a>
+        by <a rel="friend" href="https://www.inkdp.cn" target="_blank">InkDP</a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <main id="pjax" class="fn__flex-1">
+            
+            <div class="nexmoe-post">
+                <div class="nexmoe-post-cover">
+                    <img src="https://img.hacpai.com/bing/20180203.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="Java 时间类API的使用"
+                         data-src="https://img.hacpai.com/bing/20180203.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" class=" ls-is-cached lazyloaded">
+                    <h1>Java 时间类API的使用</h1>
+                </div>
+                <div class="nexmoe-post-meta">
+                <span>
+                    <i class="nexmoefont iconfont solo-calendarl"></i>2019年12月22日
+                </span>
+
+                    <span>
+                    <i class="nexmoefont iconfont solo-heat"></i>16 °C
+                </span>
+                                <span>
+                            <a class="nexmoefont iconfont solo-category "
+                               href="https://jokefrelon.github.io/category/Java">java</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Java">Java</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Date">Date</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Calendar">Calendar</a>
+                </span>
+
+                </div>
+                <article>
+                    <div class="vditor-reset">
+                        <p><img src="https://img.hacpai.com/bing/20180203.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h1 id="b3_solo_h1_0">时间类API</h1>
+<p>在日常学习生活中,我们经常遇到时间相关的问题,现在虽然Date类已经不是主流了,但任然有许多方法要学习</p>
+<h2 id="b3_solo_h2_1">1.1DateFormat</h2>
+<h3 id="b3_solo_h3_2">1.1.1 使用示例</h3>
+<pre><code class="language-java">package APICourceCode;
+
+import java.text.DateFormat;
+import java.util.Date;
+
+public class dateAPI {
+	public static void main(String[] args) {
+		Date date = new Date();
+		DateFormat ses = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL);
+		String sesa = ses.format(date);
+		System.out.println(sesa);
+	}
+}
+</code></pre>
+<p>其常见的<strong>Style</strong>如下</p>
+<pre><code class="language-properties">FULL:2019年12月16日 星期一 下午06时38分17秒 CST
+LONG:2019年12月16日 下午06时39分20秒
+MEDIUM:2019-12-16 18:39:41 (默认方式)
+SHORT:19-12-16 下午6:40
+</code></pre>
+<p>如果需要自定义的格式,就需要按照下面的表格自定义,自定义以后,系统自带的<strong>Style</strong>将不生效</p>
+<table>
+<thead>
+<tr><th align="center">字母</th><th align="center">意义</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">y</td><td align="center">年</td></tr>
+<tr><td align="center">M</td><td align="center">月份</td></tr>
+<tr><td align="center">w</td><td align="center">年份中的周数</td></tr>
+<tr><td align="center">W</td><td align="center">月份中的周数</td></tr>
+<tr><td align="center">d</td><td align="center">月份中的天数</td></tr>
+<tr><td align="center">D</td><td align="center">年份中的天数</td></tr>
+<tr><td align="center">F</td><td align="center">月份中的星期</td></tr>
+<tr><td align="center">E</td><td align="center">星期中的天数</td></tr>
+<tr><td align="center">a</td><td align="center">am/pm表示上下午</td></tr>
+<tr><td align="center">H</td><td align="center">一天中的小时数(0-23)</td></tr>
+<tr><td align="center">h</td><td align="center">am/pm中的一天小时数(1-12)</td></tr>
+<tr><td align="center">m</td><td align="center">小时中的分钟数</td></tr>
+<tr><td align="center">s</td><td align="center">分钟中的秒数</td></tr>
+<tr><td align="center">S</td><td align="center">毫秒数</td></tr>
+<tr><td align="center">z</td><td align="center">PST;GMT时区</td></tr>
+</tbody>
+</table>
+<pre><code class="language-java">package APICourceCode;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class dateAPI {
+	public static void main(String[] args) {
+		Date date = new Date();
+		DateFormat ses = DateFormat.getDateTimeInstance();
+		ses = new SimpleDateFormat("yyyy/MM/dd HH-mm-ss-SS");
+		String sesa = ses.format(date);
+		System.out.println(sesa);
+		
+	}
+}
+</code></pre>
+<h3 id="b3_solo_h3_3">1.1.2总结:</h3>
+<p><strong>DateFormat</strong>方法其实很简单,</p>
+<p>①首先<strong>new</strong>一个<strong>Date</strong>类对象,就不用管了</p>
+<p>②调用<strong>DateFormat</strong>方法对象(不需要new),生成自定义的<strong>Style</strong></p>
+<p>③使用字符串接收<strong>DateFormat</strong>对象的<strong>Format</strong>方法,需要传<strong>Date</strong>类的对象</p>
+<h2 id="b3_solo_h2_4">1.2 DateFormat反解析</h2>
+<h3 id="b3_solo_h3_5">1.2.1使用示例:</h3>
+<pre><code class="language-java">package APICourceCode;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
+
+public class ReverseDateFormat {
+	public static void main(String[] args) throws ParseException {
+		String str = "2019-07-02";
+		DateFormat se = DateFormat.getDateInstance();
+		Date date =se.parse(str);
+		System.out.println(date);
+	}
+}
+</code></pre>
+<h2 id="b3_solo_h2_6">2 Calendar</h2>
+<h3 id="b3_solo_h3_7">2.1 使用示例:</h3>
+<pre><code class="language-java">package APICourceCode;
+
+import java.util.Calendar;
+
+public class CalenderL {
+	public static void main(String[] args) {
+		Calendar se = Calendar.getInstance();
+		
+		se.add(Calendar.YEAR, 1);
+		
+		int year = se.get(Calendar.YEAR);
+		int month = se.get(Calendar.MONTH)+1;
+		int day = se.get(Calendar.DAY_OF_MONTH);
+		int hours = se.get(Calendar.HOUR_OF_DAY);
+		int minute = se.get(Calendar.MINUTE);
+		int sec = se.get(Calendar.SECOND);
+		System.out.println(year + "-" + month + "-" + day + "-" + hours + "-" + minute + "-" + sec);
+	}
+}
+----------
+2020-12-16-20-16-53
+</code></pre>
+<h3 id="b3_solo_h3_8">2.2 常见的<strong>Calendar</strong>参数</h3>
+<pre><code class="language-properties">java.util.GregorianCalendar[
+time=1576496255445,
+firstDayOfWeek=1,
+YEAR=2019,
+MONTH=11,
+WEEK_OF_YEAR=51,
+WEEK_OF_MONTH=3,
+DAY_OF_MONTH=16,
+DAY_OF_YEAR=350,
+DAY_OF_WEEK=2,
+DAY_OF_WEEK_IN_MONTH=3,
+HOUR=7,
+HOUR_OF_DAY=19,
+MINUTE=37,
+SECOND=35,
+MILLISECOND=445]
+</code></pre>
+<h3 id="b3_solo_h3_9">2.3 日期的偏移</h3>
+<pre><code class="language-Java">se.add(Calendar.MONTH, 1);
+</code></pre>
+<p>个人认为作用不是很大</p>
+                    </div>
+                </article>
+                    <div class="nexmoe-post-copyright">
+                        <i class="mdui-list-item-icon iconfont solo-about2"></i>
+                        <hr>
+
+标题：Java 时间类API的使用<br>
+作者：<a href="https://jokefrelon.github.io" target="_blank">lixuanliming</a><br>
+地址：<a href="https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html" target="_blank">https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </div>
+            <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#b3_solo_h1_0">时间类API</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_1">1.1DateFormat</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_2">1.1.1 使用示例</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_3">1.1.2总结:</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_4">1.2 DateFormat反解析</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_5">1.2.1使用示例:</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_6">2 Calendar</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_7">2.1 使用示例:</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_8">2.2 常见的Calendar参数</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_9">2.3 日期的偏移</a>
+        </li>
+</ul>            </div>
+        <div class="nexmoe-comment">
+                <textarea rows="3" placeholder="评论内容只能为 2 到 500 个字符！" id="comment" readonly="readonly"></textarea>
+            <ul class="comments" id="comments">
+            </ul>
+        </div>
+            
+        </main>
+
+            <div class="nexmoe-hitokoto">
+                <p id="hitokoto">记录精彩的Debug人生</p>
+            </div>
+        <div class="back-to-top iconfont solo-gotop" onclick="Util.goTop()"></div>
+    </div>
+</div>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/canvas.js?1579067796905"
+            charset="utf-8"></script>
+
+<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1579067796905"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1579067796905"
+        charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
+<script>
+    var Label = {
+        servePath: "https://jokefrelon.github.io",
+        staticServePath: "https://jokefrelon.github.io",
+        luteAvailable: false,
+        hljsStyle: 'github',
+        langLabel: "zh_CN",
+        version: "3.7.0",
+    }
+    Util.init()
+</script>
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1579067796905', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1576958773512",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 458ms, 2020/01/15 14:51:42 -->

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Java Collection学习 - Frelon-Lee 的个人博客</title><meta name="description" content="Java Collection学习的笔记,😁里面也有我踩得坑,值得记录下来,引以为戒"/><meta property="og:description" content="Java Collection学习的笔记,😁里面也有我踩得坑,值得记录下来,引以为戒"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Java Collection学习 - Frelon-Lee 的个人博客"/><meta property="og:site_name" content="Frelon-Lee 的个人博客"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Java Collection学习 - Frelon-Lee 的个人博客" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1579067796905"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1579067796905">
+    <script type="text/javascript" src="https://www.jokeme.top/js/love.js"></script>
+</head>
+<body class="mdui-drawer-body-left mdui-loaded">
+<div id="nexmoe-background">
+    <canvas id="c_n1" class="nexmoe-bg"></canvas>
+<div class="mdui-appbar mdui-shadow-0">
+    <div class="mdui-toolbar">
+        <a href="#" mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon  iconfont solo-list"></i>
+        </a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/" title="Frelon-Lee 的个人博客" class="mdui-btn mdui-btn-icon">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt="Frelon-Lee 的个人博客"></a>
+        </a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-header">
+<div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee 的个人博客" alt=""></a>
+    </div>
+    <div class="nexmoe-count">
+        <div>
+            <span>文章</span>
+            13
+        </div>
+        <div>
+            <span>评论</span>
+            5
+        </div>
+        <div>
+            <span>浏览</span>
+            1685
+        </div>
+    </div>
+    <div class="list-content">
+        <ul class="nexmoe-list mdui-list header__nav" mdui-collapse="{accordion: true}">
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/" title="Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-home"></i>
+                <div class="mdui-list-item-content">回到首页</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/links.html"
+               title="友情链接 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-list"></i>
+                <div class="mdui-list-item-content">友情链接</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/tags.html"
+               title="标签 - Frelon-Lee 的个人博客">
+                <i class="mdui-list-item-icon iconfont solo-tags"></i>
+                <div class="mdui-list-item-content">标签</div>
+            </a>
+                <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/my-github-repos"
+                   title="我的开源" target="_self">
+                    <i class="mdui-list-item-icon iconfont solo-/images/github-icon.png"></i>
+                    <div class="mdui-list-item-content">我的开源</div>
+                </a>
+        </ul>
+    </div>
+    <aside id="nexmoe-sidebar">
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">功能按钮</h3>
+            <div class="nexmoe-widget nexmoe-social features">
+                <a href="https://jokefrelon.github.io/search" title="搜索">
+                    <i class="mdui-list-item-icon iconfont solo-search"></i>
+                    <div class="mdui-list-item-content">搜索</div>
+                </a>
+                <a href="https://jokefrelon.github.io/rss.xml" title="RSS">
+                    <i class="mdui-list-item-icon iconfont solo-rss"></i>
+                </a>
+                    <a href="https://jokefrelon.github.io/start" title="开始使用">
+                        <i class="mdui-list-item-icon iconfont solo-login"></i>
+                        <div class="mdui-list-item-content"> 开始使用</div>
+                    </a>
+            </div>
+        </div>
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">社交按钮</h3>
+            <div class="nexmoe-widget nexmoe-social">
+    <a href="https://hacpai.com/member/lixuanliming"
+       title="https://hacpai.com/member/lixuanliming"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/lixuanliming"
+           title="https://github.com/lixuanliming"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+            </div>
+        </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">标签</h3>
+                <div class="nexmoe-widget tagcloud">
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Java"
+                           title="标签:Java - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Java</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Collection"
+                           title="标签:Collection - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Collection</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Linux"
+                           title="标签:Linux - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Linux</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Solo"
+                           title="标签:Solo - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Solo</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                           title="标签:开源 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            开源</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WSL2"
+                           title="标签:WSL2 - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WSL2</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/equals"
+                           title="标签:equals - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            equals</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Calendar"
+                           title="标签:Calendar - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Calendar</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/LittleProgram"
+                           title="标签:LittleProgram - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            LittleProgram</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/GitHub"
+                           title="标签:GitHub - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            GitHub</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Set"
+                           title="标签:Set - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Set</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/contains"
+                           title="标签:contains - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            contains</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/python"
+                           title="标签:python - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            python</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/nginx"
+                           title="标签:nginx - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            nginx</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Docker"
+                           title="标签:Docker - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Docker</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/List"
+                           title="标签:List - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            List</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Date"
+                           title="标签:Date - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            Date</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WeChat"
+                           title="标签:WeChat - Frelon-Lee 的个人博客"
+                           class="mdui-ripple">
+                            WeChat</a>
+                </div>
+            </div>
+
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">分类</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Java"
+                                   title="java - Frelon-Lee 的个人博客">
+                                    java</a>
+                                <span class="category-list-count">7</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/python"
+                                   title="Python - Frelon-Lee 的个人博客">
+                                    Python</a>
+                                <span class="category-list-count">1</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Linux"
+                                   title="Linux - Frelon-Lee 的个人博客">
+                                    Linux</a>
+                                <span class="category-list-count">2</span>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">存档</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/01"
+                                       title="2020 年 01 月 存档 - Frelon-Lee 的个人博客">
+                                        2020 年 01 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2019/12"
+                                       title="2019 年 12 月 存档 - Frelon-Lee 的个人博客">
+                                        2019 年 12 月</a>
+                                    <span class="category-list-count">11</span>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+
+    </aside>
+    <div class="nexmoe-copyright">
+        © 2020 <a href="https://jokefrelon.github.io">Frelon-Lee 的个人博客</a> <br/>
+        <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a> <br>
+        Powered by <a href="https://solo.b3log.org" target="_blank">Solo</a> <br>
+        Theme <a rel="friend" href="https://github.com/InkDP/solo-nexmoe" target="_blank">solo-nexmoe</a>
+        by <a rel="friend" href="https://www.inkdp.cn" target="_blank">InkDP</a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <main id="pjax" class="fn__flex-1">
+            
+            <div class="nexmoe-post">
+                <div class="nexmoe-post-cover">
+                    <img src="https://img.hacpai.com/bing/20181120.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt="Java Collection学习"
+                         data-src="https://img.hacpai.com/bing/20181120.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" class=" ls-is-cached lazyloaded">
+                    <h1>Java Collection学习</h1>
+                </div>
+                <div class="nexmoe-post-meta">
+                <span>
+                    <i class="nexmoefont iconfont solo-calendarl"></i>2019年12月20日
+                </span>
+
+                    <span>
+                    <i class="nexmoefont iconfont solo-heat"></i>10 °C
+                </span>
+                                <span>
+                            <a class="nexmoefont iconfont solo-category "
+                               href="https://jokefrelon.github.io/category/Java">java</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Java">Java</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Collection">Collection</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Set">Set</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/List">List</a>
+                </span>
+
+                </div>
+                <article>
+                    <div class="vditor-reset">
+                        <p><img src="https://img.hacpai.com/bing/20181120.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h1 id="b3_solo_h1_0">🥰<strong>collection</strong>集合</h1>
+<pre><code class="language-properties">collection--|
+		   |--list:有序,有索引,允许重复元素
+		   |--set:不允许重复元素,元素存取无序
+</code></pre>
+<h2 id="b3_solo_h2_1">1.共性功能</h2>
+<p>a.添加</p>
+<pre><code class="language-java">Boolean add (Obj obj);//添加单个对象
+Boolean addAll (Collection c);//添加一组的collection的对象
+</code></pre>
+<p>b.删除</p>
+<pre><code class="language-Java">void clear();//清空collection内所有对象/元素
+Boolean remove (Object o);//删除collection里面某个对象
+Boolean removeAll (Collection c);//删除一组的collection
+</code></pre>
+<p>c.获取长度</p>
+<pre><code class="language-java">int size();
+</code></pre>
+<p>d.判断</p>
+<pre><code class="language-java">Boolean isEmpty();
+Boolean contains(Object o);
+Boolean containsAll(Collection c)
+</code></pre>
+<p>e.集合转数组</p>
+<pre><code class="language-java">toArray();
+toArray([]);
+</code></pre>
+<p>f.迭代器</p>
+<pre><code class="language-java">Iterator iterator();
+</code></pre>
+<h2 id="b3_solo_h2_2">2. <strong>List</strong>集合</h2>
+<h3 id="b3_solo_h3_3">2.1 <strong>list</strong>集合的具体子类</h3>
+<pre><code class="language-properties">List----
+	|-- Vector:数组数据结构,长度可变,线程同步&lt;多线程安全&gt;,但是速度比较慢(现在已经不常用-被ArrayList替代),长度按数组长度的100%延长
+	|-- ArrayList:数组结构,长度可变,线程不同步&lt;多线程不安全&gt;.查,速度快,增 删 改速度慢,长度按数组长度的50%延长
+	|-- LinkedList:链表结构,线程不同步&lt;多线程不安全&gt;,增,删,改,速度快,查 速度慢
+</code></pre>
+<h3 id="b3_solo_h3_4">2.2  迭代器使用注意</h3>
+<pre><code class="language-properties">Exception in thread "main" java.util.ConcurrentModificationException
+	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+	at java.util.ArrayList$Itr.next(Unknown Source)
+</code></pre>
+<p>遇到这种在使用迭代器时还修改迭代器内元素的时候,<strong>JVM</strong>会报错,这时候就需要用<strong>ListIterator</strong></p>
+<h3 id="b3_solo_h3_5">2.3 犯错实记😖:</h3>
+<pre><code class="language-java">package sourceCode;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
+public class listTest {
+	public static void clean(ArrayList&lt;person&gt; jsr) {
+		List&lt;person&gt; dot = new ArrayList&lt;person&gt;();
+
+		for (ListIterator&lt;person&gt; lis = jsr.listIterator(); lis.hasNext();) {
+			person pop = lis.next();
+			if (!dot.contains(pop)) {
+				dot.add(pop);
+			}
+		}
+		jsr.clear();
+		jsr.addAll(dot);
+	}
+
+	public static void main(String[] args) {
+		ArrayList&lt;person&gt; jsr = new ArrayList&lt;person&gt;();
+		jsr.add(new person(20, "frelon"));
+		jsr.add(new person(21, "frelon"));
+		jsr.add(new person(23, "frelon"));
+		jsr.add(new person(21, "frelon"));
+		clean(jsr);
+		System.out.println(jsr);
+	}
+
+}
+</code></pre>
+<pre><code class="language-java">package sourceCode;
+
+public class person {
+	private int age;
+	private String name;
+
+	public person(int age, String name) {
+		super();
+		this.age = age;
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "person [age=" + age + ", name=" + name + "]";
+	}
+	
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		person other = (person) obj;
+		if (age != other.age)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	public boolean equals(person obj) {
+		if (this==obj) {
+			return true;
+		}
+			return this.name.equals(obj.name)&amp;&amp;this.age==obj.age;
+	}
+}
+
+</code></pre>
+<p>上面这个例子,是我用了两天时间得出<strong>Java</strong>面向接口编程的一个实例</p>
+<p>为什么说用了两天时间呢?</p>
+<p>因为我一直都不太明白Java面向对象编程的具体表现,所以在写代码的时候也比较呆板,再者就是我还没有搞明白接口里面的类有没有被子类所实现</p>
+<pre><code class="language-Java">ArrayList&lt;person&gt; dot = new ArrayList&lt;person&gt;();
+</code></pre>
+<p>这就是我犯错的一段代码,我总是用<strong>List</strong>的子类 <strong>ArrayList</strong>来<strong>new</strong>新对象,而我<strong>Overwrite</strong>的方法已经被<strong>ArrayList</strong>实现,使用无论我怎么调用都还是无法调用到我自己 <strong>Overwrite</strong>后的代码</p>
+<pre><code class="language-java">List&lt;person&gt; dot = new ArrayList&lt;person&gt;();
+</code></pre>
+<p>这就是导致我卡了两天的细节,我用<strong>List</strong> <strong>new</strong>对象以后代码完美执行了</p>
+<p>这就是因为没有掌握面向对象编程的思想,犯下的一个低级错误</p>
+<h4 id="b3_solo_h4_6"><a href="http://www.jokeme.top/articles/2019/12/20/1576774367244.html" target="_blank">重写 equals和hashcode</a></h4>
+<h3 id="b3_solo_h3_7">2.4 LinkedList</h3>
+<h4 id="b3_solo_h4_8">a.特有方法</h4>
+<table>
+<thead>
+<tr><th align="center">addFirst()</th><th align="center">removeFirst()</th><th align="center">getFirst()</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">#添加到第一个</td><td align="center">#删除第一个</td><td align="center">#获取第一个</td></tr>
+<tr><td align="center"><strong>addlast()</strong></td><td align="center"><strong>removeLast()</strong></td><td align="center"><strong>getLast()</strong></td></tr>
+<tr><td align="center">#添加到最后一个</td><td align="center">#删除最后一个</td><td align="center">#获取最后一个</td></tr>
+</tbody>
+</table>
+<p><strong>JDK1.6</strong>以后推荐使用下列方法替代,这样在遇到空值时就不会报错而是返回<strong>null</strong></p>
+<table>
+<thead>
+<tr><th align="center">offerFirst()</th><th align="center">pollFirst()</th><th align="center">peekFirst()</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">#添加到第一个</td><td align="center">#删除第一个</td><td align="center">#获取第一个</td></tr>
+<tr><td align="center"><strong>offerLast()</strong></td><td align="center"><strong>pollLast()</strong></td><td align="center"><strong>peekLast()</strong></td></tr>
+<tr><td align="center">#添加到最后一个</td><td align="center">#删除最后一个</td><td align="center">#获取最后一个</td></tr>
+</tbody>
+</table>
+<h4 id="b3_solo_h4_9">b.实战演练</h4>
+<p>实现  先进后出</p>
+<pre><code class="language-java">package sourceCode;
+
+import java.util.LinkedList;
+
+public class linkedlist_test {
+	public static void main(String[] args) {
+		test loser = new test();
+		loser.setKail("hello");
+		loser.setKail("CNN");
+		loser.setKail("Love China");
+		while (loser.Kailisempty()) {
+			System.out.println(loser.getKail());
+		}
+	}
+}
+
+class test {
+	private LinkedList&lt;Object&gt; kail;
+
+	public Object getKail() {
+		return kail.pollLast();
+	}
+
+	public Boolean Kailisempty() {
+		if (kail.isEmpty()) {
+			return false;
+		} else if (!kail.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "test [kail=" + kail + "]";
+	}
+
+	public void setKail(Object obj) {
+		this.kail.addLast(obj);
+	}
+
+	public test() {
+		kail = new LinkedList&lt;Object&gt;();
+	}
+}
+</code></pre>
+<h2 id="b3_solo_h2_10">3. Set集合</h2>
+<pre><code class="language-properties">Set--:不允许重复元素,方法和collection相同.set集合只能用Iterator取出元素
+	|--Hashset:不保证存入和取出的顺序一致,不允许重复,效率高 
+			 |--LinkedHashSet:有序的HashSet表,不允许重复	
+	|--Treeset:可以对元素进行排序,其排序方式需要元素具备比较功能,且实现CompareTo()方法,且不允许存储相同元素的方法是依据compareto()返回值是否为0,其数据结构为二叉树结构,
+</code></pre>
+<h3 id="b3_solo_h3_11">3.1HashSet</h3>
+<p><strong>HashSet</strong>主要就是靠<strong>hashcode()<strong>表来确定元素排列的,在使用时必须要重写</strong>hashCode()<strong>方法,而</strong>hashCode()<strong>方法内部又调用到了 <strong>equals()<strong>方法来解决</strong>Hash冲突</strong>,所以在使用时必须要</strong>Overwrite</strong>这两个方法</p>
+<h4 id="b3_solo_h4_12">3.1.1 HashSet使用示例</h4>
+<pre><code class="language-Java">package sourceCode;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class hashset {
+	public static void main(String[] args) {
+		Set doThat = new HashSet();
+		
+		doThat.add(new person(13,"coco"));
+		doThat.add(new person(22,"peon"));
+		doThat.add(new person(23,"frelon"));
+		doThat.add(new person(23,"frelon"));
+		
+		System.out.println(doThat);
+	}
+}
+
+person类同上,这里仅写出 Overwrite 部分
+	@Override
+	public boolean equals(Object obj) {
+		if (this==obj) {
+			return true;
+		}	
+			person se = (person) obj;
+			return this.name.equals(se.name)&amp;&amp;this.age==se.age;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+</code></pre>
+<h3 id="b3_solo_h3_13">3.2 TreeSet</h3>
+<h4 id="b3_solo_h4_14">3.2.1 Comparable接口的学习</h4>
+<pre><code class="language-properties">Exception in thread "main" java.lang.ClassCastException: sourceCode.person cannot be cast to java.lang.Comparable
+	at java.util.TreeMap.compare(Unknown Source)
+	at java.util.TreeMap.put(Unknown Source)
+	at java.util.TreeSet.add(Unknown Source)
+</code></pre>
+<p>这个异常对于学习TreeSet的我是一脸懵逼啊💔,啥啥啥啊,就报了个异常,再看看我这代码没有错啊,编辑器也没有报错啊!</p>
+<pre><code class="language-java">package sourceCode;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class treeSetLearn {
+	public static void main(String[] args) {
+		Set ssf = new TreeSet();
+		ssf.add(new person(12, "hfh"));
+		ssf.add(new person(19, "frelon"));
+		ssf.add(new person(13, "jokoe"));
+
+	}
+}
+</code></pre>
+<p>遂百度,知,需要<strong>person</strong> 类 <strong>implements</strong> <strong>comparable</strong> 接口并 <strong>Overwrite</strong> 该接口的 <strong>CompareTo()</strong> 方法</p>
+<pre><code class="language-java">package sourceCode;
+
+public class person implements Comparable {
+​~~~
+    略
+​~~~
+    方法一:只能按年龄排序,忽略了姓名
+	public int compareTo(Object osi) {
+		person seao = (person) osi;
+		if(this.age&gt;seao.age) {
+			return 1;
+		}
+		if(this.age&lt;seao.age)
+			return -1;
+		return 0;
+	}
+    
+​~~~
+    方法二:完美方案😎
+    public int compareTo(Object osi){
+        int temp = this.age-seao.age;
+        return temp==0?this.name.compareTo(osi.name):temp;
+    }
+</code></pre>
+<p>按照方法二改完以后,成功按照年龄(从小到大)排序,并且同姓名,同年龄算一个人,不存进去</p>
+<h4 id="b3_solo_h4_15">3.2.2 实现<strong>Comparator</strong>接口示例</h4>
+<p>当我们需要需要 对没有比较功能的元素进行排序时<strong>or</strong> 自定义元素排序方式时,我们就不能再依赖通过实现<strong>Comparable</strong>接口的**CompareTo()**方法,而是要自定义一个新的比较器</p>
+<h5 id="b3_solo_h5_16">3.2.2.1 使用自定义的比较器对<strong>TreeSet</strong>排序</h5>
+<pre><code class="language-java">package sourceCode;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class diySavePerson {
+	public static void main(String[] args) {
+		Set t1 = new TreeSet(new diyCompare());
+		t1.add(new person(12,"frelon"));
+		t1.add(new person(29,"lion"));
+		t1.add(new person(29,"aion"));
+		t1.add(new person(19,"zoco"));
+		for(Object se : t1) {
+			System.out.println(se);
+		}
+	}
+}
+</code></pre>
+<pre><code class="language-java">package sourceCode;
+
+import java.util.Comparator;
+
+public class diyCompare implements Comparator&lt;Object&gt; {
+
+	@Override
+	public int compare(Object arg0, Object arg1) {
+
+		person p1 = (person) arg0;
+		person p2 = (person) arg1;
+
+		int temp = p1.getName().compareTo(p2.getName());
+		int temp2 = p1.getAge() - p2.getAge();
+
+		return temp == 0 ? temp2 : temp;
+	}
+
+}
+</code></pre>
+<h5 id="b3_solo_h5_17">3.2.2.2 对根据字符长短排序</h5>
+<p>下面的方案主要是根据名字的长短来排序的,如长短相同则根据名字的<strong>hashCode</strong>决定谁在前面</p>
+<pre><code class="language-java">package sourceCode;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class diySavePerson {
+	public static void main(String[] args) {
+		Set&lt;String&gt; set1 = new TreeSet&lt;String&gt;( new diyCompare()); 
+		set1.add("jeAreF");
+		set1.add("jpwdth");
+		set1.add("jogeth");
+		set1.add("jokeme");
+		set1.add("jsrdds");
+		for (Object se: set1) {
+			System.out.println(se);
+		}
+	}
+}
+</code></pre>
+<pre><code class="language-java">package sourceCode;
+
+import java.util.Comparator;
+
+public class diyCompare implements Comparator&lt;Object&gt; {
+
+	@Override
+	public int compare(Object arg0, Object arg1) {
+		String str1 = (String)arg0;
+		String str2 = (String)arg1;
+		int temp1=str1.length()-str2.length();
+		int sss = str1.hashCode();
+		int ssd = str2.hashCode();
+		return temp1==0?sss-ssd:temp1;
+	}
+
+}
+</code></pre>
+<h5 id="b3_solo_h5_18">3.2.3 三元运算符</h5>
+<p>语法为：<strong>条件表达式？表达式1：表达式2</strong>。</p>
+<p>说明：问号前面的位置是判断的条件，判断结果为boolean型，为true时调用表达式1，为false时调用表达式2。</p>
+                    </div>
+                </article>
+                    <div class="nexmoe-post-copyright">
+                        <i class="mdui-list-item-icon iconfont solo-about2"></i>
+                        <hr>
+
+标题：Java Collection学习<br>
+作者：<a href="https://jokefrelon.github.io" target="_blank">lixuanliming</a><br>
+地址：<a href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html" target="_blank">https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </div>
+            <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#b3_solo_h1_0">🥰collection集合</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_1">1.共性功能</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_2">2. List集合</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_3">2.1 list集合的具体子类</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_4">2.2 迭代器使用注意</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_5">2.3 犯错实记😖:</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_6">重写 equals和hashcode</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_7">2.4 LinkedList</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_8">a.特有方法</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_9">b.实战演练</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_10">3. Set集合</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_11">3.1HashSet</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_12">3.1.1 HashSet使用示例</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_13">3.2 TreeSet</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_14">3.2.1 Comparable接口的学习</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_15">3.2.2 实现Comparator接口示例</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#b3_solo_h5_16">3.2.2.1 使用自定义的比较器对TreeSet排序</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#b3_solo_h5_17">3.2.2.2 对根据字符长短排序</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#b3_solo_h5_18">3.2.3 三元运算符</a>
+        </li>
+</ul>            </div>
+        <div class="nexmoe-comment">
+                <textarea rows="3" placeholder="评论内容只能为 2 到 500 个字符！" id="comment" readonly="readonly"></textarea>
+            <ul class="comments" id="comments">
+            </ul>
+        </div>
+            
+        </main>
+
+            <div class="nexmoe-hitokoto">
+                <p id="hitokoto">记录精彩的Debug人生</p>
+            </div>
+        <div class="back-to-top iconfont solo-gotop" onclick="Util.goTop()"></div>
+    </div>
+</div>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/canvas.js?1579067796905"
+            charset="utf-8"></script>
+
+<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1579067796905"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1579067796905"
+        charset="utf-8"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1579067796905"
+        charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
+<script>
+    var Label = {
+        servePath: "https://jokefrelon.github.io",
+        staticServePath: "https://jokefrelon.github.io",
+        luteAvailable: false,
+        hljsStyle: 'github',
+        langLabel: "zh_CN",
+        version: "3.7.0",
+    }
+    Util.init()
+</script>
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1579067796905', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1576773712519",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 236ms, 2020/01/15 14:51:43 -->
