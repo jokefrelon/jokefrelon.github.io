@@ -1,102 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>Frelon-Lee 的个人博客</title>
+    <title>Frelon-Lee (○'◡'○) Blog</title>
     <link>https://jokefrelon.github.io</link>
     <atom:link href="https://jokefrelon.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>记录精彩的Debug人生</description>
     <generator>Solo, v3.7.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Wed, 15 Jan 2020 15:17:39 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2020 20:46:12 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>nginx反向代理</title>
-      <link>https://jokefrelon.github.io/articles/2020/01/10/1578638927507.html</link>
-      <description><![CDATA[<p>nginx反向代理<br>
-<img src="https://img.hacpai.com/bing/20190903.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <title>Bay Trail主板安装Linux的坑</title>
+      <link>https://jokefrelon.github.io/articles/2020/03/16/1584344826236.html</link>
+      <description><![CDATA[<p><a href="https://img.hacpai.com/bing/20190115.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" target="_blank">pic</a><br>
+Bay Trail主板安装Linux的坑</p>]]></description>
       <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2020/01/10/1578638927507.html</guid>
-      <category>nginx</category>
+      <guid>https://jokefrelon.github.io/articles/2020/03/16/1584344826236.html</guid>
+      <category>intel</category>
       <category>Linux</category>
-      <pubDate>Fri, 10 Jan 2020 16:28:10 +0800</pubDate>
+      <pubDate>Mon, 16 Mar 2020 15:47:06 +0800</pubDate>
     </item>
     <item>
-      <title>微信小程序遇到的坑:hole:</title>
-      <link>https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</link>
-      <description><![CDATA[<p>微信小程序遇到的坑]]>🕳<![CDATA[<br>
-<img src="https://img.hacpai.com/bing/20180629.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <title>我在 GitHub 上的开源项目</title>
+      <link>https://jokefrelon.github.io/my-github-repos</link>
+      <description><![CDATA[<p></p><ol>
+<li>python Python ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️ 0&nbsp;&nbsp;]]>🖖<![CDATA[0 啊哈，爬虫啊  2. javawork Java ]]>🤩<![CDATA[1&nbsp;&nbsp;⭐️ 0&nbsp;&nbsp;]]>🖖<![CDATA[0 Java homework  3. html5 HTML ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️ 0&nbsp;&nbsp;]]>🖖<![CDATA[0</li>
+</ol>
+<p></p>]]></description>
       <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</guid>
-      <category>LittleProgram</category>
-      <category>WeChat</category>
-      <pubDate>Fri, 10 Jan 2020 11:24:29 +0800</pubDate>
+      <guid>https://jokefrelon.github.io/my-github-repos</guid>
+      <category>GitHub</category>
+      <category>开源</category>
+      <pubDate>Mon, 10 Feb 2020 01:38:49 +0800</pubDate>
     </item>
     <item>
-      <title>Java IO 文件的读写与高效率IO</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html</link>
-      <description><![CDATA[<p>Java IO重在对文件的读写,以及怎样高效率读写 <img src="https://img.hacpai.com/bing/20180903.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <title>Java 注解（Annotation）</title>
+      <link>https://jokefrelon.github.io/articles/2020/02/01/1580556355859.html</link>
+      <description><![CDATA[<p><img src="https://img.hacpai.com/bing/20180504.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"><br>
+Java 注解（Annotation）</p>]]></description>
       <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html</guid>
+      <guid>https://jokefrelon.github.io/articles/2020/02/01/1580556355859.html</guid>
       <category>Java</category>
-      <pubDate>Tue, 31 Dec 2019 17:43:02 +0800</pubDate>
-    </item>
-    <item>
-      <title>Python 爬虫:cat:‍:computer:</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html</link>
-      <description><![CDATA[<p>python爬虫入门练习<img src="https://img.hacpai.com/bing/20190326.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt="pic"></p>]]></description>
-      <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html</guid>
-      <category>python</category>
-      <pubDate>Tue, 31 Dec 2019 17:42:37 +0800</pubDate>
-    </item>
-    <item>
-      <title>java 泛型,必须要学好的一个基础</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html</link>
-      <description><![CDATA[<p>Java 泛型,首先需要知道...<img src="https://img.hacpai.com/bing/20190302.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
-      <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html</guid>
-      <category>Java</category>
-      <pubDate>Sat, 28 Dec 2019 09:12:33 +0800</pubDate>
-    </item>
-    <item>
-      <title>Collections 学习</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495325749.html</link>
-      <description><![CDATA[<p>Java collections学习<img src="https://img.hacpai.com/bing/20180828.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
-      <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495325749.html</guid>
-      <category>Java</category>
-      <pubDate>Sat, 28 Dec 2019 09:08:45 +0800</pubDate>
-    </item>
-    <item>
-      <title>Collection-Map学习总结</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html</link>
-      <description><![CDATA[<p>java map类学习]]>🐱<![CDATA[‍]]>💻<![CDATA[总结<img src="https://img.hacpai.com/bing/20180712.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
-      <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html</guid>
-      <category>Collection</category>
-      <category>Java</category>
-      <pubDate>Sat, 28 Dec 2019 08:49:06 +0800</pubDate>
-    </item>
-    <item>
-      <title>Java 时间类API的使用</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</link>
-      <description><![CDATA[<p>Java 时间类API的使用,主要是Date 和 Calendar ,其中DateFormat 方法要掌握牢靠<img src="https://img.hacpai.com/bing/20180203.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
-      <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</guid>
-      <category>Java</category>
-      <category>Calendar</category>
-      <category>Date</category>
-      <pubDate>Sun, 22 Dec 2019 04:10:48 +0800</pubDate>
-    </item>
-    <item>
-      <title>Java equals方法和contains为什么要重写?</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html</link>
-      <description><![CDATA[<p>equals() &amp;&amp; contains()为什么要重写<img src="https://img.hacpai.com/file/2019/12/snow-7c741923.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="snow.jpg"></p>]]></description>
-      <author>lixuanliming</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html</guid>
-      <category>contains</category>
-      <category>Java</category>
-      <category>equals</category>
-      <pubDate>Fri, 20 Dec 2019 00:58:04 +0800</pubDate>
+      <pubDate>Sat, 01 Feb 2020 19:42:06 +0800</pubDate>
     </item>
     <item>
       <title>Solo最简安装</title>
@@ -105,11 +49,67 @@
 Solo最简安装❤️</p>]]></description>
       <author>lixuanliming</author>
       <guid>https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html</guid>
-      <category>WSL2</category>
       <category>Linux</category>
-      <category>Docker</category>
+      <category>WSL2</category>
       <category>Solo</category>
-      <pubDate>Fri, 20 Dec 2019 00:57:01 +0800</pubDate>
+      <category>Docker</category>
+      <pubDate>Sat, 01 Feb 2020 19:31:37 +0800</pubDate>
+    </item>
+    <item>
+      <title>微信小程序遇到的坑:hole:</title>
+      <link>https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</link>
+      <description><![CDATA[<p>微信小程序遇到的坑]]>🕳<![CDATA[<br>
+<img src="https://img.hacpai.com/bing/20180629.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <author>lixuanliming</author>
+      <guid>https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</guid>
+      <category>WeChat</category>
+      <category>LittleProgram</category>
+      <pubDate>Sat, 01 Feb 2020 19:29:52 +0800</pubDate>
+    </item>
+    <item>
+      <title>Java IO 文件的读写与高效率IO</title>
+      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html</link>
+      <description><![CDATA[<p>Java IO重在对文件的读写,以及怎样高效率读写 <img src="https://img.hacpai.com/bing/20180903.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <author>lixuanliming</author>
+      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html</guid>
+      <category>Java</category>
+      <pubDate>Sat, 01 Feb 2020 19:29:38 +0800</pubDate>
+    </item>
+    <item>
+      <title>java 泛型,必须要学好的一个基础</title>
+      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html</link>
+      <description><![CDATA[<p>Java 泛型,首先需要知道...<img src="https://img.hacpai.com/bing/20190302.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <author>lixuanliming</author>
+      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html</guid>
+      <category>Java</category>
+      <pubDate>Sat, 01 Feb 2020 19:29:27 +0800</pubDate>
+    </item>
+    <item>
+      <title>Collections 学习</title>
+      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495325749.html</link>
+      <description><![CDATA[<p>Java collections学习<img src="https://img.hacpai.com/bing/20180828.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <author>lixuanliming</author>
+      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495325749.html</guid>
+      <category>Java</category>
+      <pubDate>Sat, 01 Feb 2020 19:29:09 +0800</pubDate>
+    </item>
+    <item>
+      <title>Collection-Map学习总结</title>
+      <link>https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html</link>
+      <description><![CDATA[<p>java map类学习]]>🐱<![CDATA[‍]]>💻<![CDATA[总结<img src="https://img.hacpai.com/bing/20180712.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <author>lixuanliming</author>
+      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html</guid>
+      <category>Java</category>
+      <pubDate>Sat, 01 Feb 2020 19:28:55 +0800</pubDate>
+    </item>
+    <item>
+      <title>Java 时间类API的使用</title>
+      <link>https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</link>
+      <description><![CDATA[<p>Java 时间类API的使用,主要是Date 和 Calendar ,其中DateFormat 方法要掌握牢靠<img src="https://img.hacpai.com/bing/20180203.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="pic"></p>]]></description>
+      <author>lixuanliming</author>
+      <guid>https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</guid>
+      <category>Java</category>
+      <pubDate>Sat, 01 Feb 2020 19:28:36 +0800</pubDate>
     </item>
   </channel>
 </rss>
