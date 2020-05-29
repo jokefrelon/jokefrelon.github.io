@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>java 泛型,必须要学好的一个基础 - Frelon-Lee (○'◡'○) Blog</title><meta name="description" content="Java 泛型,首先需要知道..."/><meta property="og:description" content="Java 泛型,首先需要知道..."/>    <meta name="keywords" content="Solo,Java,博客,开源,jokeme"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="java 泛型,必须要学好的一个基础 - Frelon-Lee (○'◡'○) Blog"/><meta property="og:site_name" content="Frelon-Lee (○&#39;◡&#39;○) Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="java 泛型,必须要学好的一个基础 - Frelon-Lee (○'◡'○) Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1581624488623"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>java 泛型,必须要学好的一个基础 - Frelon-Lee (○'◡'○) Blog</title><meta name="description" content="Java 泛型,首先需要知道..."/><meta property="og:description" content="Java 泛型,首先需要知道..."/>    <meta name="keywords" content="Solo,Java,博客,开源,jokeme"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="java 泛型,必须要学好的一个基础 - Frelon-Lee (○'◡'○) Blog"/><meta property="og:site_name" content="Frelon-Lee (○&#39;◡&#39;○) Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="java 泛型,必须要学好的一个基础 - Frelon-Lee (○'◡'○) Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1590400600038"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
-        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1581624488623">
+        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1590400600038">
     <script type="text/javascript" src="https://www.jokeme.top/js/love.js"></script>
 
-</head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script></head>
 <body class="mdui-drawer-body-left mdui-loaded">
 <div id="nexmoe-background">
     <div class="nexmoe-bg"
@@ -32,7 +32,7 @@
     <div class="nexmoe-count">
         <div>
             <span>文章</span>
-            16
+            23
         </div>
         <div>
             <span>评论</span>
@@ -141,35 +141,10 @@
                            class="mdui-ripple">
                             Linux</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/WeChat"
-                           title="标签:WeChat - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/Docker"
+                           title="标签:Docker - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            WeChat</a>
-                        <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/%E5%BE%85%E5%88%86%E7%B1%BB"
-                           title="标签:待分类 - Frelon-Lee (○'◡'○) Blog"
-                           class="mdui-ripple">
-                            待分类</a>
-                        <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
-                           title="标签:开源 - Frelon-Lee (○'◡'○) Blog"
-                           class="mdui-ripple">
-                            开源</a>
-                        <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/Solo"
-                           title="标签:Solo - Frelon-Lee (○'◡'○) Blog"
-                           class="mdui-ripple">
-                            Solo</a>
-                        <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/LittleProgram"
-                           title="标签:LittleProgram - Frelon-Lee (○'◡'○) Blog"
-                           class="mdui-ripple">
-                            LittleProgram</a>
-                        <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/intel"
-                           title="标签:intel - Frelon-Lee (○'◡'○) Blog"
-                           class="mdui-ripple">
-                            intel</a>
+                            Docker</a>
                         <a rel="tag"
                            href="https://jokefrelon.github.io/tags/GitHub"
                            title="标签:GitHub - Frelon-Lee (○'◡'○) Blog"
@@ -186,15 +161,50 @@
                            class="mdui-ripple">
                             python</a>
                         <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/intel"
+                           title="标签:intel - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            intel</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/ffmpeg"
+                           title="标签:ffmpeg - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            ffmpeg</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WeChat"
+                           title="标签:WeChat - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            WeChat</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/OpenWrt"
+                           title="标签:OpenWrt - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            OpenWrt</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/SpringBoot"
+                           title="标签:SpringBoot - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            SpringBoot</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                           title="标签:开源 - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            开源</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Solo"
+                           title="标签:Solo - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            Solo</a>
+                        <a rel="tag"
                            href="https://jokefrelon.github.io/tags/nginx"
                            title="标签:nginx - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
                             nginx</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/Docker"
-                           title="标签:Docker - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
+                           title="标签:日记 - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            Docker</a>
+                            日记</a>
                 </div>
             </div>
 
@@ -208,7 +218,7 @@
                                    href="https://jokefrelon.github.io/category/Java"
                                    title="java - Frelon-Lee (○'◡'○) Blog">
                                     java</a>
-                                <span class="category-list-count">9</span>
+                                <span class="category-list-count">10</span>
                             </li>
                             <li class="category-list-item">
                                 <a class="category-list mdui-ripple"
@@ -222,7 +232,7 @@
                                    href="https://jokefrelon.github.io/category/Linux"
                                    title="Linux - Frelon-Lee (○'◡'○) Blog">
                                     Linux</a>
-                                <span class="category-list-count">4</span>
+                                <span class="category-list-count">9</span>
                             </li>
                     </ul>
                 </div>
@@ -233,16 +243,28 @@
                 <div class="nexmoe-widget">
                     <ul class="category-list">
                                 <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/05"
+                                       title="2020 年 05 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 05 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/04"
+                                       title="2020 年 04 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 04 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
                                     <a href="https://jokefrelon.github.io/archives/2020/03"
                                        title="2020 年 03 月 存档 - Frelon-Lee (○'◡'○) Blog">
                                         2020 年 03 月</a>
-                                    <span class="category-list-count">1</span>
+                                    <span class="category-list-count">3</span>
                                 </li>
                                 <li class="category-list-item">
                                     <a href="https://jokefrelon.github.io/archives/2020/02"
                                        title="2020 年 02 月 存档 - Frelon-Lee (○'◡'○) Blog">
                                         2020 年 02 月</a>
-                                    <span class="category-list-count">3</span>
+                                    <span class="category-list-count">4</span>
                                 </li>
                                 <li class="category-list-item">
                                     <a href="https://jokefrelon.github.io/archives/2020/01"
@@ -276,13 +298,13 @@
             
             <div class="nexmoe-post">
                 <div class="nexmoe-post-cover">
-                    <img src="https://img.hacpai.com/bing/20190302.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="java 泛型,必须要学好的一个基础"
-                         data-src="https://img.hacpai.com/bing/20190302.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" class=" ls-is-cached lazyloaded">
+                    <img src="https://img.hacpai.com/bing/20190302.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="java 泛型,必须要学好的一个基础"
+                         data-src="https://img.hacpai.com/bing/20190302.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" class=" ls-is-cached lazyloaded">
                     <h1>java 泛型,必须要学好的一个基础</h1>
                 </div>
                 <div class="nexmoe-post-meta">
                 <span>
-                    <i class="nexmoefont iconfont solo-calendarl"></i>2020年02月01日
+                    <i class="nexmoefont iconfont solo-calendarl"></i>2020年05月06日
                 </span>
 
                     <span>
@@ -302,10 +324,10 @@
                     <div class="vditor-reset">
                         <p></p><h1 id="b3_solo_h1_0">泛型</h1>
 <h2 id="b3_solo_h2_1">1 泛型特性</h2>
-<p>百度得如下解释:</p>
+<p>百度得如下解释：</p>
 <pre><code class="language-properties">泛型是程序设计语言的一种特性,允许程序员在强类型程序设计语言中编写代码时定义一些可变部分，那些部分在使用前必须作出指明。各种程序设计语言和其编译器、运行环境对泛型的支持均不一样。将类型参数化以达到代码复用提高软件开发工作效率的一种数据类型。泛型类是引用类型，是堆对象，主要是引入了类型参数这个概念。 
 </code></pre>
-<h2 id="b3_solo_h2_2">2. 举个栗子🤞🌰</h2>
+<h2 id="b3_solo_h2_2">2. 举个栗子 🤞 🌰</h2>
 <pre><code class="language-java">List Li = new ArrayList();
 Li.add("sdn");
 Li.add(90);
@@ -316,8 +338,8 @@ for (Object se :Li){
 </code></pre>
 <pre><code class="language-java">java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
 </code></pre>
-<p>典型的类型转换异常,<strong>Integer</strong>不能被转换成<strong>String</strong></p>
-<p>正确的写法如下:</p>
+<p>典型的类型转换异常，<strong>Integer</strong>不能被转换成<strong>String</strong></p>
+<p>正确的写法如下：</p>
 <pre><code class="language-java">List&lt;String&gt; Li = new ArrayList&lt;String&gt;();
 </code></pre>
 <h2 id="b3_solo_h2_3">3. 泛型的使用</h2>
@@ -337,7 +359,7 @@ for (Object se :Li){
 </code></pre>
 <p><strong>注意事项</strong></p>
 <p>泛型的类型参数只能是<strong>类</strong>类型，不能是简单类型。</p>
-<p>不能对确切的泛型类型使用<strong>instanceOf</strong>操作,编译时会出错。</p>
+<p>不能对确切的泛型类型使用<strong>instanceOf</strong>操作，编译时会出错。</p>
 <h3 id="b3_solo_h3_5">3.2  泛型接口</h3>
 <p>泛型接口与泛型类的定义及使用基本相同</p>
 <pre><code class="language-java">public interface killSky&lt;Gun&gt; {
@@ -353,14 +375,14 @@ for (Object se :Li){
 }
 </code></pre>
 <h3 id="b3_solo_h3_6">3.3 泛型通配符</h3>
-<p>在写代码时可能会遇到下面的情况,通配符就会统统匹配</p>
+<p>在写代码时可能会遇到下面的情况，通配符就会统统匹配</p>
 <pre><code class="language-Java">public static void printCollection(Collection&lt;?&gt; coll) {
 		for (Object obj:coll){
 			System.out.println(obj);
 		}
 </code></pre>
 <h3 id="b3_solo_h3_7">3.4  泛型方法</h3>
-<p>泛型类，是在实例化类的时候指明泛型的具体类型,那么泛型方法，就是在调用方法的时候指明泛型的具体类型 。</p>
+<p>泛型类，是在实例化类的时候指明泛型的具体类型，那么泛型方法，就是在调用方法的时候指明泛型的具体类型 。</p>
 <h4 id="b3_solo_h4_8">3.4.1 静态方法与泛型</h4>
 <p>静态方法有一种情况需要注意一下，那就是在类中的静态方法使用泛型：静态方法无法访问类上定义的泛型；如果静态方法操作的引用数据类型不确定的时候，必须要将泛型定义在方法上。</p>
 <p>即：如果静态方法要使用泛型的话，必须将静态方法也定义成泛型方法 。</p>
@@ -390,7 +412,7 @@ public &lt;T extends Number&gt; T showKeyName(Generic&lt;T&gt; container){
     return test;
 }
 </code></pre>
-<p>看到了很多文章中都会提起泛型数组，经过查看sun的说明文档，在java中是”不能创建一个确切的泛型类型的数组”的。</p>
+<p>看到了很多文章中都会提起泛型数组，经过查看 sun 的说明文档，在 Java 中是”不能创建一个确切的泛型类型的数组”的。</p>
 <p>也就是说下面的这个例子是不可以的：</p>
 <pre><code class="language-java">List&lt;String&gt;[] ls = new ArrayList&lt;String&gt;[10];  
 </code></pre>
@@ -425,7 +447,7 @@ public &lt;T extends Number&gt; T showKeyName(Generic&lt;T&gt; container){
             <a href="#b3_solo_h2_1">1 泛型特性</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_2">2. 举个栗子🤞🌰</a>
+            <a href="#b3_solo_h2_2">2. 举个栗子 🤞 🌰</a>
         </li>
         <li class="toc__h2">
             <a href="#b3_solo_h2_3">3. 泛型的使用</a>
@@ -465,14 +487,14 @@ public &lt;T extends Number&gt; T showKeyName(Generic&lt;T&gt; container){
 </div>
 <script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1581624488623"
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1590400600038"
         charset="utf-8"></script>
 
-<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1581624488623"></script>
+<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1590400600038"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1581624488623"
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1590400600038"
         charset="utf-8"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1581624488623"
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1590400600038"
         charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
 <script>
@@ -488,7 +510,7 @@ public &lt;T extends Number&gt; T showKeyName(Generic&lt;T&gt; container){
 </script>
 
 <script type="text/javascript">
-    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1581624488623', 'soloPageScript')
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1590400600038', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1577495553196",
@@ -506,4 +528,4 @@ public &lt;T extends Number&gt; T showKeyName(Generic&lt;T&gt; container){
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 52ms, 2020/03/19 20:46:12 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 49ms, 2020/05/29 20:24:07 -->

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Collection-Map学习总结 - Frelon-Lee (○'◡'○) Blog</title><meta name="description" content="java map类学习🐱💻总结"/><meta property="og:description" content="java map类学习🐱💻总结"/>    <meta name="keywords" content="Solo,Java,博客,开源,jokeme"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Collection-Map学习总结 - Frelon-Lee (○'◡'○) Blog"/><meta property="og:site_name" content="Frelon-Lee (○&#39;◡&#39;○) Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Collection-Map学习总结 - Frelon-Lee (○'◡'○) Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1581624488623"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Collection-Map学习总结 - Frelon-Lee (○'◡'○) Blog</title><meta name="description" content="java map类学习🐱💻总结"/><meta property="og:description" content="java map类学习🐱💻总结"/>    <meta name="keywords" content="Solo,Java,博客,开源,jokeme"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Collection-Map学习总结 - Frelon-Lee (○'◡'○) Blog"/><meta property="og:site_name" content="Frelon-Lee (○&#39;◡&#39;○) Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Collection-Map学习总结 - Frelon-Lee (○'◡'○) Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1590400600038"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
-        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1581624488623">
+        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1590400600038">
     <script type="text/javascript" src="https://www.jokeme.top/js/love.js"></script>
 
-</head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script></head>
 <body class="mdui-drawer-body-left mdui-loaded">
 <div id="nexmoe-background">
     <div class="nexmoe-bg"
@@ -32,7 +32,7 @@
     <div class="nexmoe-count">
         <div>
             <span>文章</span>
-            16
+            23
         </div>
         <div>
             <span>评论</span>
@@ -141,15 +141,15 @@
                            class="mdui-ripple">
                             Linux</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/WeChat"
-                           title="标签:WeChat - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/Docker"
+                           title="标签:Docker - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            WeChat</a>
+                            Docker</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/%E5%BE%85%E5%88%86%E7%B1%BB"
-                           title="标签:待分类 - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/SpringBoot"
+                           title="标签:SpringBoot - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            待分类</a>
+                            SpringBoot</a>
                         <a rel="tag"
                            href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
                            title="标签:开源 - Frelon-Lee (○'◡'○) Blog"
@@ -161,15 +161,15 @@
                            class="mdui-ripple">
                             Solo</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/LittleProgram"
-                           title="标签:LittleProgram - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/nginx"
+                           title="标签:nginx - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            LittleProgram</a>
+                            nginx</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/intel"
-                           title="标签:intel - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
+                           title="标签:日记 - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            intel</a>
+                            日记</a>
                         <a rel="tag"
                            href="https://jokefrelon.github.io/tags/GitHub"
                            title="标签:GitHub - Frelon-Lee (○'◡'○) Blog"
@@ -186,15 +186,25 @@
                            class="mdui-ripple">
                             python</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/nginx"
-                           title="标签:nginx - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/intel"
+                           title="标签:intel - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            nginx</a>
+                            intel</a>
                         <a rel="tag"
-                           href="https://jokefrelon.github.io/tags/Docker"
-                           title="标签:Docker - Frelon-Lee (○'◡'○) Blog"
+                           href="https://jokefrelon.github.io/tags/ffmpeg"
+                           title="标签:ffmpeg - Frelon-Lee (○'◡'○) Blog"
                            class="mdui-ripple">
-                            Docker</a>
+                            ffmpeg</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WeChat"
+                           title="标签:WeChat - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            WeChat</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/OpenWrt"
+                           title="标签:OpenWrt - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            OpenWrt</a>
                 </div>
             </div>
 
@@ -208,7 +218,7 @@
                                    href="https://jokefrelon.github.io/category/Java"
                                    title="java - Frelon-Lee (○'◡'○) Blog">
                                     java</a>
-                                <span class="category-list-count">9</span>
+                                <span class="category-list-count">10</span>
                             </li>
                             <li class="category-list-item">
                                 <a class="category-list mdui-ripple"
@@ -222,7 +232,7 @@
                                    href="https://jokefrelon.github.io/category/Linux"
                                    title="Linux - Frelon-Lee (○'◡'○) Blog">
                                     Linux</a>
-                                <span class="category-list-count">4</span>
+                                <span class="category-list-count">9</span>
                             </li>
                     </ul>
                 </div>
@@ -233,16 +243,28 @@
                 <div class="nexmoe-widget">
                     <ul class="category-list">
                                 <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/05"
+                                       title="2020 年 05 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 05 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/04"
+                                       title="2020 年 04 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 04 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
                                     <a href="https://jokefrelon.github.io/archives/2020/03"
                                        title="2020 年 03 月 存档 - Frelon-Lee (○'◡'○) Blog">
                                         2020 年 03 月</a>
-                                    <span class="category-list-count">1</span>
+                                    <span class="category-list-count">3</span>
                                 </li>
                                 <li class="category-list-item">
                                     <a href="https://jokefrelon.github.io/archives/2020/02"
                                        title="2020 年 02 月 存档 - Frelon-Lee (○'◡'○) Blog">
                                         2020 年 02 月</a>
-                                    <span class="category-list-count">3</span>
+                                    <span class="category-list-count">4</span>
                                 </li>
                                 <li class="category-list-item">
                                     <a href="https://jokefrelon.github.io/archives/2020/01"
@@ -276,13 +298,13 @@
             
             <div class="nexmoe-post">
                 <div class="nexmoe-post-cover">
-                    <img src="https://img.hacpai.com/bing/20180712.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" alt="Collection-Map学习总结"
-                         data-src="https://img.hacpai.com/bing/20180712.jpg?imageView2/1/w/768/h/432/interlace/1/q/100" class=" ls-is-cached lazyloaded">
+                    <img src="https://img.hacpai.com/bing/20180712.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="Collection-Map学习总结"
+                         data-src="https://img.hacpai.com/bing/20180712.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" class=" ls-is-cached lazyloaded">
                     <h1>Collection-Map学习总结</h1>
                 </div>
                 <div class="nexmoe-post-meta">
                 <span>
-                    <i class="nexmoefont iconfont solo-calendarl"></i>2020年02月01日
+                    <i class="nexmoefont iconfont solo-calendarl"></i>2020年05月06日
                 </span>
 
                     <span>
@@ -306,7 +328,7 @@
 	 --|TreeMap:二叉树,线程不同步,可以对Map集合的键🥰排序
 	 --|Hashtable:哈希表,线程同步效率低下,不允许空的Key,Value
 </code></pre>
-<h2 id="b3_solo_h2_1">1. Map集合共性功能</h2>
+<h2 id="b3_solo_h2_1">1. Map 集合共性功能</h2>
 <table>
 <thead>
 <tr><th align="center">添加</th><th align="center">V put(K,V) / putAll(Map&lt;K,V&gt; map)</th></tr>
@@ -317,7 +339,7 @@
 <tr><td align="center"><strong>获取</strong></td><td align="center"><strong>V get(K) / int size()</strong></td></tr>
 </tbody>
 </table>
-<p>注意:如果对同一个键多次存储会出现值被覆盖的现象</p>
+<p>注意：如果对同一个键多次存储会出现值被覆盖的现象</p>
 <h2 id="b3_solo_h2_2">2 Map 集合取出键值对方法</h2>
 <h3 id="b3_solo_h3_3">2.1 迭代器取出法</h3>
 <pre><code class="language-java">package sourceCode;
@@ -351,7 +373,7 @@ public class collMap {
 			System.out.println(er+"::::"+sun);			
 		}
 </code></pre>
-<p>这里解释以下<strong>Map.Entry</strong> 其实,<strong>Entry</strong>就是<strong>Map</strong>接口内的一个接口</p>
+<p>这里解释以下<strong>Map.Entry</strong> 其实，<strong>Entry</strong>就是<strong>Map</strong>接口内的一个接口</p>
 <p>它随着<strong>Map</strong>的加载而加载</p>
 <pre><code class="language-java">interface Map{
 	public static interface Entry {
@@ -362,7 +384,7 @@ class xxx implements Map.Entry{
 
 }
 </code></pre>
-<h3 id="b3_solo_h3_5">2.3 Values方法取出键值对</h3>
+<h3 id="b3_solo_h3_5">2.3 Values 方法取出键值对</h3>
 <pre><code class="language-java">Collection&lt;String&gt; value = se.values();
 for (Iterator&lt;String&gt; uuid = value.iterator(); uuid.hasNext();) {
 	String dock =uuid.next();
@@ -370,7 +392,7 @@ for (Iterator&lt;String&gt; uuid = value.iterator(); uuid.hasNext();) {
 }
 </code></pre>
 <hr>
-<h3 id="b3_solo_h3_6">2.4 三种方法结果如下:</h3>
+<h3 id="b3_solo_h3_6">2.4 三种方法结果如下：</h3>
 <pre><code class="language-properties">Now
 aset
 kEREd
@@ -383,9 +405,9 @@ Now
 aset
 kEREd
 </code></pre>
-<h3 id="b3_solo_h3_7">2.5 关于Map.Entry方法</h3>
-<p>其实<strong>Map.Entry</strong>可以直接写为<strong>Entry</strong> 方法,因为我在敲代码的时候偶然发现,不敲 <strong>Map.</strong> 程序依然可以正常运行</p>
-<p>百度得:</p>
+<h3 id="b3_solo_h3_7">2.5 关于 Map.Entry 方法</h3>
+<p>其实<strong>Map.Entry</strong>可以直接写为<strong>Entry</strong> 方法，因为我在敲代码的时候偶然发现，不敲 <strong>Map.</strong> 程序依然可以正常运行</p>
+<p>百度得：</p>
 <pre><code class="language-properties">Entry是Map中的一个静态内部类，用来表示Map中的每个键值对。除非使用了静态导入:import static java.util.Map.*
 除了使用静态导入外，还可以直接导入这个类，因为它是public的。即:import java.util.Map.Entry。
 导入后也可以在当前空间直接使用Entry。
@@ -411,7 +433,7 @@ kEREd
             <a href="#b3_solo_h1_0">Collection-Map</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_1">1. Map集合共性功能</a>
+            <a href="#b3_solo_h2_1">1. Map 集合共性功能</a>
         </li>
         <li class="toc__h2">
             <a href="#b3_solo_h2_2">2 Map 集合取出键值对方法</a>
@@ -423,13 +445,13 @@ kEREd
             <a href="#b3_solo_h3_4">2.2 Map.Entry</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_5">2.3 Values方法取出键值对</a>
+            <a href="#b3_solo_h3_5">2.3 Values 方法取出键值对</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_6">2.4 三种方法结果如下:</a>
+            <a href="#b3_solo_h3_6">2.4 三种方法结果如下：</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_7">2.5 关于Map.Entry方法</a>
+            <a href="#b3_solo_h3_7">2.5 关于 Map.Entry 方法</a>
         </li>
 </ul>            </div>
         <div class="nexmoe-comment">
@@ -448,14 +470,14 @@ kEREd
 </div>
 <script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1581624488623"
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1590400600038"
         charset="utf-8"></script>
 
-<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1581624488623"></script>
+<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1590400600038"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1581624488623"
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1590400600038"
         charset="utf-8"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1581624488623"
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1590400600038"
         charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
 <script>
@@ -471,7 +493,7 @@ kEREd
 </script>
 
 <script type="text/javascript">
-    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1581624488623', 'soloPageScript')
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1590400600038', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1577494146348",
@@ -489,4 +511,4 @@ kEREd
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 358ms, 2020/03/19 20:46:12 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 69ms, 2020/05/29 20:24:07 -->

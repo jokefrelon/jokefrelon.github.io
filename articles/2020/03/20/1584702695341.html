@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Docker 中运行 OpenWrt - Frelon-Lee (○'◡'○) Blog</title><meta name="description" content="Docker 中运行 OpenWrt"/><meta property="og:description" content="Docker 中运行 OpenWrt"/>    <meta name="keywords" content="Solo,Java,博客,开源,jokeme"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://www.jokeme.top/images/bk.png"/><link rel="apple-touch-icon" href="https://www.jokeme.top/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="https://www.jokeme.top/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Docker 中运行 OpenWrt - Frelon-Lee (○'◡'○) Blog"/><meta property="og:site_name" content="Frelon-Lee (○&#39;◡&#39;○) Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2020/03/20/1584702695341.html?"/><meta property="og:image" content="https://www.jokeme.top/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Docker 中运行 OpenWrt - Frelon-Lee (○'◡'○) Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2020/03/20/1584702695341.html">        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/base.css?1590400600038"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+        <link rel="stylesheet" href="https://jokefrelon.github.io/skins/solo-nexmoe/css/font-icon.css?1590400600038">
+    <script type="text/javascript" src="https://www.jokeme.top/js/love.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script></head>
+<body class="mdui-drawer-body-left mdui-loaded">
+<div id="nexmoe-background">
+    <div class="nexmoe-bg"
+         style="background-image:url(https://img.hacpai.com/file/2020/02/pinkFlowers-c7559d30.png);opacity: .9;"></div>
+<div class="mdui-appbar mdui-shadow-0">
+    <div class="mdui-toolbar">
+        <a href="#" mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon  iconfont solo-list"></i>
+        </a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/" title="Frelon-Lee (○'◡'○) Blog" class="mdui-btn mdui-btn-icon">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee (○'◡'○) Blog" alt="Frelon-Lee (○'◡'○) Blog"></a>
+        </a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-header">
+<div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="https://jokefrelon.github.io/" title="Frelon-Lee (○'◡'○) Blog">
+            <img src="https://www.jokeme.top/images/bk.png" title="Frelon-Lee (○'◡'○) Blog" alt=""></a>
+    </div>
+    <div class="nexmoe-count">
+        <div>
+            <span>文章</span>
+            23
+        </div>
+        <div>
+            <span>评论</span>
+            4
+        </div>
+        <div>
+            <span>浏览</span>
+            1685
+        </div>
+    </div>
+    <div class="list-content">
+        <ul class="nexmoe-list mdui-list header__nav" mdui-collapse="{accordion: true}">
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/" title="Frelon-Lee (○'◡'○) Blog">
+                <i class="mdui-list-item-icon iconfont solo-home"></i>
+                <div class="mdui-list-item-content">回到首页</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/links.html"
+               title="友情链接 - Frelon-Lee (○'◡'○) Blog">
+                <i class="mdui-list-item-icon iconfont solo-list"></i>
+                <div class="mdui-list-item-content">友情链接</div>
+            </a>
+            <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="https://jokefrelon.github.io/tags.html"
+               title="标签 - Frelon-Lee (○'◡'○) Blog">
+                <i class="mdui-list-item-icon iconfont solo-tags"></i>
+                <div class="mdui-list-item-content">标签</div>
+            </a>
+                <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/my-github-repos"
+                   title="我的开源" target="_self">
+                    <i class="mdui-list-item-icon iconfont solo-/images/github-icon.png"></i>
+                    <div class="mdui-list-item-content">我的开源</div>
+                </a>
+        </ul>
+    </div>
+    <aside id="nexmoe-sidebar">
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">功能按钮</h3>
+            <div class="nexmoe-widget nexmoe-social features">
+                <a href="https://jokefrelon.github.io/search" title="搜索">
+                    <i class="mdui-list-item-icon iconfont solo-search"></i>
+                    <div class="mdui-list-item-content">搜索</div>
+                </a>
+                <a href="https://jokefrelon.github.io/rss.xml" title="RSS">
+                    <i class="mdui-list-item-icon iconfont solo-rss"></i>
+                </a>
+                    <a href="https://jokefrelon.github.io/start" title="开始使用">
+                        <i class="mdui-list-item-icon iconfont solo-login"></i>
+                        <div class="mdui-list-item-content"> 开始使用</div>
+                    </a>
+            </div>
+        </div>
+
+        <div class="nexmoe-widget-wrap">
+            <h3 class="nexmoe-widget-title">社交按钮</h3>
+            <div class="nexmoe-widget nexmoe-social">
+    <a href="https://hacpai.com/member/lixuanliming"
+       title="https://hacpai.com/member/lixuanliming"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/jokefrelon"
+           title="https://github.com/jokefrelon"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+            </div>
+        </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">标签</h3>
+                <div class="nexmoe-widget tagcloud">
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Java"
+                           title="标签:Java - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            Java</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Linux"
+                           title="标签:Linux - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            Linux</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Docker"
+                           title="标签:Docker - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            Docker</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/SpringBoot"
+                           title="标签:SpringBoot - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            SpringBoot</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                           title="标签:开源 - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            开源</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/Solo"
+                           title="标签:Solo - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            Solo</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/nginx"
+                           title="标签:nginx - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            nginx</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
+                           title="标签:日记 - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            日记</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/GitHub"
+                           title="标签:GitHub - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            GitHub</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WSL2"
+                           title="标签:WSL2 - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            WSL2</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/python"
+                           title="标签:python - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            python</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/intel"
+                           title="标签:intel - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            intel</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/ffmpeg"
+                           title="标签:ffmpeg - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            ffmpeg</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/WeChat"
+                           title="标签:WeChat - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            WeChat</a>
+                        <a rel="tag"
+                           href="https://jokefrelon.github.io/tags/OpenWrt"
+                           title="标签:OpenWrt - Frelon-Lee (○'◡'○) Blog"
+                           class="mdui-ripple">
+                            OpenWrt</a>
+                </div>
+            </div>
+
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">分类</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Java"
+                                   title="java - Frelon-Lee (○'◡'○) Blog">
+                                    java</a>
+                                <span class="category-list-count">10</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/python"
+                                   title="Python - Frelon-Lee (○'◡'○) Blog">
+                                    Python</a>
+                                <span class="category-list-count">1</span>
+                            </li>
+                            <li class="category-list-item">
+                                <a class="category-list mdui-ripple"
+                                   href="https://jokefrelon.github.io/category/Linux"
+                                   title="Linux - Frelon-Lee (○'◡'○) Blog">
+                                    Linux</a>
+                                <span class="category-list-count">9</span>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nexmoe-widget-wrap">
+                <h3 class="nexmoe-widget-title">存档</h3>
+                <div class="nexmoe-widget">
+                    <ul class="category-list">
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/05"
+                                       title="2020 年 05 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 05 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/04"
+                                       title="2020 年 04 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 04 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/03"
+                                       title="2020 年 03 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 03 月</a>
+                                    <span class="category-list-count">3</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/02"
+                                       title="2020 年 02 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 02 月</a>
+                                    <span class="category-list-count">4</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2020/01"
+                                       title="2020 年 01 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2020 年 01 月</a>
+                                    <span class="category-list-count">2</span>
+                                </li>
+                                <li class="category-list-item">
+                                    <a href="https://jokefrelon.github.io/archives/2019/12"
+                                       title="2019 年 12 月 存档 - Frelon-Lee (○'◡'○) Blog">
+                                        2019 年 12 月</a>
+                                    <span class="category-list-count">10</span>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+
+    </aside>
+    <div class="nexmoe-copyright">
+        © 2020 <a href="https://jokefrelon.github.io">Frelon-Lee (○'◡'○) Blog</a> <br/>
+        <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a> <br>
+        Powered by <a href="https://solo.b3log.org" target="_blank">Solo</a> <br>
+        Theme <a rel="friend" href="https://github.com/InkDP/solo-nexmoe" target="_blank">solo-nexmoe</a>
+        by <a rel="friend" href="https://www.inkdp.cn" target="_blank">InkDP</a>
+    </div>
+</div>
+</div>
+<div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <main id="pjax" class="fn__flex-1">
+            
+            <div class="nexmoe-post">
+                <div class="nexmoe-post-cover">
+                    <img src="https://img.hacpai.com/bing/20190418.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="Docker 中运行 OpenWrt"
+                         data-src="https://img.hacpai.com/bing/20190418.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" class=" ls-is-cached lazyloaded">
+                    <h1>Docker 中运行 OpenWrt</h1>
+                </div>
+                <div class="nexmoe-post-meta">
+                <span>
+                    <i class="nexmoefont iconfont solo-calendarl"></i>2020年05月06日
+                </span>
+
+                    <span>
+                    <i class="nexmoefont iconfont solo-heat"></i>0 °C
+                </span>
+                                <span>
+                            <a class="nexmoefont iconfont solo-category "
+                               href="https://jokefrelon.github.io/category/Linux">Linux</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Docker">Docker</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/Linux">Linux</a>
+                </span>
+                        <span>
+                    <a class="nexmoefont iconfont solo-tag "
+                       href="https://jokefrelon.github.io/tags/OpenWrt">OpenWrt</a>
+                </span>
+
+                </div>
+                <article>
+                    <div class="vditor-reset">
+                        <p></p><h1 id="b3_solo_h1_0">Docker  中运行  OpenWrt</h1>
+<p>前几天解决了小主机 <strong>Ubuntu</strong> 系统的引导问题以后。便开始折腾 <strong>OpenWrt</strong> 了，在 <strong>GitHub</strong> 上找到了 <strong>L 大</strong> 的 <strong><a href="https://github.com/coolsnowwolf/lede" target="_blank">Lede</a></strong> 源码，需要自己编译。</p>
+<p>关于如何编译我也不说了，<strong>L 大</strong> 在 Readme 里面说的清清楚楚的，没有难度，就是需要有耐心和良好的网络环境，编译过程会很慢(建议扶梯子，我没有用梯子，整整编译了两天才完成！🤣 🤣 🤣) 也可以用我编译好的 <strong><a href="https://github.com/jokefrelon/linux-series/releases" target="_blank">x86_64</a></strong> 的固件(集成有<strong>ssr,v2ray,adblock plus,samba,vsftpd</strong>等常用插件)</p>
+<p>对于编译出来的文件我来介紹一下：</p>
+<table>
+<thead>
+<tr><th align="center"><strong>openwrt-x86-64-rootfs-squashfs.img</strong></th><th align="center">OpenWrt for Docker の img</th></tr>
+</thead>
+<tbody>
+<tr><td align="center"><strong>openwrt-x86-64-combined-squashfs.vmdk</strong></td><td align="center"><strong>虚拟机文件，丢进 VMware 里面使用</strong></td></tr>
+<tr><td align="center"><strong>openwrt-x86-64-combined-squashfs.img</strong></td><td align="center"><strong>我们编译的固件，刻录到 u 盘上来安装</strong></td></tr>
+</tbody>
+</table>
+<p>我一开始也不知道这些镜像应该选哪一个刻录，然后爬各种论坛终于被我发现了这几个文件的用法了</p>
+<p>好！环境已经没有问题，安装包也有了，那就先在 <strong>Docker</strong> 里面试试看这个 <strong>OpenWrt</strong> 怎么样吧</p>
+<h2 id="b3_solo_h2_1">1 导入 OpenWrt 的镜像</h2>
+<pre><code>cd ~/lede/bin/targets/x86/64
+mkdir -p ~/opt
+mount -o loop openwrt-x86-64-rootfs-squashfs.img ~/opt
+tar -cvzf ~/Openwrt.tar.gz ~/opt/* 
+docker import ~/OpenWrt.tar.gz OpenWrt
+</code></pre>
+<h2 id="b3_solo_h2_2">2 Docker 创建网络</h2>
+<pre><code>docker network create -d macvlan --subnet=192.168.100.0/24 --gateway=192.168.100.1 -o parent=enp2s0 fet
+</code></pre>
+<p>这个 IP 地址需要根据你的实际 IP 更改，网卡也一样，不能照抄</p>
+<h2 id="b3_solo_h2_3">3 Docker 运行容器</h2>
+<pre><code>docker run -d --name lede --network fet --privileged OpeenWrt /sbin/init
+</code></pre>
+<p>在这里我一开始参考 <strong><a href="https://openwrt.org/zh/docs/guide-user/virtualization/docker_openwrt_image" target="_blank">OpenWrt 官方文档</a></strong>,结果一直报错，我一开始以为是他给的例子 🌰里面系统太老，我就换成 19.10,依旧报错，然后在网上瞎转悠的时候看到了一篇来自 <a href="https://mlapp.cn/376.html" target="_blank"><strong>美丽应用</strong></a> 的文章，虽然，他是在 <strong>树莓派</strong> 当中安装 <strong>OpenWrt</strong> 但是过程大多一样 (感谢 <strong>美丽应用</strong> 📌)</p>
+<p>到这时，我们可以</p>
+<pre><code>docker ps
+[sudo] frelon 的密码：
+CONTAINER ID	IMAGE		COMMAND		CREATED		STATUS		PORTS		NAMES
+4fe146d86277	OpenWrt		"/sbin/init" 2 hours ago  Up 2 hours			  lede
+</code></pre>
+<p>看一下我们的容器是否在正常运行，如果还在运行，那就说明容器没有问题可以进行下一步了</p>
+<h2 id="b3_solo_h2_4">4 进入 OpenWrt 容器内，进一步配置</h2>
+<pre><code>docker exec -it lede /bin/ash
+</code></pre>
+<p>这里要注意的是 <strong>/bin/ash</strong> 而不是 <strong>/bin/bash</strong></p>
+<h3 id="b3_solo_h3_5">4.1 配置网络</h3>
+<h4 id="b3_solo_h4_6">4.1.1 查看一下 <strong>IP</strong></h4>
+<pre><code>/ # ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+25: eth0@if2: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 02:42:c0:a8:64:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+</code></pre>
+<p>稍等片刻</p>
+<pre><code>/ # ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+4: br-lan: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 02:42:c0:a8:64:02 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.1/24 brd 192.168.1.255 scope global br-lan
+       valid_lft forever preferred_lft forever
+25: eth0@if2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-lan state UP group default                                                                  link/ether 02:42:c0:a8:64:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+
+</code></pre>
+<h4 id="b3_solo_h4_7">4.1.2 简易修改防火墙规则</h4>
+<pre><code>opkg update
+opkg install nano
+nano /etc/config/firewall
+</code></pre>
+<p>找到 <strong>config zone</strong> 重点是把 <strong>option input/output/forward</strong> の <strong>REJRECT</strong> 改为 <strong>ACCEPT</strong></p>
+<pre><code>config zone
+        opion name 'wan'
+        list network 'wan'
+        list network 'wan6'
+        option input 'ACCEPT'
+        option output 'ACCEPT'
+        option forward 'ACCEPT'
+        option masq '1'
+        option mtu_fix '1'
+</code></pre>
+<p>然后重启一下</p>
+<pre><code>/etc/init.d/firewall restart
+</code></pre>
+<p>正常情况会报一堆错，无视即可</p>
+<h4 id="b3_solo_h4_8">4.1.3 修改网口</h4>
+<pre><code>nano /etc/config/network
+</code></pre>
+<p>可以看到 <strong>interface lan</strong> 使用的是 <strong>eth0</strong></p>
+<p>然后又添加了一个网络进该容器，并分配给 <strong>interface wan</strong> 充当 <strong>eth1</strong></p>
+<pre><code>config interface 'lan'
+        option type 'bridge'
+        option ifname 'eth0'
+        option proto 'static'
+        option ipaddr '192.168.1.1'
+        option netmask '255.255.255.0'
+        option ip6assign '60'
+        option gateway '192.168.100.105'
+
+config interface 'wan'
+        option ifname 'eth1'
+        option proto 'dhcp'
+</code></pre>
+<p>看着修改就可以了</p>
+<pre><code>/etc/init.d/network restart
+</code></pre>
+<h3 id="b3_solo_h3_9">4.2 网页登录</h3>
+<p>查看容器分配的 ip,在网页中打开，正常情况下是可以打开的，</p>
+<p>输入默认密码 🔑<strong>password</strong>  就可以看到 <strong>OpenWrt</strong> の 状态信息</p>
+<h3 id="b3_solo_h3_10">4.3 再添加一个网口到 OpenWrt 容器</h3>
+<pre><code>docker network connect bridge OpenWrt
+docker exec -it OpenWrt /etc/init.d/network restart
+</code></pre>
+<p>由于前面已经把 <strong>eth1</strong> 写入到配置信息里面，我们现在只需要重启一下网络即可，至此 <strong>OpenWrt</strong> の基本配置已经完成</p>
+<p>如果需要配置 <strong>OpenWrt</strong> 旁路网关，建议参考上文提到的 <a href="https://mlapp.cn/376.html" target="_blank">美丽应用</a></p>
+<h3 id="b3_solo_h3_11">ps:补充一下</h3>
+<p>在实际使用中我发现，经常 <strong>opkg update</strong> 失败 但是网络却是没有任何问题，网关也可以  <strong>ping</strong> 通，然后就发现了 <strong>OpenWrt for Docker</strong> 的一个小 Bug</p>
+<p>每一次重启(有时候退出容器)就会重置 <strong>/etc/resolv.conf</strong> ,而这个文件就是我们的 DNS 文件！所以我们在使用域名 の时候就会出现失败</p>
+<p>我也试过在  <strong>/etc/config/network</strong> 里面设置  <strong>DNS</strong>,也同样会被重置，我不知道这是为什么，只能在每次重启以后写个脚本，设置一下<strong>DNS</strong></p>
+<p><strong>本文参考资料来源：</strong></p>
+<ol>
+<li>Lean · coolsnowwolf/lede - GitHub : <a href="https://github.com/coolsnowwolf/lede" target="_blank">https://github.com/coolsnowwolf/lede</a></li>
+<li>OpenWrt 官方帮助文档 :  <a href="https://openwrt.org/zh/docs/guide-user/virtualization/docker_openwrt_image" target="_blank">https://openwrt.org/zh/docs/guide-user/virtualization/docker_openwrt_image</a></li>
+<li>美丽应用 :  <a href="https://mlapp.cn/376.html" target="_blank">https://mlapp.cn/376.html</a></li>
+</ol>
+<p></p>
+                    </div>
+                </article>
+                    <div class="nexmoe-post-copyright">
+                        <i class="mdui-list-item-icon iconfont solo-about2"></i>
+                        <hr>
+
+标题：Docker 中运行 OpenWrt<br>
+作者：<a href="https://jokefrelon.github.io" target="_blank">lixuanliming</a><br>
+地址：<a href="https://jokefrelon.github.io/articles/2020/03/20/1584702695341.html" target="_blank">https://jokefrelon.github.io/articles/2020/03/20/1584702695341.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </div>
+            <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#b3_solo_h1_0">Docker 中运行 OpenWrt</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_1">1 导入 OpenWrt 的镜像</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_2">2 Docker 创建网络</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_3">3 Docker 运行容器</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#b3_solo_h2_4">4 进入 OpenWrt 容器内，进一步配置</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_5">4.1 配置网络</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_6">4.1.1 查看一下 IP</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_7">4.1.2 简易修改防火墙规则</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#b3_solo_h4_8">4.1.3 修改网口</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_9">4.2 网页登录</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_10">4.3 再添加一个网口到 OpenWrt 容器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#b3_solo_h3_11">ps:补充一下</a>
+        </li>
+</ul>            </div>
+        <div class="nexmoe-comment">
+                <textarea rows="3" placeholder="评论内容只能为 2 到 500 个字符！" id="comment" readonly="readonly"></textarea>
+            <ul class="comments" id="comments">
+            </ul>
+        </div>
+            
+        </main>
+
+            <div class="nexmoe-hitokoto">
+                <p id="hitokoto">记录精彩的Debug人生</p>
+            </div>
+        <div class="back-to-top iconfont solo-gotop" onclick="Util.goTop()"></div>
+    </div>
+</div>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1590400600038"
+        charset="utf-8"></script>
+
+<script src="https://jokefrelon.github.io/skins/solo-nexmoe/js/app.js?1590400600038"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1590400600038"
+        charset="utf-8"></script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/solo-nexmoe/js/common.js?1590400600038"
+        charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
+<script>
+    var Label = {
+        servePath: "https://jokefrelon.github.io",
+        staticServePath: "https://jokefrelon.github.io",
+        luteAvailable: false,
+        hljsStyle: 'github',
+        langLabel: "zh_CN",
+        version: "3.7.0",
+    }
+    Util.init()
+</script>
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1590400600038', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1584702695341",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 85ms, 2020/05/29 20:24:07 -->
