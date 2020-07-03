@@ -6,8 +6,39 @@
     <atom:link href="https://jokefrelon.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>记录精彩的Debug人生</description>
     <generator>Solo, v3.7.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Sun, 21 Jun 2020 02:16:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2020 01:27:58 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>收集整理一些我不经常使用,但是使用时又找不到的网站链接</title>
+      <link>https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html</link>
+      <description><![CDATA[<p><img src="https://img.hacpai.com/bing/20180924.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="pi'c"><br>
+收集整理一些我不经常使用,但是使用时又找不到的网站链接<br>
+(持续更新中ing)</p>]]></description>
+      <author>JokerLee</author>
+      <guid>https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html</guid>
+      <category>links</category>
+      <pubDate>Fri, 03 Jul 2020 17:53:23 +0800</pubDate>
+    </item>
+    <item>
+      <title>Python 报错集锦</title>
+      <link>https://jokefrelon.github.io/articles/2020/07/03/1593768976855.html</link>
+      <description><![CDATA[<p><img src="https://img.hacpai.com/bing/20181115.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="oic"><br>
+python报错集锦(持续更新中)</p>]]></description>
+      <author>JokerLee</author>
+      <guid>https://jokefrelon.github.io/articles/2020/07/03/1593768976855.html</guid>
+      <category>python</category>
+      <pubDate>Fri, 03 Jul 2020 17:36:16 +0800</pubDate>
+    </item>
+    <item>
+      <title>Python 爬虫抓取:flushed:播放源(m3u8)</title>
+      <link>https://jokefrelon.github.io/articles/2020/07/01/1593533676745.html</link>
+      <description><![CDATA[<p>Python 爬虫抓取播放源(m3u8)<br>
+<img src="https://img.hacpai.com/bing/20191114.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="pic"></p>]]></description>
+      <author>JokerLee</author>
+      <guid>https://jokefrelon.github.io/articles/2020/07/01/1593533676745.html</guid>
+      <category>python</category>
+      <pubDate>Wed, 01 Jul 2020 00:14:36 +0800</pubDate>
+    </item>
     <item>
       <title>利用Python爬虫获取bing.com每天的高清壁纸</title>
       <link>https://jokefrelon.github.io/articles/2020/06/14/1592141097046.html</link>
@@ -56,8 +87,8 @@
       <description><![CDATA[<p>SpringBoot学习笔记(1)[未整理]<img src="https://img.hacpai.com/bing/20191010.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="pic"></p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokefrelon.github.io/articles/2020/05/29/1590754071333.html</guid>
-      <category>SpringBoot</category>
       <category>Java</category>
+      <category>SpringBoot</category>
       <pubDate>Fri, 29 May 2020 20:08:25 +0800</pubDate>
     </item>
     <item>
@@ -69,8 +100,8 @@
 <p></p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokefrelon.github.io/my-github-repos</guid>
-      <category>GitHub</category>
       <category>开源</category>
+      <category>GitHub</category>
       <pubDate>Wed, 06 May 2020 00:33:17 +0800</pubDate>
     </item>
     <item>
@@ -82,35 +113,6 @@ Java Collection学习的笔记,]]>😁<![CDATA[里面也有我踩得坑,值得�
       <guid>https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:32:52 +0800</pubDate>
-    </item>
-    <item>
-      <title>Java equals方法和contains为什么要重写?</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html</link>
-      <description><![CDATA[<p>equals() &amp;&amp; contains()为什么要重写<img src="https://img.hacpai.com/file/2019/12/snow-7c741923.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="snow.jpg"></p>]]></description>
-      <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html</guid>
-      <category>Java</category>
-      <pubDate>Wed, 06 May 2020 00:32:31 +0800</pubDate>
-    </item>
-    <item>
-      <title>nginx反向代理</title>
-      <link>https://jokefrelon.github.io/articles/2020/01/10/1578638927507.html</link>
-      <description><![CDATA[<p>nginx反向代理<br>
-<img src="https://img.hacpai.com/bing/20190903.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="pic"></p>]]></description>
-      <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/01/10/1578638927507.html</guid>
-      <category>nginx</category>
-      <category>Linux</category>
-      <pubDate>Wed, 06 May 2020 00:31:22 +0800</pubDate>
-    </item>
-    <item>
-      <title>Python 爬虫</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html</link>
-      <description><![CDATA[<p>python爬虫入门练习<img src="https://img.hacpai.com/bing/20190326.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="pic"></p>]]></description>
-      <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html</guid>
-      <category>python</category>
-      <pubDate>Wed, 06 May 2020 00:30:52 +0800</pubDate>
     </item>
   </channel>
 </rss>

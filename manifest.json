@@ -3,10 +3,10 @@
     "theme_color": "#1fb5ad",
     "background_color": "#f1f2f7",
     "display": "standalone",
-    "name": "Frelon-Lee (○'◡'○) Blog",
+    "name": "Frelon-Lee (●'◡'●) Blog",
     "start_url": ".",
     "description": "记录精彩的Debug人生",
-    "short_name": "Frelon-Lee (○'◡'○) Blog",
+    "short_name": "Frelon-Lee (●'◡'●) Blog",
     "icons": [
         {
             "sizes": "48x48",
