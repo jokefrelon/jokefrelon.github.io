@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>OpenStack 常用命令 - Jokeme Blog</title><meta name="description" content="OpenStack 常用命令"/><meta property="og:description" content="OpenStack 常用命令"/>    <meta name="keywords" content="Joker,Solo,jokeme.top,jokeme,JokerLee,Blog"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://jokeme.top/images/bk3.png"/><link rel="apple-touch-icon" href="https://jokeme.top/images/bk3.png"><link rel="shortcut icon" type="image/x-icon" href="https://jokeme.top/images/bk3.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="OpenStack 常用命令 - Jokeme Blog"/><meta property="og:site_name" content="Jokeme Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html?"/><meta property="og:image" content="https://jokeme.top/images/bk3.png"/><link rel="search" type="application/opensearchdescription+xml" title="OpenStack 常用命令 - Jokeme Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html">        <link rel="stylesheet"
+              href="https://jokefrelon.github.io/skins/nijigen/css/base.css?1616666743925"/>
+            <link rel="prev" title="CentOS 7 磁盘扩容" href="https://jokefrelon.github.io/articles/2020/09/25/1601014454374.html">
+            <link rel="next" title="记录一次OpenWrt安装zsh" href="https://jokefrelon.github.io/articles/2020/10/07/1602055989143.html">
+    <!-- 樱花雨 
+<script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--鼠标点击效果 --><script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body>
+<div class="bg"></div>
+<div class="bg bg--1"></div>
+<div class="bg bg--2"></div>
+<div class="bg bg--3"></div>
+<div class="bg bg--4"></div>
+<div class="bg bg--5"></div>
+<div class="bg bg--6"></div>
+<div class="bg bg--7"></div>
+<header class="header">
+    <div class="header__wrap">
+        <a href="https://jokefrelon.github.io" rel="start" class="header__logo">
+            <i class="icon__home"></i> Jokeme Blog
+        </a>
+
+        <nav class="mobile__hidden header__nav">
+                <a href="/my-github-repos" target="_self" rel="section">
+                    <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
+                </a>
+            <a href="https://jokefrelon.github.io/tags.html" rel="section">
+                <i class="icon__tags"></i> 标签墙
+            </a>
+            <a href="https://jokefrelon.github.io/archives.html">
+                <i class="icon__inbox"></i> 存档
+            </a>
+            <a rel="archive" href="https://jokefrelon.github.io/links.html">
+                <i class="icon__link"></i> 友链
+            </a>
+            <a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                <i class="icon__catalina"></i> Catalina
+            </a>
+            <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
+                <i class="icon__rss"></i> RSS
+            </a>
+        </nav>
+
+    </div>
+</header>
+<div class="header__m fn__none">
+    <i class="icon__list fn__none" onclick="$(this).next().slideToggle()"></i>
+    <main class="module__list fn__none"></main>
+    <i class="icon__more" onclick="$(this).next().slideToggle()"></i>
+    <main class="module__list">
+        <ul>
+                <li>
+                    <a href="/my-github-repos" target="_self" rel="section">
+                        <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
+                    </a>
+                </li>
+            <li>
+                <a href="https://jokefrelon.github.io/tags.html" rel="section">
+                    <i class="icon__tags"></i> 标签墙
+                </a>
+            </li>
+            <li>
+                <a href="https://jokefrelon.github.io/archives.html">
+                    <i class="icon__inbox"></i> 存档
+                </a>
+            </li>
+            <li>
+                <a rel="archive" href="https://jokefrelon.github.io/links.html">
+                    <i class="icon__link"></i> 友链
+                </a>
+            </li>
+	    <li>
+            	<a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                	<i class="icon__catalina"></i> Catalina
+            	</a>
+	    </li>
+            <li>
+                <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
+                    <i class="icon__rss"></i> RSS
+                </a>
+            </li>
+        </ul>
+    </main>
+</div>
+<div class="main" id="pjax">
+    
+    <div class="content">
+        <main id="articlePage">
+            <div class="article-list">
+                <div class="item item--active">
+                    <time class="vditor-tooltipped vditor-tooltipped__n item__date"
+                          aria-label="2020年">
+                        09月
+                        <span class="item__day">25</span>
+                    </time>
+
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html">
+                            OpenStack 常用命令
+                        </a>
+                    </h2>
+
+                    <div class="item__date--m fn__none">
+                        <i class="icon__date"></i>
+                        2020-09-25
+                    </div>
+
+                    <div class="ft__center">
+                        <span class="tag">
+                            <i class="icon__tags"></i>
+                            <a rel="tag" href="https://jokefrelon.github.io/tags/OpenStack">
+                                OpenStack</a>
+                        </span>
+                            <a class="tag" href="https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html#b3logsolocomments">
+                                <i class="icon__comments"></i> <span data-uvstatcmt="1601015004916">0</span> 评论
+                            </a>
+                        <span class="tag">
+                            <i class="icon__views"></i>
+                        <span data-uvstaturl="https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html">0</span> 浏览
+                        </span>
+                    </div>
+
+                    <div class="vditor-reset">
+                        <h1 id="toc_h1_0">OpenStack 常用命令</h1>
+<h2 id="toc_h2_1">1. MySQL</h2>
+<pre><code class="language-mysql">show variables like "storage_engine";	//查询默认存储引擎InnoDB
+show variables like "have%";	//查询支持的存储引擎
+</code></pre>
+<h2 id="toc_h2_2">2. Keyston</h2>
+<pre><code class="language-shell">source /etc/keystone/admin-openrc.sh
+
+openstack user create --domain demo --password password testuser 
+//--domain为所属域 --password为密码 testuser是用户名
+
+[root@controller ~]# openstack user list
+//查看用户列表
++----------------------------------+----------+
+| ID                               | Name     |
++----------------------------------+----------+
+| 1877ca2b73b04380af77a5cd3d057734 | demo     |
+| 21a0b28505a140b9b54ca5a20542746c | glance   |
+| 65e4fa15c643474d99f0b7950b5328bb | neutron  |
+| 710f538564124ecd9fdcfaef40792e84 | admin    |
+| 7caa95a15cb54d789d69e511c8214cb8 | nova     |
+| cce5f695864940a0a32eab0d2015528c | testuser |
++----------------------------------+----------+
+
+[root@controller ~]# openstack endpoint list
+//endpoint列表
++---------------+-----------+--------------+--------------+---------+-----------+------------------+
+| ID            | Region    | Service Name | Service Type | Enabled | Interface | URL              |
++---------------+-----------+--------------+--------------+---------+-----------+------------------+
+| 1f7824e81d9f4 | RegionOne | neutron      | network      | True    | internal  | http://controlle |
+| f04b595b97a0a |           |              |              |         |           | r:9696           |
+| e78f46        |           |              |              |         |           |                  |
+| 399280c404a54 | RegionOne | glance       | image        | True    | public    | http://controlle |
+| a1bb314531c2b |           |              |              |         |           | r:9292           |
+| 880ca1        |           |              |              |         |           |                  |
+|   . ... ... ... ... ... ... ... ... ... ... ... 略 ... ... ... ... ... ... ... ... ... ... ... . |
+| fcb27923a6674 | RegionOne | neutron      | network      | True    | public    | http://controlle |
+| 064a5f6d6ddd6 |           |              |              |         |           | r:9696           |
+| 90fa54        |           |              |              |         |           |                  |
++---------------+-----------+--------------+--------------+---------+-----------+------------------+
+
+[root@controller ~]# openstack role list
+//查询OpenStack的角色列表
++----------------------------------+-------+
+| ID                               | Name  |
++----------------------------------+-------+
+| 2a818016714e4f828d96e05475a67208 | user  |
+| a38871259df34ea39884b9019cea926b | admin |
++----------------------------------+-------+
+
+[root@controller ~]# openstack service list
+//查看keystone 服务
++----------------------------------+----------+----------+
+| ID                               | Name     | Type     |
++----------------------------------+----------+----------+
+| 40d9e5252f5f4967bc336542e6faab23 | glance   | image    |
+| 442e7454d7244037b7fdd05a96440dec | keystone | identity |
+| 6a95c79cc01147029bf79b5dfa3304f5 | neutron  | network  |
+| 8a78c7d6a9af432f89ae9a4d185b29d5 | nova     | compute  |
+| d821457f69fa4838ba42074652649548 | neutron  | network  |
++----------------------------------+----------+----------+
+
+[root@controller ~]# openstack project list
+//查看keystone租户
++----------------------------------+---------+
+| ID                               | Name    |
++----------------------------------+---------+
+| 00fa84b7a654447886421978253a2829 | demo    |
+| 869f732ec387457ba9cfdcb424cc8ea2 | admin   |
+| b421cbca4234472a94de962c634b5bb9 | service |
++----------------------------------+---------+
+
+[root@controller ~]# openstack project show demo
+//查看租户情况,show 后面加上上面查询到的用户 name
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | Demo Project                     |
+| domain_id   | ad5088bf450145819f9338635ebfb7a6 |
+| enabled     | True                             |
+| id          | 00fa84b7a654447886421978253a2829 |
+| is_domain   | False                            |
+| name        | demo                             |
+| parent_id   | ad5088bf450145819f9338635ebfb7a6 |
++-------------+----------------------------------+
+
+[root@controller ~]# openstack domain create --description "PPX_PiXiaoMei_Only" NeiHanDuanZi_TV
+//创建域
+//--description "PPX_PiXiaoMei_Only" 不是必须的, 下同
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | PPX_PiXiaoMei_Only               |
+| enabled     | True                             |
+| id          | 57581f0aa311416c88c9fdb36688a46e |
+| name        | NeiHanDuanZi_TV                  |
++-------------+----------------------------------+
+
+[root@controller ~]# openstack project create --domain NeiHanDuanZi_TV --description "PDL" PXM
+//创建项目（租户）
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | PDL                              |
+| domain_id   | 57581f0aa311416c88c9fdb36688a46e |
+| enabled     | True                             |
+| id          | 4b6c52f02496465ebc70447b740a043c |
+| is_domain   | False                            |
+| name        | PXM                              |
+| parent_id   | 57581f0aa311416c88c9fdb36688a46e |
++-------------+----------------------------------+
+
+[root@controller ~]# openstack user create --domain NeiHanDuanZi_TV --password-prompt frelon
+//创建用户
+User Password:
+Repeat User Password:
++-----------+----------------------------------+
+| Field     | Value                            |
++-----------+----------------------------------+
+| domain_id | 57581f0aa311416c88c9fdb36688a46e |
+| enabled   | True                             |
+| id        | 5ac456db906a43e8a8427ae7f3a5334a |
+| name      | frelon                           |
++-----------+----------------------------------+
+
+
+[root@controller ~]# openstack role create oiL
+//创建角色
++-----------+----------------------------------+
+| Field     | Value                            |
++-----------+----------------------------------+
+| domain_id | None                             |
+| id        | 893a47b1b1ce4f558858418da04c86e4 |
+| name      | oiL                              |
++-----------+----------------------------------+
+
+openstack role add  --project PXM --user frelon oiL
+//为某项目中的某用户指定角色
+</code></pre>
+<blockquote>
+<p><code>Tenant</code>也叫<code>project</code>,译为<code>租户</code> , 所有的资源(包括但不限于<code>CPU</code>,<code>Memory</code>,<code>Disk</code>等)都属于<code>Tenant</code> , <code>User</code> 本生并没有任何调度资源的权力,只有把 <code>User</code>加入<code>Tenant</code>后,用户才有资源的调度权限,<code>Tenant</code>就相当于一个 <strong>用户组</strong>,只不过在<code>OpenStack</code>这里被强化了,用户必须加入一个或多个<strong>用户组</strong>才可以调度资源</p>
+</blockquote>
+<blockquote>
+<p><code>Role</code>主要是解决用户登陆后的权限问题,即用户登录以后可以干什么,有没有权利操作资源等等,简而言之就是<strong>鉴权</strong>,一个用户必须有一个或多个<code>Role</code>才有权力执行相应操作. <code>Role</code>是全局的,所有<code>Domain</code>里的<code>Group</code>,<code>User</code></p>
+</blockquote>
+<blockquote>
+<p><code>Group</code>是用来配合<code>Role</code>来使用的,给<code>Group</code>加上相应的权限,再把用户加入<code>Group</code>该用户就可以获得<code>Group</code>所有的权限了,这样就方便了<code>Role</code>的分配</p>
+</blockquote>
+<blockquote>
+<p><code>Domain</code> 常常表示一个客户/合作伙伴,并且 <code>project</code>,<code>Group</code>,<code>User</code>在同一个<code>Domain</code>里面不可以重复</p>
+</blockquote>
+<h2 id="toc_h2_3">3. glance</h2>
+<pre><code>glance image-create --name "testone" --disk-format "qcow2" --container-format bare --progress &lt; /root/CentOS_6.5_x86_64_XD.qcow2
+//上传镜像 并 用--name 命名为 "testone"
+
+openstack image set testone --name examimage 
+//修改已上传的镜像名称
+
+openstack image list 
+//列出已上传的镜像列表
+</code></pre>
+<h2 id="toc_h2_4">4. nova</h2>
+<pre><code class="language-shell">nova usage-list 
+//查询资源使用情况
+</code></pre>
+<h2 id="toc_h2_5">5. neutron</h2>
+<pre><code> neutron router-list
+ //列出当前存在的网络/路由器
+ 
+ neutron router-show + id/name
+ 
+ [root@controller ~]#  neutron router-list
++--------------------------------------+------+-----------------------+-------------+-------+
+| id                                   | name | external_gateway_info | distributed | ha    |
++--------------------------------------+------+-----------------------+-------------+-------+
+| bb46e65a-ad51-4c13-b1c6-51c845dcfb52 | cvn  | null                  | False       | False |
++--------------------------------------+------+-----------------------+-------------+-------+
+[root@controller ~]#  neutron router-show bb46e65a-ad51-4c13-b1c6-51c845dcfb52
++-------------------------+--------------------------------------+
+| Field                   | Value                                |
++-------------------------+--------------------------------------+
+| admin_state_up          | True                                 |
+| availability_zone_hints |                                      |
+| availability_zones      | nova                                 |
+| description             |                                      |
+| distributed             | False                                |
+| external_gateway_info   |                                      |
+| ha                      | False                                |
+| id                      | bb46e65a-ad51-4c13-b1c6-51c845dcfb52 |
+| name                    | cvn                                  |
+| routes                  |                                      |
+| status                  | ACTIVE                               |
+| tenant_id               | 869f732ec387457ba9cfdcb424cc8ea2     |
++-------------------------+--------------------------------------+
+
+
+</code></pre>
+<h2 id="toc_h2_6">6. trove</h2>
+<h2 id="toc_h2_7">7. OpenStack命令大全</h2>
+<pre><code>access token create                        project create
+acl delete                                 project delete
+acl get                                    project list
+acl submit                                 project set
+acl user add                               project show
+acl user remove                            ptr record list
+aggregate add host                         ptr record set
+aggregate create                           ptr record show
+aggregate delete                           ptr record unset
+aggregate list                             quota set
+aggregate remove host                      quota show
+aggregate set                              recordset create
+aggregate show                             recordset delete
+availability zone list                     recordset list
+backup create                              recordset set
+backup delete                              recordset show
+backup list                                region create
+backup restore                             region delete
+backup show                                region list
+ca get                                     region set
+ca list                                    region show
+catalog list                               request token authorize
+catalog show                               request token create
+command list                               role add
+complete                                   role assignment list
+compute agent create                       role create
+compute agent delete                       role delete
+compute agent list                         role list
+compute agent set                          role remove
+compute service delete                     role set
+compute service list                       role show
+compute service set                        router create
+configuration show                         router delete
+console log show                           router list
+console url show                           router set
+consumer create                            router show
+consumer delete                            secret container create
+consumer list                              secret container delete
+consumer set                               secret container get
+consumer show                              secret container list
+container create                           secret delete
+container delete                           secret get
+container list                             secret list
+container save                             secret order create
+container set                              secret order delete
+container show                             secret order get
+container unset                            secret order list
+credential create                          secret store
+credential delete                          secret update
+credential list                            security group create
+credential set                             security group delete
+credential show                            security group list
+dataprocessing cluster create              security group rule create
+dataprocessing cluster delete              security group rule delete
+dataprocessing cluster list                security group rule list
+dataprocessing cluster scale               security group rule show
+dataprocessing cluster show                security group set
+dataprocessing cluster template create     security group show
+dataprocessing cluster template delete     server add security group
+dataprocessing cluster template list       server add volume
+dataprocessing cluster template show       server create
+dataprocessing cluster template update     server delete
+dataprocessing cluster update              server dump create
+dataprocessing cluster verification        server image create
+dataprocessing data source create          server list
+dataprocessing data source delete          server lock
+dataprocessing data source list            server migrate
+dataprocessing data source show            server pause
+dataprocessing data source update          server reboot
+dataprocessing image list                  server rebuild
+dataprocessing image register              server remove security group
+dataprocessing image show                  server remove volume
+dataprocessing image tags add              server rescue
+dataprocessing image tags remove           server resize
+dataprocessing image tags set              server resume
+dataprocessing image unregister            server set
+dataprocessing job binary create           server shelve
+dataprocessing job binary delete           server show
+dataprocessing job binary download         server ssh
+dataprocessing job binary list             server start
+dataprocessing job binary show             server stop
+dataprocessing job binary update           server suspend
+dataprocessing job delete                  server unlock
+dataprocessing job execute                 server unpause
+dataprocessing job list                    server unrescue
+dataprocessing job show                    server unset
+dataprocessing job template create         server unshelve
+dataprocessing job template delete         service create
+dataprocessing job template list           service delete
+dataprocessing job template show           service list
+dataprocessing job template update         service provider create
+dataprocessing job type configs get        service provider delete
+dataprocessing job type list               service provider list
+dataprocessing job update                  service provider set
+dataprocessing node group template create  service provider show
+dataprocessing node group template delete  service set
+dataprocessing node group template list    service show
+dataprocessing node group template show    snapshot create
+dataprocessing node group template update  snapshot delete
+dataprocessing plugin configs get          snapshot list
+dataprocessing plugin list                 snapshot set
+dataprocessing plugin show                 snapshot show
+domain create                              snapshot unset
+domain delete                              software config create
+domain list                                software config delete
+domain set                                 software config list
+domain show                                software config show
+ec2 credentials create                     software deployment create
+ec2 credentials delete                     software deployment delete
+ec2 credentials list                       software deployment list
+ec2 credentials show                       software deployment metadata show
+endpoint create                            software deployment output show
+endpoint delete                            software deployment show
+endpoint list                              stack abandon
+endpoint set                               stack adopt
+endpoint show                              stack cancel
+extension list                             stack check
+federation domain list                     stack create
+federation project list                    stack delete
+federation protocol create                 stack event list
+federation protocol delete                 stack event show
+federation protocol list                   stack hook clear
+federation protocol set                    stack hook poll
+federation protocol show                   stack list
+flavor create                              stack output list
+flavor delete                              stack output show
+flavor list                                stack resource list
+flavor set                                 stack resource mark unhealthy
+flavor show                                stack resource metadata
+flavor unset                               stack resource show
+group add user                             stack resource signal
+group contains user                        stack resume
+group create                               stack show
+group delete                               stack snapshot create
+group list                                 stack snapshot delete
+group remove user                          stack snapshot list
+group set                                  stack snapshot restore
+group show                                 stack snapshot show
+help                                       stack suspend
+host list                                  stack template show
+host show                                  stack update
+hypervisor list                            subnet delete
+hypervisor show                            subnet list
+hypervisor stats show                      subnet pool delete
+identity provider create                   subnet pool list
+identity provider delete                   subnet pool show
+identity provider list                     subnet show
+identity provider set                      tld create
+identity provider show                     tld delete
+image add project                          tld list
+image create                               tld set
+image delete                               tld show
+image list                                 token issue
+image remove project                       token revoke
+image save                                 trust create
+image set                                  trust delete
+image show                                 trust list
+ip fixed add                               trust show
+ip fixed remove                            usage list
+ip floating add                            usage show
+ip floating create                         user create
+ip floating delete                         user delete
+ip floating list                           user list
+ip floating pool list                      user password set
+ip floating remove                         user set
+ip floating show                           user show
+keypair create                             volume create
+keypair delete                             volume delete
+keypair list                               volume list
+keypair show                               volume qos associate
+limits show                                volume qos create
+mapping create                             volume qos delete
+mapping delete                             volume qos disassociate
+mapping list                               volume qos list
+mapping set                                volume qos set
+mapping show                               volume qos show
+module list                                volume qos unset
+network create                             volume set
+network delete                             volume show
+network list                               volume type create
+network set                                volume type delete
+network show                               volume type list
+object create                              volume type set
+object delete                              volume type show
+object list                                volume type unset
+object save                                volume unset
+object set                                 zone abandon
+object show                                zone axfr
+object store account set                   zone blacklist create
+object store account show                  zone blacklist delete
+object store account unset                 zone blacklist list
+object unset                               zone blacklist set
+orchestration build info                   zone blacklist show
+orchestration resource type list           zone create
+orchestration resource type show           zone delete
+orchestration service list                 zone list
+orchestration template function list       zone set
+orchestration template version list        zone show
+policy create                              zone transfer accept request
+policy delete                              zone transfer accept show
+policy list                                zone transfer request create
+policy set                                 zone transfer request delete
+policy show                                zone transfer request list
+port delete                                zone transfer request set
+port show                                  zone transfer request show
+</code></pre>
+                            <div>
+                                <hr>
+作者：<a href="https://jokefrelon.github.io" target="_blank">JokerLee</a><br>
+版权声明: 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-SA</a> 许可协议。<br>
+转载请注明来源：<a href="https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html" target="_blank">OpenStack 常用命令</a><br>
+<br>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="module mobile__hidden">
+                    <div class="module__content fn__clear">
+                            <a href="https://jokefrelon.github.io/articles/2020/09/25/1601014454374.html" rel="prev" class="fn__left breadcrumb">
+                                旧一篇: CentOS 7 磁盘扩容
+                            </a>
+                            <a href="https://jokefrelon.github.io/articles/2020/10/07/1602055989143.html" rel="next"
+                               class="fn__right breadcrumb">
+                                记录一次OpenWrt安装zsh: 新一篇
+                            </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2020/09/25/1601014454374.html" rel="prev" class="breadcrumb">
+                            旧一篇: CentOS 7 磁盘扩容
+                        </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2020/10/07/1602055989143.html" rel="next"
+                           class="breadcrumb">
+                            新一篇: 记录一次OpenWrt安装zsh
+                        </a>
+                    </div>
+                </div>
+                <div id="gitalk-container" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"
+                     data-name="JokerLee" data-postId="1601015004916"></div>
+
+            <div class="fn__flex article__relevant">
+                <div class="fn__flex-1" id="externalRelevantArticlesWrap">
+                    <div class="module">
+                        <div id="externalRelevantArticles" class="module__list"></div>
+                    </div>
+                </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+                <div class="fn__flex-1" id="randomArticlesWrap">
+                    <div class="module">
+                        <div id="randomArticles" class="module__list"></div>
+                    </div>
+                </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+                <div class="fn__flex-1" id="relevantArticlesWrap">
+                    <div class="module">
+                        <div id="relevantArticles" class="module__list"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+<aside class="side">
+        <div class="module">
+            <div class="module__list">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#toc_h1_0">OpenStack 常用命令</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_1">1. MySQL</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_2">2. Keyston</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_3">3. glance</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_4">4. nova</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_5">5. neutron</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_6">6. trove</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_7">7. OpenStack命令大全</a>
+        </li>
+</ul>            </div>
+        </div>
+        <section class="vditor-reset module">
+            <main class="module__content">
+                人生没有白走的路,每一步都算数。
+<!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
+            </main>
+        </section>
+
+
+    <div class="module item">
+        <header class="module__header ft__center">
+            JokerLee
+        </header>
+        <main class="module__content ft__center">
+            <img class="side__avatar" src="https://img.hacpai.com/avatar/1575322384198_1579086976432.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="JokerLee"/>
+            Debug The World <br> <br>
+    <a href="https://ld246.com/member/JokerLee"
+       title="https://ld246.com/member/JokerLee"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/jokefrelon"
+           title="https://github.com/jokefrelon"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        </main>
+    </div>
+
+        <div class="module item">
+            <header class="module__header">
+                分类
+            </header>
+            <main class="module__content fn__clear module__content--three">
+                    <a href="https://jokefrelon.github.io/category/Java"
+                       aria-label="10 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        java</a>
+                    <a href="https://jokefrelon.github.io/category/python"
+                       aria-label="4 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Python</a>
+                    <a href="https://jokefrelon.github.io/category/Linux"
+                       aria-label="16 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Linux</a>
+                    <a href="https://jokefrelon.github.io/category/links"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Links</a>
+                    <a href="https://jokefrelon.github.io/category/Git"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Git</a>
+                    <a href="https://jokefrelon.github.io/category/clang"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        clang</a>
+            </main>
+        </div>
+
+        <div class="module item">
+            <header class="module__header">标签</header>
+            <main class="module__content--three module__content fn__clear">
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Linux"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="16 篇文章">
+                        Linux</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Java"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="10 篇文章">
+                        Java</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/python"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="4 篇文章">
+                        python</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Docker"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="3 篇文章">
+                        Docker</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/OpenWrt"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="3 篇文章">
+                        OpenWrt</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Solo"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Solo</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/nginx"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        nginx</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        日记</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/mysql"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        mysql</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/GitHub"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        GitHub</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/ffmpeg"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        ffmpeg</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/WeChat"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        WeChat</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/SpringBoot"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        SpringBoot</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Git"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Git</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/NAT"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        NAT</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Tampermonkey"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Tampermonkey</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/OpenStack"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        OpenStack</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/macOS"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        macOS</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        开源</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Frp"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Frp</a>
+            </main>
+        </div>
+
+    <div class="module item">
+        <div class="module__header">
+            <div class="fn__flex">
+                <a href="https://jokefrelon.github.io/archives.html" class="fn__flex-1 ft__center">
+                    49
+                    文章
+                </a>
+            </div>
+            <br/>
+            <div class="fn__flex">
+                <div class="fn__flex-1 ft__center">
+                    <span data-uvstaturl="https://jokefrelon.github.io">1685</span> <span class="ft-gray">浏览</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+    
+</div>
+</div>
+<div class="icon__up" onclick="Util.goTop()"></div>
+<footer class="footer">
+    &copy; 2021
+    <a href="https://jokefrelon.github.io">Jokeme Blog</a>
+    <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a>
+    <div class="fn__none"></div>
+</footer>
+<div class="icon-up" onclick="Util.goTop()"></div>
+
+<script>
+  var Label = {
+    speech: false,
+    servePath: "https://jokefrelon.github.io",
+    staticServePath: "https://jokefrelon.github.io",
+    luteAvailable: false,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: true,
+    articleId: "1601015004916",
+  }
+</script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/nijigen/js/common.min.js?1616666743925" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1616666743925', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1601015004916",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<header class="module__header">随机阅读</header>');
+    page.loadRelevantArticles('1601015004916', '<header class="module__header">相关阅读</header>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 260ms, 2021/03/25 21:23:07 -->

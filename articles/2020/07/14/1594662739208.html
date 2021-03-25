@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>两小时 Git 入门 - Jokeme Blog</title><meta name="description" content="两小时 Git 入门，学不会见面互刀吧 ?(开个玩笑)"/><meta property="og:description" content="两小时 Git 入门，学不会见面互刀吧 ?(开个玩笑)"/>    <meta name="keywords" content="Joker,Solo,jokeme.top,jokeme,JokerLee,Blog"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://jokeme.top/images/bk3.png"/><link rel="apple-touch-icon" href="https://jokeme.top/images/bk3.png"><link rel="shortcut icon" type="image/x-icon" href="https://jokeme.top/images/bk3.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="两小时 Git 入门 - Jokeme Blog"/><meta property="og:site_name" content="Jokeme Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html?"/><meta property="og:image" content="https://jokeme.top/images/bk3.png"/><link rel="search" type="application/opensearchdescription+xml" title="两小时 Git 入门 - Jokeme Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html">        <link rel="stylesheet"
+              href="https://jokefrelon.github.io/skins/nijigen/css/base.css?1616666743925"/>
+            <link rel="prev" title="收集整理一些我不经常使用,但是使用时又找不到的网站链接" href="https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html">
+            <link rel="next" title="在微软官网下载 Windows10 ISO 安装包" href="https://jokefrelon.github.io/articles/2020/07/14/1594738294949.html">
+    <!-- 樱花雨 
+<script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--鼠标点击效果 --><script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body>
+<div class="bg"></div>
+<div class="bg bg--1"></div>
+<div class="bg bg--2"></div>
+<div class="bg bg--3"></div>
+<div class="bg bg--4"></div>
+<div class="bg bg--5"></div>
+<div class="bg bg--6"></div>
+<div class="bg bg--7"></div>
+<header class="header">
+    <div class="header__wrap">
+        <a href="https://jokefrelon.github.io" rel="start" class="header__logo">
+            <i class="icon__home"></i> Jokeme Blog
+        </a>
+
+        <nav class="mobile__hidden header__nav">
+                <a href="/my-github-repos" target="_self" rel="section">
+                    <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
+                </a>
+            <a href="https://jokefrelon.github.io/tags.html" rel="section">
+                <i class="icon__tags"></i> 标签墙
+            </a>
+            <a href="https://jokefrelon.github.io/archives.html">
+                <i class="icon__inbox"></i> 存档
+            </a>
+            <a rel="archive" href="https://jokefrelon.github.io/links.html">
+                <i class="icon__link"></i> 友链
+            </a>
+            <a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                <i class="icon__catalina"></i> Catalina
+            </a>
+            <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
+                <i class="icon__rss"></i> RSS
+            </a>
+        </nav>
+
+    </div>
+</header>
+<div class="header__m fn__none">
+    <i class="icon__list fn__none" onclick="$(this).next().slideToggle()"></i>
+    <main class="module__list fn__none"></main>
+    <i class="icon__more" onclick="$(this).next().slideToggle()"></i>
+    <main class="module__list">
+        <ul>
+                <li>
+                    <a href="/my-github-repos" target="_self" rel="section">
+                        <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
+                    </a>
+                </li>
+            <li>
+                <a href="https://jokefrelon.github.io/tags.html" rel="section">
+                    <i class="icon__tags"></i> 标签墙
+                </a>
+            </li>
+            <li>
+                <a href="https://jokefrelon.github.io/archives.html">
+                    <i class="icon__inbox"></i> 存档
+                </a>
+            </li>
+            <li>
+                <a rel="archive" href="https://jokefrelon.github.io/links.html">
+                    <i class="icon__link"></i> 友链
+                </a>
+            </li>
+	    <li>
+            	<a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                	<i class="icon__catalina"></i> Catalina
+            	</a>
+	    </li>
+            <li>
+                <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
+                    <i class="icon__rss"></i> RSS
+                </a>
+            </li>
+        </ul>
+    </main>
+</div>
+<div class="main" id="pjax">
+    
+    <div class="content">
+        <main id="articlePage">
+            <div class="article-list">
+                <div class="item item--active">
+                    <time class="vditor-tooltipped vditor-tooltipped__n item__date"
+                          aria-label="2020年">
+                        07月
+                        <span class="item__day">14</span>
+                    </time>
+
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html">
+                            两小时 Git 入门
+                        </a>
+                    </h2>
+
+                    <div class="item__date--m fn__none">
+                        <i class="icon__date"></i>
+                        2020-07-14
+                    </div>
+
+                    <div class="ft__center">
+                        <span class="tag">
+                            <i class="icon__tags"></i>
+                            <a rel="tag" href="https://jokefrelon.github.io/tags/GitHub">
+                                GitHub</a>,
+                            <a rel="tag" href="https://jokefrelon.github.io/tags/Git">
+                                Git</a>
+                        </span>
+                            <a class="tag" href="https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html#b3logsolocomments">
+                                <i class="icon__comments"></i> <span data-uvstatcmt="1594662739208">0</span> 评论
+                            </a>
+                        <span class="tag">
+                            <i class="icon__views"></i>
+                        <span data-uvstaturl="https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html">0</span> 浏览
+                        </span>
+                    </div>
+
+                    <div class="vditor-reset">
+                        <h1 id="toc_h1_0">两小时 Git 入门</h1>
+<h2 id="toc_h2_1">1.建立 Git 仓库</h2>
+<pre><code>$ git init
+</code></pre>
+<h2 id="toc_h2_2">2.把文件添加到仓库</h2>
+<pre><code>$ git add + filename
+</code></pre>
+<h2 id="toc_h2_3">3.把文件提交到仓库</h2>
+<pre><code>$ git commit -m "wrote a readme file"
+</code></pre>
+<h2 id="toc_h2_4">4.查看提交结果/对比工作区和文件和仓库文件的不同之处</h2>
+<pre><code>$ git status
+</code></pre>
+<h2 id="toc_h2_5">5.比对并列出文件和仓库文件的不同之处</h2>
+<pre><code>$ git diff
+
+#如果git status告诉你有文件被修改过，用git diff可以查看修改内容。
+</code></pre>
+<h2 id="toc_h2_6">6.Git 查看历史记录</h2>
+<pre><code>$ git log/git log --pretty=oneline(查看精简版)
+</code></pre>
+<h2 id="toc_h2_7">7.退回曾经的某个版本</h2>
+<h3 id="toc_h3_8">7.1 退回最新版</h3>
+<pre><code>$ git reset --hard + (对应的append GPL的commit id)
+
+$ git reset --hard HEAD^
+</code></pre>
+<p>用 HEAD 表示当前版本，上一个版本就是 HEAD^，上上一个版本就是 HEAD^^，当然往上 100 个版本写 100 个 ^ 比较容易数不过来，所以写成 HEAD~100</p>
+<h3 id="toc_h3_9">7.2 查找所有版本 append GPL 的 commit id</h3>
+<pre><code>$ git reflog
+</code></pre>
+<h3 id="toc_h3_10">7.3 Git 原理：</h3>
+<p>1.工作区（Working Directory）就是 Git 创建仓库所在的目录</p>
+<p>2 版本库（Repository）工作区有一个隐藏目录。Git，这个不是工作区，而是 Git 的版本库 Git 的版本库里存了很多东西，其中最重要的就是称为 stage（或者叫 index）的暂存区，还有 Git 为我们自动创建的第一个分支 master，以及指向 master 的一个指针叫 HEADgit add 实际上就是把文件修改添加到暂存区 Git commit 实际上就是把暂存区的所有内容提交到当前分支我们创建 Git 版本库时，Git 自动为我们创建了唯一一个 master 分支，所以，现在，Git commit 就是往 master 分支上提交更改</p>
+<h2 id="toc_h2_11">8.查看工作区和版本库里面最新版本的区别</h2>
+<pre><code>$ git diff HEAD -- +文件名
+</code></pre>
+<h2 id="toc_h2_12">9.放弃对文件的更改</h2>
+<h3 id="toc_h3_13">9.1 放弃对"工作区"文件的更改</h3>
+<pre><code>$ git checkout -- 文件名
+
+$ git checkout -- file
+</code></pre>
+<p>命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令</p>
+<h2 id="toc_h2_14">9.2 放弃对"暂存区"文件的更改</h2>
+<pre><code>$ git reset HEAD + 文件名
+</code></pre>
+<p>场景 1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令 Git checkout -- file。</p>
+<p>场景 2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令 Git reset HEAD ，就回到了场景 1，第二步按场景 1 操作。</p>
+<p>场景 3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退 &lt;number 7&gt;，不过前提是没有推送到远程库。</p>
+<p>命令 Git rm 用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容</p>
+<h2 id="toc_h2_15">10.创建 GitHub 远程仓库</h2>
+<p>第 1 步：创建 SSH Key。在用户主目录下，看看有没有。SSH 目录，如果有，再看看这个目录下有没有 id_rsa,id_rsa.pub 这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开 Shell（Windows 下打开 Git Bash），创建 SSH Key</p>
+<pre><code>$ ssh-keygen -t rsa -C"youremail@example.com"
+</code></pre>
+<p>第 2 步：登陆 GitHub，打开“Account settings”，“SSH Keys”页面，然后，点“Add SSH Key”，填上任意 Title，在 Key 文本框里粘贴 id_rsa.pub 文件的内容</p>
+<p>第 3 步： 登陆 GitHub，在右上角找到“Create a new repo”按钮，创建一个新的仓库，在 Repository name 填入仓库名，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的 Git 仓库</p>
+<p>第 4 步： 在本地 shell 上 对 GitHub 上的仓库绑定： Git remote add frelon <a href="mailto:git@github.com" target="_blank">git@github.com</a>:lixuanliming/frelon.git 这里的 frelon 是远程仓库的名字，后面是 GitHub 给的 URL11.推送更新到 GitHub 仓库上</p>
+<pre><code>$ git push -u 仓库名 master
+</code></pre>
+<p>#由于远程库是空的，我们第一次推送 master 分支时，加上了-u 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的 master 分支和远程的 master 分支关联起来，在以后推送或者拉取时就不用加 -u 参数</p>
+<pre><code>$ git push 仓库名 master
+</code></pre>
+<h2 id="toc_h2_16">11. 关于远程仓库</h2>
+<p>从远程仓库克隆 如果自己需要新建一个项目，且从零开发，那么最好的方式是先创建远程库，然后，在 shell 里从远程库克隆</p>
+<p>建仓库过程省略，在建立仓库的时候我们可以勾选 Initialize this repository with a README，这样 GitHub 会自动为我们创建一个 README.md 文件。创建完毕后，可以看到 README.md 文件</p>
+<h2 id="toc_h2_17">12. Clone 远程仓库</h2>
+<pre><code>git clone git@github.com:lixuanliming/frelon.git
+</code></pre>
+<h2 id="toc_h2_18">13.Git 分支</h2>
+<h3 id="toc_h3_19">13.1 创建 Git 分支</h3>
+<pre><code>$ git checkout -b bayu git checkout -b bayu
+</code></pre>
+<p>-b 表示 branch 相当于下面两条命令 Git branch bayu 建立'bayu'分支 Git check bayu 切换到'bayu'分支</p>
+<h3 id="toc_h3_20">13.2 查看分支</h3>
+<pre><code>$ git branch
+</code></pre>
+<p>当前分支前面会标一个*号</p>
+<h3 id="toc_h3_21">13.3 合并分支到当前分支</h3>
+<h4 id="toc_h4_22">13.3.1 Fast 合并分支</h4>
+<pre><code>$ git merge frelon
+</code></pre>
+<p>注意提示的 Fast-forward 信息，Git 告诉我们，这次合并是“快进模式”，也就是直接把 master 指向 dev 的当前提交，所以合并速度非常快。当然，也不是每次合并都能 Fast-forward</p>
+<h4 id="toc_h4_23">13.3.2 常规合并分支</h4>
+<pre><code>$ git merge --no-ff -m "merge with no-ff" frelon
+</code></pre>
+<p>合并分支时，加上--no-ff 参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而 fast forward 合并就看不出来曾经做过合并。</p>
+<h3 id="toc_h3_24">13.4 删除多余分支</h3>
+<pre><code>$ git branch -d bayu
+</code></pre>
+<h3 id="toc_h3_25">13.5 丢弃未合并的分支</h3>
+<pre><code>$ git branch -D fork1
+</code></pre>
+<p>假设 fork1 是未合并的分支，那么用 13.4 中的删除方法并不可行，只能用 -D 强制删除查看分支： <code>git branch</code> 创建分支： <code>git branch</code> 切换分支： <code>git checkout</code> 创建 + 切换分支： <code>git checkout -b</code> 合并某分支到当前分支： <code>git merge</code> 删除分支： <code>git branch -d</code></p>
+<h2 id="toc_h2_26">14. Git 冲突解决</h2>
+<p>Git 合并时遇到的冲突问题 当 Git 无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。解决冲突就是把 Git 合并失败的文件手动编辑为我们希望的内容，再提交。用 <code>git log --graph</code> 命令可以看到分支合并图。</p>
+<h3 id="toc_h3_27">14.1 查看分支合并图</h3>
+<pre><code>$ git log --graph
+</code></pre>
+<p>15.git 解决 bug 分支的问题 修复 bug 时，我们会通过创建新的 bug 分支进行修复，然后合并，最后删除。当手头工作没有完成时，先把工作现场 <code>git stash</code> 一下，然后去修复 bug，修复后，再 <code>git stash pop</code> ，回到工作现场。</p>
+<ul>
+<li>把工作区的文件暂时隐藏起来</li>
+</ul>
+<pre><code>$ git stash
+</code></pre>
+<ul>
+<li>切换到 master 分支下面</li>
+</ul>
+<pre><code>$ git checkout master
+</code></pre>
+<ul>
+<li>建立 issue-101 的修复 bug 的分支 "并进入该分支修复 bug"</li>
+</ul>
+<pre><code>$ git checkout -b issue-101
+</code></pre>
+<ul>
+<li>把文件提交到暂存区</li>
+</ul>
+<pre><code>$ git add xxx.py
+
+$ git commit -m "fix bug 101" 提交文件到仓库
+</code></pre>
+<ul>
+<li>回到原分支</li>
+</ul>
+<pre><code>$ git checkout master
+</code></pre>
+<ul>
+<li>删除 issue-101 分支</li>
+</ul>
+<pre><code>$ git merge --no-ff -m "merged bug fix 101" issue-101
+</code></pre>
+<ul>
+<li>返回原分区</li>
+</ul>
+<pre><code>$ git checkout dev
+</code></pre>
+<ul>
+<li>还原工作区</li>
+</ul>
+<pre><code>$ git status
+</code></pre>
+<ul>
+<li>继续工作</li>
+</ul>
+<pre><code>$ git stash pop
+</code></pre>
+<h2 id="toc_h2_28">16 Git 的多人协作</h2>
+<h3 id="toc_h3_29">16.1 查看远程仓库的信息</h3>
+<pre><code>$ git remote -v(显示详细信息)
+</code></pre>
+<h3 id="toc_h3_30">16.2 推送分支到远程仓库</h3>
+<pre><code>$ git push origin master 这是推送主分支(origin是远程仓库的名字)
+
+$ git push origin dev 还可以推送别的副分支(origin是远程仓库的名字)
+</code></pre>
+<h3 id="toc_h3_31">16.3 抓取分支 从本地推送分支</h3>
+<p>使用 <code>git push origin branch-name</code> ，如果推送失败，先用 <code>git pull</code>  抓取远程的新提交； 在本地创建和远程分支对应的分支，使用 <code>git checkout -b branch-name origin/branch-name</code> ，本地和远程分支的名称最好一致； 建立本地分支和远程分支的关联，使用 <code>git branch --set-upstream branch-name origin/branch-name</code> ； 从远程抓取分支，使用 Git pull，如果有冲突，要先处理冲突。</p>
+<h2 id="toc_h2_32">17 Git 标签管理</h2>
+<h3 id="toc_h3_33">17.1 Git 创建标签</h3>
+<pre><code>$ git tag tag_Name
+</code></pre>
+<h3 id="toc_h3_34">17.2 对 Git 已经 commit 过的历史文件打标签</h3>
+<pre><code>$ git log --pretty=oneline --abbrev-commit 查看log中所记录的commit id
+</code></pre>
+<pre><code>$ git tag v0.9 f52c633 
+#对commit id为 f52c633 的文件打上标签为 v0.9
+#还可以创建带有说明的标签，
+#用-a指定标签名，-m指定说明文字
+#如下实例:
+
+$ git tag -a v0.1 -m "blabla" 1094ad
+</code></pre>
+<h3 id="toc_h3_35">17.3 查看标签信息</h3>
+<pre><code>$ git tag 查看所有 tag信息
+$ git show &lt;tagname&gt; 查看指定tag信息
+</code></pre>
+<h3 id="toc_h3_36">17.4 推送标签到远程</h3>
+<pre><code>$ git push frelon v1.0 给某个仓库打标签
+$ git push frelon --tags 一次性推送全部尚未推送到远程的本地标签,前提是本地都打了标签
+</code></pre>
+<h3 id="toc_h3_37">17.5 删除标签</h3>
+<pre><code>$ git tag -d v0.1
+</code></pre>
+<p>这适用于尚为推送到远程仓库使用如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：</p>
+<pre><code>$ git tag -d v0.9 $ git push frelon :refs/tags/v0.9
+</code></pre>
+<p>命令 <code>git push origin</code> 可以推送一个本地标签；</p>
+<p>命令 <code>git push origin --tags</code> 可以推送全部未推送过的本地标签；</p>
+<p>命令 <code>git tag -d</code> 可以删除一个本地标签；</p>
+<p>命令 <code>git push origin :refs/tags/</code> 可以删除一个远程标签。</p>
+<h3 id="toc_h3_38">本文参考 <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank">廖雪峰的官方网站/Git教程</a></h3>
+<p>曾经在微信公众上也发过，但是因为公众号维护起来比较麻烦就拖到这里来了，文章写的匆忙，如有错误欢迎评论区指导/纠正</p>
+                            <div>
+                                <hr>
+作者：<a href="https://jokefrelon.github.io" target="_blank">JokerLee</a><br>
+版权声明: 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-SA</a> 许可协议。<br>
+转载请注明来源：<a href="https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html" target="_blank">两小时 Git 入门</a><br>
+<br>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="module mobile__hidden">
+                    <div class="module__content fn__clear">
+                            <a href="https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html" rel="prev" class="fn__left breadcrumb">
+                                旧一篇: 收集整理一些我不经常使用,但是使用时又找不到的网站链接
+                            </a>
+                            <a href="https://jokefrelon.github.io/articles/2020/07/14/1594738294949.html" rel="next"
+                               class="fn__right breadcrumb">
+                                在微软官网下载 Windows10 ISO 安装包: 新一篇
+                            </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html" rel="prev" class="breadcrumb">
+                            旧一篇: 收集整理一些我不经常使用,但是使用时又找不到的网站链接
+                        </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2020/07/14/1594738294949.html" rel="next"
+                           class="breadcrumb">
+                            新一篇: 在微软官网下载 Windows10 ISO 安装包
+                        </a>
+                    </div>
+                </div>
+                <div id="gitalk-container" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"
+                     data-name="JokerLee" data-postId="1594662739208"></div>
+
+            <div class="fn__flex article__relevant">
+                <div class="fn__flex-1" id="externalRelevantArticlesWrap">
+                    <div class="module">
+                        <div id="externalRelevantArticles" class="module__list"></div>
+                    </div>
+                </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+                <div class="fn__flex-1" id="randomArticlesWrap">
+                    <div class="module">
+                        <div id="randomArticles" class="module__list"></div>
+                    </div>
+                </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+                <div class="fn__flex-1" id="relevantArticlesWrap">
+                    <div class="module">
+                        <div id="relevantArticles" class="module__list"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+<aside class="side">
+        <div class="module">
+            <div class="module__list">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#toc_h1_0">两小时 Git 入门</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_1">1.建立 Git 仓库</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_2">2.把文件添加到仓库</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_3">3.把文件提交到仓库</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_4">4.查看提交结果/对比工作区和文件和仓库文件的不同之处</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_5">5.比对并列出文件和仓库文件的不同之处</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_6">6.Git 查看历史记录</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_7">7.退回曾经的某个版本</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_8">7.1 退回最新版</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_9">7.2 查找所有版本 append GPL 的 commit id</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_10">7.3 Git 原理：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_11">8.查看工作区和版本库里面最新版本的区别</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_12">9.放弃对文件的更改</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_13">9.1 放弃对"工作区"文件的更改</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_14">9.2 放弃对"暂存区"文件的更改</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_15">10.创建 GitHub 远程仓库</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_16">11. 关于远程仓库</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_17">12. Clone 远程仓库</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_18">13.Git 分支</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_19">13.1 创建 Git 分支</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_20">13.2 查看分支</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_21">13.3 合并分支到当前分支</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_22">13.3.1 Fast 合并分支</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_23">13.3.2 常规合并分支</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_24">13.4 删除多余分支</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_25">13.5 丢弃未合并的分支</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_26">14. Git 冲突解决</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_27">14.1 查看分支合并图</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_28">16 Git 的多人协作</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_29">16.1 查看远程仓库的信息</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_30">16.2 推送分支到远程仓库</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_31">16.3 抓取分支 从本地推送分支</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_32">17 Git 标签管理</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_33">17.1 Git 创建标签</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_34">17.2 对 Git 已经 commit 过的历史文件打标签</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_35">17.3 查看标签信息</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_36">17.4 推送标签到远程</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_37">17.5 删除标签</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_38">本文参考 廖雪峰的官方网站/Git教程</a>
+        </li>
+</ul>            </div>
+        </div>
+        <section class="vditor-reset module">
+            <main class="module__content">
+                人生没有白走的路,每一步都算数。
+<!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
+            </main>
+        </section>
+
+
+    <div class="module item">
+        <header class="module__header ft__center">
+            JokerLee
+        </header>
+        <main class="module__content ft__center">
+            <img class="side__avatar" src="https://img.hacpai.com/avatar/1575322384198_1579086976432.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="JokerLee"/>
+            Debug The World <br> <br>
+    <a href="https://ld246.com/member/JokerLee"
+       title="https://ld246.com/member/JokerLee"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/jokefrelon"
+           title="https://github.com/jokefrelon"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        </main>
+    </div>
+
+        <div class="module item">
+            <header class="module__header">
+                分类
+            </header>
+            <main class="module__content fn__clear module__content--three">
+                    <a href="https://jokefrelon.github.io/category/Java"
+                       aria-label="10 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        java</a>
+                    <a href="https://jokefrelon.github.io/category/python"
+                       aria-label="4 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Python</a>
+                    <a href="https://jokefrelon.github.io/category/Linux"
+                       aria-label="16 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Linux</a>
+                    <a href="https://jokefrelon.github.io/category/links"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Links</a>
+                    <a href="https://jokefrelon.github.io/category/Git"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Git</a>
+                    <a href="https://jokefrelon.github.io/category/clang"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        clang</a>
+            </main>
+        </div>
+
+        <div class="module item">
+            <header class="module__header">标签</header>
+            <main class="module__content--three module__content fn__clear">
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Linux"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="16 篇文章">
+                        Linux</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Java"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="10 篇文章">
+                        Java</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/python"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="4 篇文章">
+                        python</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Docker"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="3 篇文章">
+                        Docker</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/OpenWrt"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="3 篇文章">
+                        OpenWrt</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Solo"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Solo</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/nginx"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        nginx</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        日记</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/mysql"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        mysql</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/GitHub"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        GitHub</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/ffmpeg"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        ffmpeg</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/OpenStack"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        OpenStack</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/macOS"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        macOS</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        开源</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Frp"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Frp</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Windows10"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Windows10</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/%E5%BE%85%E5%88%86%E7%B1%BB"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="0 篇文章">
+                        待分类</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Math"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Math</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/brew"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        brew</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/WSL2"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        WSL2</a>
+            </main>
+        </div>
+
+    <div class="module item">
+        <div class="module__header">
+            <div class="fn__flex">
+                <a href="https://jokefrelon.github.io/archives.html" class="fn__flex-1 ft__center">
+                    49
+                    文章
+                </a>
+            </div>
+            <br/>
+            <div class="fn__flex">
+                <div class="fn__flex-1 ft__center">
+                    <span data-uvstaturl="https://jokefrelon.github.io">1685</span> <span class="ft-gray">浏览</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+    
+</div>
+</div>
+<div class="icon__up" onclick="Util.goTop()"></div>
+<footer class="footer">
+    &copy; 2021
+    <a href="https://jokefrelon.github.io">Jokeme Blog</a>
+    <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a>
+    <div class="fn__none"></div>
+</footer>
+<div class="icon-up" onclick="Util.goTop()"></div>
+
+<script>
+  var Label = {
+    speech: false,
+    servePath: "https://jokefrelon.github.io",
+    staticServePath: "https://jokefrelon.github.io",
+    luteAvailable: false,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: true,
+    articleId: "1594662739208",
+  }
+</script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/nijigen/js/common.min.js?1616666743925" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1616666743925', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1594662739208",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<header class="module__header">随机阅读</header>');
+    page.loadRelevantArticles('1594662739208', '<header class="module__header">相关阅读</header>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 278ms, 2021/03/25 21:23:06 -->

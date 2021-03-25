@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Java IO 文件的读写与高效率IO - Frelon-Lee (●'◡'●) Blog</title><meta name="description" content="Java IO重在对文件的读写,以及怎样高效率读写"/><meta property="og:description" content="Java IO重在对文件的读写,以及怎样高效率读写"/>    <meta name="keywords" content="Solo,frelon,jokeme"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="/images/bk.png"/><link rel="apple-touch-icon" href="/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Java IO 文件的读写与高效率IO - Frelon-Lee (●'◡'●) Blog"/><meta property="og:site_name" content="Frelon-Lee (●&#39;◡&#39;●) Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html?"/><meta property="og:image" content="/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Java IO 文件的读写与高效率IO - Frelon-Lee (●'◡'●) Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">        <link rel="stylesheet"
-              href="https://jokefrelon.github.io/skins/nijigen/css/base.css?1593550019882"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Java IO 文件的读写与高效率IO - Jokeme Blog</title><meta name="description" content="Java IO重在对文件的读写,以及怎样高效率读写"/><meta property="og:description" content="Java IO重在对文件的读写,以及怎样高效率读写"/>    <meta name="keywords" content="Joker,Solo,jokeme.top,jokeme,JokerLee,Blog"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://jokeme.top/images/bk3.png"/><link rel="apple-touch-icon" href="https://jokeme.top/images/bk3.png"><link rel="shortcut icon" type="image/x-icon" href="https://jokeme.top/images/bk3.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Java IO 文件的读写与高效率IO - Jokeme Blog"/><meta property="og:site_name" content="Jokeme Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html?"/><meta property="og:image" content="https://jokeme.top/images/bk3.png"/><link rel="search" type="application/opensearchdescription+xml" title="Java IO 文件的读写与高效率IO - Jokeme Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">        <link rel="stylesheet"
+              href="https://jokefrelon.github.io/skins/nijigen/css/base.css?1616666743925"/>
             <link rel="prev" title="java 泛型,必须要学好的一个基础" href="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html">
             <link rel="next" title="Python 爬虫" href="https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script>
-<meta name="baidu-site-verification" content="sC1e5r8uUo" /></head>
+    <!-- 樱花雨 
+<script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--鼠标点击效果 --><script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <div class="bg"></div>
 <div class="bg bg--1"></div>
@@ -14,18 +18,17 @@
 <div class="bg bg--3"></div>
 <div class="bg bg--4"></div>
 <div class="bg bg--5"></div>
+<div class="bg bg--6"></div>
+<div class="bg bg--7"></div>
 <header class="header">
     <div class="header__wrap">
         <a href="https://jokefrelon.github.io" rel="start" class="header__logo">
-            <i class="icon__home"></i> Frelon-Lee (●'◡'●) Blog
+            <i class="icon__home"></i> Jokeme Blog
         </a>
 
         <nav class="mobile__hidden header__nav">
                 <a href="/my-github-repos" target="_self" rel="section">
-                    <img class="page-icon" src="/images/github-icon.png">我的开源
-                </a>
-                <a href="https://jokefrelon.github.io/dynamic.html" rel="section">
-                    <i class="icon__refresh"></i> 动态
+                    <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
                 </a>
             <a href="https://jokefrelon.github.io/tags.html" rel="section">
                 <i class="icon__tags"></i> 标签墙
@@ -34,7 +37,10 @@
                 <i class="icon__inbox"></i> 存档
             </a>
             <a rel="archive" href="https://jokefrelon.github.io/links.html">
-                <i class="icon__link"></i> 友情链接
+                <i class="icon__link"></i> 友链
+            </a>
+            <a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                <i class="icon__catalina"></i> Catalina
             </a>
             <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
                 <i class="icon__rss"></i> RSS
@@ -51,12 +57,7 @@
         <ul>
                 <li>
                     <a href="/my-github-repos" target="_self" rel="section">
-                        <img class="page-icon" src="/images/github-icon.png">我的开源
-                    </a>
-                </li>
-                <li>
-                    <a href="https://jokefrelon.github.io/dynamic.html" rel="section">
-                        <i class="icon__refresh"></i> 动态
+                        <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
                     </a>
                 </li>
             <li>
@@ -71,9 +72,14 @@
             </li>
             <li>
                 <a rel="archive" href="https://jokefrelon.github.io/links.html">
-                    <i class="icon__link"></i> 友情链接
+                    <i class="icon__link"></i> 友链
                 </a>
             </li>
+	    <li>
+            	<a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                	<i class="icon__catalina"></i> Catalina
+            	</a>
+	    </li>
             <li>
                 <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
                     <i class="icon__rss"></i> RSS
@@ -81,7 +87,8 @@
             </li>
         </ul>
     </main>
-</div><div class="main" id="pjax">
+</div>
+<div class="main" id="pjax">
     
     <div class="content">
         <main id="articlePage">
@@ -89,19 +96,19 @@
                 <div class="item item--active">
                     <time class="vditor-tooltipped vditor-tooltipped__n item__date"
                           aria-label="2020年">
-                    05月
+                        05月
                         <span class="item__day">06</span>
                     </time>
 
                     <h2 class="item__title">
                         <a rel="bookmark" href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">
-                        Java IO 文件的读写与高效率IO
+                            Java IO 文件的读写与高效率IO
                         </a>
                     </h2>
 
                     <div class="item__date--m fn__none">
                         <i class="icon__date"></i>
-                    2020-05-06
+                        2020-05-06
                     </div>
 
                     <div class="ft__center">
@@ -110,21 +117,21 @@
                             <a rel="tag" href="https://jokefrelon.github.io/tags/Java">
                                 Java</a>
                         </span>
-                        <a class="tag" href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html#comments">
-                            <i class="icon__comments"></i> 0 评论
-                        </a>
+                            <a class="tag" href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html#b3logsolocomments">
+                                <i class="icon__comments"></i> <span data-uvstatcmt="1577495753800">0</span> 评论
+                            </a>
                         <span class="tag">
                             <i class="icon__views"></i>
-                        <span data-uvstaturl="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">43</span> 浏览
+                        <span data-uvstaturl="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">0</span> 浏览
                         </span>
                     </div>
 
                     <div class="vditor-reset">
-                    <p></p><h1 id="b3_solo_h1_0">Java-IO💻 Part 1</h1>
+                        <h1 id="toc_h1_0">Java-IO? Part 1</h1>
 <p>Java Input-Output 主要是用于文件的存储和读取，相关操作一般都会放在 Java.io 包中</p>
-<h2 id="b3_solo_h2_1">1 File 类</h2>
+<h2 id="toc_h2_1">1 File 类</h2>
 <p>file 类的方法是我们操作文件必不可少的，是必须要学习的类</p>
-<h3 id="b3_solo_h3_2">1.1 使用示例：</h3>
+<h3 id="toc_h3_2">1.1 使用示例：</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -147,8 +154,8 @@ public class fileClass {
 	}
 }
 </code></pre>
-<h3 id="b3_solo_h3_3">1.2 <strong>File</strong>类常见方法</h3>
-<h4 id="b3_solo_h4_4">1.2.1 获取文件路径</h4>
+<h3 id="toc_h3_3">1.2 <strong>File</strong>类常见方法</h3>
+<h4 id="toc_h4_4">1.2.1 获取文件路径</h4>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -166,7 +173,7 @@ D:\github\Hadoop_build\JavaLearn\a.sh~~~~~a.sh
 </code></pre>
 <p>getPath()只是获取相对路径 &lt; 程序在哪运行，路径就是那里 &gt;</p>
 <p>getAbsolutePath()表示获取绝对路径</p>
-<h4 id="b3_solo_h4_5">1.2.2 获取文件修改时间</h4>
+<h4 id="toc_h4_5">1.2.2 获取文件修改时间</h4>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -191,7 +198,7 @@ DateFormat time = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LON
 String str = time.format(date);
 System.out.println(str);
 </code></pre>
-<h4 id="b3_solo_h4_6">1.2.3 常见操作</h4>
+<h4 id="toc_h4_6">1.2.3 常见操作</h4>
 <pre><code class="language-Java">boolean boof = file.createNewFile();     
 boolean boo  = file.canExecute();        
 boolean booa = file.canRead();           
@@ -203,7 +210,7 @@ boolean bool = file.isFile();
 boolean booz = file.isHidden();          
 </code></pre>
 <p>认识即可，没有难度</p>
-<h4 id="b3_solo_h4_7">1.2.4 获取文件夹内容</h4>
+<h4 id="toc_h4_7">1.2.4 获取文件夹内容</h4>
 <p>当操作文件夹时，肯定要知道这个文件夹里面有什么东西，我们才好操作，常用的方法有两种 <strong>list()</strong> , <strong>listFile()</strong> 但是建议用后者，因为<strong>list()</strong> 有的它也有，他有的方法**list()**没有</p>
 <pre><code class="language-Java">package Java_IO;
 
@@ -233,7 +240,7 @@ System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
 	}
 }
 </code></pre>
-<h4 id="b3_solo_h4_8">1.2.5 文件过滤器</h4>
+<h4 id="toc_h4_8">1.2.5 文件过滤器</h4>
 <pre><code class="language-Java">File[] str1  =  dir.listFiles(new fileFilterByName());
 for (File strr : str1) {
 	System.out.println(strr);
@@ -251,7 +258,7 @@ public class fileFilterByName implements FileFilter {
 	}
 }
 </code></pre>
-<p>它可以过滤出该 📂内的 📂,还可以过滤出 📂内的 📄,只需要把 <strong>fileFilterByName</strong> の <strong>accept()</strong> 方法改一下即可</p>
+<p>它可以过滤出该 ?内的 ?,还可以过滤出 ?内的 ?,只需要把 <strong>fileFilterByName</strong> の <strong>accept()</strong> 方法改一下即可</p>
 <pre><code class="language-java">public boolean accept(File arg0) {
 	return arg0.isDirectory();
 //	return arg0.isFile();
@@ -259,7 +266,7 @@ public class fileFilterByName implements FileFilter {
 //  return arg0.getName().endSWith(".java")
 }
 </code></pre>
-<h5 id="b3_solo_h5_9">1.2.5.1 文件名过滤器</h5>
+<h5 id="toc_h5_9">1.2.5.1 文件名过滤器</h5>
 <pre><code class="language-Java">package Java_IO;
 
 import java.io.File;
@@ -299,8 +306,8 @@ public class FileFilter {
 }
 
 </code></pre>
-<p>这种过滤器不常用，因为需要一个过滤器实现<strong>FileNameFilter</strong>, 实际 coding 我们可以使用<strong>FileFilter</strong> 替代，它不仅仅可以过滤文件夹 📂还可以过滤文件 📃</p>
-<h3 id="b3_solo_h3_10">1.3 递归 获取 📂内的内容</h3>
+<p>这种过滤器不常用，因为需要一个过滤器实现<strong>FileNameFilter</strong>, 实际 coding 我们可以使用<strong>FileFilter</strong> 替代，它不仅仅可以过滤文件夹 ?还可以过滤文件 ?</p>
+<h3 id="toc_h3_10">1.3 递归 获取 ?内的内容</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -345,7 +352,7 @@ public void show(){
 }
 </code></pre>
 <p>这也是一种错误 ❌的递归，方法内部无线调用自己 ✌会导致栈内存溢出</p>
-<h4 id="b3_solo_h4_11">1.3.1 使用递归删除 📂</h4>
+<h4 id="toc_h4_11">1.3.1 使用递归删除 ?</h4>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -375,11 +382,11 @@ public class deleteFiles {
 }
 </code></pre>
 <p>递归删除很简单，只是需要注意，这个删除是不经过回收站的，会被直接删除，不可找回</p>
-<p>还有就是需要判断该 📂有没有权限访问，要不然会报 <strong>java.lang.NullPointerException</strong> 异常，甚至还需要我们自己来抛一些 <strong>IO</strong> 异常</p>
-<h3 id="b3_solo_h3_12">1.4 前三 part 测试</h3>
+<p>还有就是需要判断该 ?有没有权限访问，要不然会报 <strong>java.lang.NullPointerException</strong> 异常，甚至还需要我们自己来抛一些 <strong>IO</strong> 异常</p>
+<h3 id="toc_h3_12">1.4 前三 part 测试</h3>
 <p>需求：</p>
-<pre><code>获取某个📂内所有文件的集合
-获取该📂内某个📂内的.txt文件,并存储到集合中打印🖨出来
+<pre><code>获取某个?内所有文件的集合
+获取该?内某个?内的.txt文件,并存储到集合中打印?出来
 </code></pre>
 <pre><code class="language-java">package Java_IO;
 
@@ -442,8 +449,8 @@ public class fileFilterByName implements FileFilter {
 
 }
 </code></pre>
-<p>给自己点个赞 👍,我真厉害🥰</p>
-<h2 id="b3_solo_h2_13">2 FileOutputStream 向 📄内写入内容</h2>
+<p>给自己点个赞 ?,我真厉害?</p>
+<h2 id="toc_h2_13">2 FileOutputStream 向 ?内写入内容</h2>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -477,13 +484,13 @@ public class writeIntoFile {
 }
 </code></pre>
 <p>写入内容很容易，只需要调用一下<strong>write()<strong>方法即可，但是难点就是处理各种</strong>Exception</strong> ,我们需要考虑到各种各样的异常</p>
-<p>比如 FileNotFoundException,,,NullPointerException 等等等， 因为一旦出现了这些问题我们的代码可能就占用了相关的系统资源，但是程序执行失败后，我们并没有释放该资源，如此循环往复就会导致系统的卡慢，甚至死机重启，这里我们经常使用<strong>try catch finally</strong> 方法来解决，需要执行的代码放在<strong>try</strong> 里面，在<strong>finally</strong> 里面放 <strong>close()<strong>方法，保证我们的代码在申请完资源以后，无论是否报错，都可以被释放掉，还有一点就是如果我们使用</strong>try catch finally</strong> 那我们一定不能在<strong>try</strong>里面 <strong>new</strong> 对象，因为到时候<strong>finally</strong> 关闭资源时会<strong>找不到对象</strong> 🤣的</p>
+<p>比如 FileNotFoundException,,,NullPointerException 等等等， 因为一旦出现了这些问题我们的代码可能就占用了相关的系统资源，但是程序执行失败后，我们并没有释放该资源，如此循环往复就会导致系统的卡慢，甚至死机重启，这里我们经常使用<strong>try catch finally</strong> 方法来解决，需要执行的代码放在<strong>try</strong> 里面，在<strong>finally</strong> 里面放 <strong>close()<strong>方法，保证我们的代码在申请完资源以后，无论是否报错，都可以被释放掉，还有一点就是如果我们使用</strong>try catch finally</strong> 那我们一定不能在<strong>try</strong>里面 <strong>new</strong> 对象，因为到时候<strong>finally</strong> 关闭资源时会<strong>找不到对象</strong> ?的</p>
 <p>还有<strong>write()</strong> 方法是会覆盖掉文件内部的内容的，如果我们需要在当前内容上继续添加内容，那就需要在创建对象时加一个<strong>true</strong> 表示续写该文件，代码如下</p>
 <pre><code class="language-java">FileOutputStream fops = new FileOutputStream("c:\\tempfile\\fops.java",true);
 </code></pre>
-<h2 id="b3_solo_h2_14">3 FileInputStream 读取 📄内容</h2>
+<h2 id="toc_h2_14">3 FileInputStream 读取 ?内容</h2>
 <p>FileInputStream 类和 FileOutputStream 类有许多的共同点，都需要传一个 File 类的对象(new 对象时要保证 Path✔无误，要不然很容易造成空指针异常) 还有就是在使用完资源以后要及时释放掉资源，还有要注意的是异常の处理，如果没有处理好异常也会导致我们无法释放掉资源，导致程序占用过多的系统资源，使系统卡慢</p>
-<h3 id="b3_solo_h3_15">3.1❌ read() 入门级读取</h3>
+<h3 id="toc_h3_15">3.1❌ read() 入门级读取</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -508,7 +515,7 @@ public class readFile {
 }        
 </code></pre>
 <p>日常开发中，基本上用不上 PASS ❌</p>
-<h3 id="b3_solo_h3_16">3.2❌ read() 初级读取</h3>
+<h3 id="toc_h3_16">3.2❌ read() 初级读取</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -532,7 +539,7 @@ public class readFile {
 }            
 </code></pre>
 <p>日常开发中，基本上用不上 PASS ❌</p>
-<h3 id="b3_solo_h3_17">3.3 ✔ read() 进阶级读取</h3>
+<h3 id="toc_h3_17">3.3 ✔ read() 进阶级读取</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -558,7 +565,7 @@ public class readFile {
 }
 </code></pre>
 <p>日常开发中可以使用，✔建议根据需要改变缓冲区的大小，一般建议设置成 :8192</p>
-<h3 id="b3_solo_h3_18">3.4 ✔ read()高级读取</h3>
+<h3 id="toc_h3_18">3.4 ✔ read()高级读取</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -576,10 +583,10 @@ public class readFileAdvantage {
 	}
 }
 </code></pre>
-<p>✔这种是我比较喜欢的一种方法，简洁好用，也不用考虑缓冲区大小 😀,而且一般 File 对象没有问题也就不会出错啊(相对于前面几个),这是重点 ✔,圈起来！下次会考！!!</p>
+<p>✔这种是我比较喜欢的一种方法，简洁好用，也不用考虑缓冲区大小 ?,而且一般 File 对象没有问题也就不会出错啊(相对于前面几个),这是重点 ✔,圈起来！下次会考！!!</p>
 <p>但是！!但是！!但是！ 这种方法只是比较适合处理比较小的文件，如果处理好几个 G 的文件，当场挂..所以呢，还是 进阶 和 高级 一起用</p>
-<h2 id="b3_solo_h2_19">4 FileOutputStream 和 FileInputStream 一起读写文件</h2>
-<h3 id="b3_solo_h3_20">4.1 低级写法</h3>
+<h2 id="toc_h2_19">4 FileOutputStream 和 FileInputStream 一起读写文件</h2>
+<h3 id="toc_h3_20">4.1 低级写法</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -605,7 +612,7 @@ public class IO_CopyFile {
 }
 </code></pre>
 <p>不推荐这种写法，因为效率比较低，读取一个写入一个，太浪费时间</p>
-<h3 id="b3_solo_h3_21">4.2 高级写法</h3>
+<h3 id="toc_h3_21">4.2 高级写法</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.File;
@@ -658,9 +665,9 @@ public class copyFileByBuf {
 </table>
 <p>测试所使用的文件大小为： 584935KB 大约是 571MB</p>
 <p>可以看出 byte 数组的长度也是越大越好的，只要你内存足够大，磁盘性能足够强，理论上是可以做到一秒内复制任何文件的，可是！! 科技日益发达的今天电脑内存和磁盘还依然是一个瓶颈，有待我们突破啊，So 为了适应各种大小的文件，还是选择大小为<strong>8192</strong> 或者<strong>10240</strong> 也是可以的</p>
-<h2 id="b3_solo_h2_22">5 Buffer 缓冲区</h2>
+<h2 id="toc_h2_22">5 Buffer 缓冲区</h2>
 <p>buffer 原理就是调用一片内存，作为缓冲区，然后再为 FileInput/OutputStream 使用，原理和上面的相似</p>
-<h3 id="b3_solo_h3_23">5.1 使用示例</h3>
+<h3 id="toc_h3_23">5.1 使用示例</h3>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.BufferedInputStream;
@@ -694,8 +701,8 @@ public class buffer {
 	}  
 }
 </code></pre>
-<h2 id="b3_solo_h2_24">6 字符读写</h2>
-<h3 id="b3_solo_h3_25">6.1 使用 I/O-Stream-Reader/Writer</h3>
+<h2 id="toc_h2_24">6 字符读写</h2>
+<h3 id="toc_h3_25">6.1 使用 I/O-Stream-Reader/Writer</h3>
 <p>由于中文一个字符占两字节，所以我们不能像读写英文那样，直接操作数据了，</p>
 <pre><code class="language-java">package Java_IO;
 
@@ -726,9 +733,9 @@ public class StreamReader {
 </code></pre>
 <p>中文处理时比较的麻烦，因为各种电脑支持的编码可能不一样，就导致乱码问题，这时候我们在<strong>new</strong> 对象的时候就需要指定我们所需要的编码方式，今天就因为编码就倒腾了半天的时间 ⏰</p>
 <p>所以为了保险起见，在创建 <strong>FileOutputStream</strong> 的时候还是加上 <strong>UTF-8</strong> 好一点</p>
-<h3 id="b3_solo_h3_26">6.2 FileReader/FileWriter 类</h3>
+<h3 id="toc_h3_26">6.2 FileReader/FileWriter 类</h3>
 <p><strong>FileReader/FileWriter</strong> 其实就是简化了<strong>FileOutputStream</strong> ＆ <strong>FileOutputStream</strong> の 使用过程，但是缺点( •̀ ω •́ )y 非常明显，就是不支持设置编码方式，默认的是 <strong>ISO-8859-1 or US-ASCII</strong> ,非常容易导致乱码 ~%?…,# *'☆&amp;℃ $︿★?</p>
-<p>处理乱码也不难，就是不用这个类 🤣</p>
+<p>处理乱码也不难，就是不用这个类 ?</p>
 <p>way 1</p>
 <pre><code class="language-java">BufferedWriter writer = new BufferedWriter (new OutputStreamWriter (new FileOutputStream (filePath,true),"UTF-8"));
 </code></pre>
@@ -737,7 +744,7 @@ public class StreamReader {
 <pre><code class="language-java">Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream ("String"), "UTF-8"));
 </code></pre>
 <p>让<strong>FileWriter</strong> 继承 <strong>Write</strong> の 编码方式，不过也不好用</p>
-<h4 id="b3_solo_h4_27">6.2.1 FileReader /  FileWrite 初级写法</h4>
+<h4 id="toc_h4_27">6.2.1 FileReader /  FileWrite 初级写法</h4>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.FileOutputStream;
@@ -766,7 +773,7 @@ public class fileWriter {
 	}
 }
 </code></pre>
-<h4 id="b3_solo_h4_28">6.2.2 FileReader /  FileWrite 高级写法</h4>
+<h4 id="toc_h4_28">6.2.2 FileReader /  FileWrite 高级写法</h4>
 <pre><code class="language-java">package Java_IO;
 
 import java.io.FileReader;
@@ -792,7 +799,7 @@ public class IO_SimplifyChinese {
 	}
 }
 </code></pre>
-<h3 id="b3_solo_h3_29">6.3 BufferedReader / BufferedWriter</h3>
+<h3 id="toc_h3_29">6.3 BufferedReader / BufferedWriter</h3>
 <p>主要是利用缓冲区来提高读写效率，也没有啥难处，会用就可以了</p>
 <pre><code class="language-java">package Java_IO;
 
@@ -826,67 +833,55 @@ public class Buffered_IO {
 }
 
 </code></pre>
-<h2 id="b3_solo_h2_30">Final	写在最后：</h2>
+<h2 id="toc_h2_30">Final	写在最后：</h2>
 <p>在经过学习后，我发现字节流和字符流都用于复制文件，但字符流的出现主要是为了解决与字符相关的问题，所以不适合复制文件(编码原因),字符流复制文件时可能会出现莫名其妙的问题导致复制后的文件破损无法使用，但字节流就不存在这种问题所以得出</p>
 <pre><code class="language-properties">复制文件时使用字节流:复制文本文件时使用字符流
 </code></pre>
-<p></p>
-                        <div>
-                            <hr>
+                            <div>
+                                <hr>
 作者：<a href="https://jokefrelon.github.io" target="_blank">JokerLee</a><br>
+版权声明: 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-SA</a> 许可协议。<br>
 转载请注明来源：<a href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html" target="_blank">Java IO 文件的读写与高效率IO</a><br>
 <br>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
 
-            <div class="module mobile__hidden">
-                <div class="module__content fn__clear">
-                        <a href="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html" rel="prev" class="fn__left breadcrumb">
+                <div class="module mobile__hidden">
+                    <div class="module__content fn__clear">
+                            <a href="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html" rel="prev" class="fn__left breadcrumb">
+                                旧一篇: java 泛型,必须要学好的一个基础
+                            </a>
+                            <a href="https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html" rel="next"
+                               class="fn__right breadcrumb">
+                                Python 爬虫: 新一篇
+                            </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html" rel="prev" class="breadcrumb">
                             旧一篇: java 泛型,必须要学好的一个基础
                         </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
                         <a href="https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html" rel="next"
-                           class="fn__right breadcrumb">
-                            Python 爬虫: 新一篇
+                           class="breadcrumb">
+                            新一篇: Python 爬虫
                         </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="module mobile__hidden fn__none">
-                <div class="module__content">
-                    <a href="https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html" rel="prev" class="breadcrumb">
-                        旧一篇: java 泛型,必须要学好的一个基础
-                    </a>
-                </div>
-            </div>
-
-            <div class="module mobile__hidden fn__none">
-                <div class="module__content">
-                    <a href="https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html" rel="next"
-                       class="breadcrumb">
-                        新一篇: Python 爬虫
-                    </a>
-                </div>
-            </div>
-
-<div class="comments__item">
-    <div class="comments__meta comments__meta--only">评论</div>
-</div>
-
-<ul class="comments" id="comments">
-</ul>
-
-<div class="comments__item">
-    <div class="comments__meta">
-        发表评论
-    </div>
-    <div class="comments__content">
-        <div class="form">
-            <textarea rows="3" placeholder="发表评论" id="comment"></textarea>
-        </div>
-    </div>
-</div>
+                <div id="gitalk-container" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"
+                     data-name="JokerLee" data-postId="1577495753800"></div>
 
             <div class="fn__flex article__relevant">
                 <div class="fn__flex-1" id="externalRelevantArticlesWrap">
@@ -894,13 +889,13 @@ public class Buffered_IO {
                         <div id="externalRelevantArticles" class="module__list"></div>
                     </div>
                 </div>
-                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp; </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
                 <div class="fn__flex-1" id="randomArticlesWrap">
                     <div class="module">
                         <div id="randomArticles" class="module__list"></div>
                     </div>
                 </div>
-                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp; </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
                 <div class="fn__flex-1" id="relevantArticlesWrap">
                     <div class="module">
                         <div id="relevantArticles" class="module__list"></div>
@@ -914,107 +909,104 @@ public class Buffered_IO {
             <div class="module__list">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#b3_solo_h1_0">Java-IO💻 Part 1</a>
+            <a href="#toc_h1_0">Java-IO? Part 1</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_1">1 File 类</a>
+            <a href="#toc_h2_1">1 File 类</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_2">1.1 使用示例：</a>
+            <a href="#toc_h3_2">1.1 使用示例：</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_3">1.2 File类常见方法</a>
+            <a href="#toc_h3_3">1.2 File类常见方法</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_4">1.2.1 获取文件路径</a>
+            <a href="#toc_h4_4">1.2.1 获取文件路径</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_5">1.2.2 获取文件修改时间</a>
+            <a href="#toc_h4_5">1.2.2 获取文件修改时间</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_6">1.2.3 常见操作</a>
+            <a href="#toc_h4_6">1.2.3 常见操作</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_7">1.2.4 获取文件夹内容</a>
+            <a href="#toc_h4_7">1.2.4 获取文件夹内容</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_8">1.2.5 文件过滤器</a>
+            <a href="#toc_h4_8">1.2.5 文件过滤器</a>
         </li>
         <li class="toc__h5">
-            <a href="#b3_solo_h5_9">1.2.5.1 文件名过滤器</a>
+            <a href="#toc_h5_9">1.2.5.1 文件名过滤器</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_10">1.3 递归 获取 📂内的内容</a>
+            <a href="#toc_h3_10">1.3 递归 获取 ?内的内容</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_11">1.3.1 使用递归删除 📂</a>
+            <a href="#toc_h4_11">1.3.1 使用递归删除 ?</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_12">1.4 前三 part 测试</a>
+            <a href="#toc_h3_12">1.4 前三 part 测试</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_13">2 FileOutputStream 向 📄内写入内容</a>
+            <a href="#toc_h2_13">2 FileOutputStream 向 ?内写入内容</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_14">3 FileInputStream 读取 📄内容</a>
+            <a href="#toc_h2_14">3 FileInputStream 读取 ?内容</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_15">3.1❌ read() 入门级读取</a>
+            <a href="#toc_h3_15">3.1❌ read() 入门级读取</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_16">3.2❌ read() 初级读取</a>
+            <a href="#toc_h3_16">3.2❌ read() 初级读取</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_17">3.3 ✔ read() 进阶级读取</a>
+            <a href="#toc_h3_17">3.3 ✔ read() 进阶级读取</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_18">3.4 ✔ read()高级读取</a>
+            <a href="#toc_h3_18">3.4 ✔ read()高级读取</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_19">4 FileOutputStream 和 FileInputStream 一起读写文件</a>
+            <a href="#toc_h2_19">4 FileOutputStream 和 FileInputStream 一起读写文件</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_20">4.1 低级写法</a>
+            <a href="#toc_h3_20">4.1 低级写法</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_21">4.2 高级写法</a>
+            <a href="#toc_h3_21">4.2 高级写法</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_22">5 Buffer 缓冲区</a>
+            <a href="#toc_h2_22">5 Buffer 缓冲区</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_23">5.1 使用示例</a>
+            <a href="#toc_h3_23">5.1 使用示例</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_24">6 字符读写</a>
+            <a href="#toc_h2_24">6 字符读写</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_25">6.1 使用 I/O-Stream-Reader/Writer</a>
+            <a href="#toc_h3_25">6.1 使用 I/O-Stream-Reader/Writer</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_26">6.2 FileReader/FileWriter 类</a>
+            <a href="#toc_h3_26">6.2 FileReader/FileWriter 类</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_27">6.2.1 FileReader / FileWrite 初级写法</a>
+            <a href="#toc_h4_27">6.2.1 FileReader / FileWrite 初级写法</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_28">6.2.2 FileReader / FileWrite 高级写法</a>
+            <a href="#toc_h4_28">6.2.2 FileReader / FileWrite 高级写法</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_29">6.3 BufferedReader / BufferedWriter</a>
+            <a href="#toc_h3_29">6.3 BufferedReader / BufferedWriter</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_30">Final 写在最后：</a>
+            <a href="#toc_h2_30">Final 写在最后：</a>
         </li>
 </ul>            </div>
         </div>
         <section class="vditor-reset module">
             <main class="module__content">
-                Life is but a span🥰FreLon_Lee🥰
-
-
+                人生没有白走的路,每一步都算数。
 <!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
-
             </main>
         </section>
 
@@ -1025,9 +1017,9 @@ public class Buffered_IO {
         </header>
         <main class="module__content ft__center">
             <img class="side__avatar" src="https://img.hacpai.com/avatar/1575322384198_1579086976432.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="JokerLee"/>
-            记录精彩的Debug人生 <br> <br>
-    <a href="https://hacpai.com/member/JokerLee"
-       title="https://hacpai.com/member/JokerLee"
+            Debug The World <br> <br>
+    <a href="https://ld246.com/member/JokerLee"
+       title="https://ld246.com/member/JokerLee"
        class="user__site"
        target="_blank" rel="noopener nofollow">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -1071,21 +1063,29 @@ public class Buffered_IO {
             </header>
             <main class="module__content fn__clear module__content--three">
                     <a href="https://jokefrelon.github.io/category/Java"
-                       aria-label="1 个标签"
+                       aria-label="10 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         java</a>
                     <a href="https://jokefrelon.github.io/category/python"
-                       aria-label="1 个标签"
+                       aria-label="4 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         Python</a>
                     <a href="https://jokefrelon.github.io/category/Linux"
-                       aria-label="1 个标签"
+                       aria-label="16 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         Linux</a>
                     <a href="https://jokefrelon.github.io/category/links"
-                       aria-label="1 个标签"
+                       aria-label="1 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         Links</a>
+                    <a href="https://jokefrelon.github.io/category/Git"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Git</a>
+                    <a href="https://jokefrelon.github.io/category/clang"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        clang</a>
             </main>
         </div>
 
@@ -1095,7 +1095,7 @@ public class Buffered_IO {
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Linux"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="12 篇文章">
+                       aria-label="16 篇文章">
                         Linux</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Java"
@@ -1110,43 +1110,28 @@ public class Buffered_IO {
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Docker"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="2 篇文章">
+                       aria-label="3 篇文章">
                         Docker</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/intel"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        intel</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/ffmpeg"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        ffmpeg</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/links"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        links</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/WeChat"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        WeChat</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/OpenWrt"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
+                       aria-label="3 篇文章">
                         OpenWrt</a>
                     <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/SpringBoot"
+                       href="https://jokefrelon.github.io/tags/mysql"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        SpringBoot</a>
+                       aria-label="2 篇文章">
+                        mysql</a>
                     <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
+                       href="https://jokefrelon.github.io/tags/GitHub"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        开源</a>
+                       aria-label="2 篇文章">
+                        GitHub</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/ffmpeg"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        ffmpeg</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Solo"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
@@ -1155,104 +1140,58 @@ public class Buffered_IO {
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/nginx"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
+                       aria-label="2 篇文章">
                         nginx</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
+                       aria-label="2 篇文章">
                         日记</a>
                     <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/Frp"
+                       href="https://jokefrelon.github.io/tags/Math"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
                        aria-label="1 篇文章">
-                        Frp</a>
+                        Math</a>
                     <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/GitHub"
+                       href="https://jokefrelon.github.io/tags/brew"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
                        aria-label="1 篇文章">
-                        GitHub</a>
+                        brew</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/WSL2"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
                        aria-label="1 篇文章">
                         WSL2</a>
-            </main>
-        </div>
-
-        <div class="module item">
-            <header class="module__header">评论最多的文章</header>
-            <main class="module__list">
-                <ul>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html">
-                                微信小程序遇到的坑
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/06/14/1592141097046.html">
-                                利用Python爬虫获取bing.com每天的高清壁纸
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html">
-                                收集整理一些我不经常使用,但是使用时又找不到的网站链接
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/07/03/1593768976855.html">
-                                Python 报错集锦
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/07/01/1593533676745.html">
-                                Python 爬虫抓取😳播放源(m3u8)
-                            </a>
-                        </li>
-                </ul>
-            </main>
-        </div>
-
-        <div class="module item">
-            <header class="module__header">访问最多的文章</header>
-            <main class="module__list">
-                <ul>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">
-                                Java IO 文件的读写与高效率IO
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/my-github-repos">
-                                我在 GitHub 上的开源项目
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html">
-                                Solo最简安装
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html">
-                                Java equals方法和contains为什么要重写?
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html">
-                                Java 时间类API的使用
-                            </a>
-                        </li>
-                </ul>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/intel"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        intel</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/links"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        links</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/vscode"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        vscode</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Maven"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Maven</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/clang"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        clang</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/N1"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        N1</a>
             </main>
         </div>
 
@@ -1260,67 +1199,52 @@ public class Buffered_IO {
         <div class="module__header">
             <div class="fn__flex">
                 <a href="https://jokefrelon.github.io/archives.html" class="fn__flex-1 ft__center">
-                    29
+                    49
                     文章
                 </a>
-                    <a href="https://jokefrelon.github.io/dynamic.html" class="fn__flex-1 ft__center">
-                        4
-                        评论
-                    </a>
             </div>
             <br/>
             <div class="fn__flex">
                 <div class="fn__flex-1 ft__center">
                     <span data-uvstaturl="https://jokefrelon.github.io">1685</span> <span class="ft-gray">浏览</span>
                 </div>
-                <div class="fn__flex-1 ft__center">
-                    34 <span class="ft-gray">访客</span>
-                </div>
             </div>
         </div>
     </div>
 </aside>
     
-    </div>
+</div>
 </div>
 <div class="icon__up" onclick="Util.goTop()"></div>
 <footer class="footer">
-    &copy; 2020
-    <a href="https://jokefrelon.github.io">Frelon-Lee (●'◡'●) Blog</a>
-    <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a>  <span class="fn__none--m">&nbsp; • &nbsp;</span>
+    &copy; 2021
+    <a href="https://jokefrelon.github.io">Jokeme Blog</a>
+    <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a>
     <div class="fn__none"></div>
-    <br/>
-
-    Powered by <a href="https://solo.b3log.org" target="_blank">Solo</a>
-    <div class="fn__none"></div>
-    &nbsp; &heartsuit;  &nbsp;
-    Theme nijigen
-    <sup>[<a href="https://github.com/ZEROKISEKI/hexo-theme-gal" target="_blank">ref</a>]</sup>
-    by <a href="http://vanessa.b3log.org" target="_blank">Vanessa</a>
 </footer>
 <div class="icon-up" onclick="Util.goTop()"></div>
 
-<script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1593550019882" charset="utf-8"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/skins/nijigen/js/common.min.js?1593550019882" charset="utf-8"></script>
-<script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
 <script>
-    var Label = {
-        servePath: "https://jokefrelon.github.io",
-        staticServePath: "https://jokefrelon.github.io",
-        luteAvailable: false,
-        hljsStyle: 'github',
-        langLabel: "zh_CN",
-        version: "3.7.0",
-    }
-    Util.init()
+  var Label = {
+    speech: false,
+    servePath: "https://jokefrelon.github.io",
+    staticServePath: "https://jokefrelon.github.io",
+    luteAvailable: false,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: true,
+    articleId: "1577495753800",
+  }
 </script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/nijigen/js/common.min.js?1616666743925" charset="utf-8"></script>
 
 
 <script type="text/javascript">
-    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1593550019882', 'soloPageScript')
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1616666743925', 'soloPageScript')
     var page = new Page({
-        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1577495753800",
         "blogHost": "https://jokefrelon.github.io",
         "randomArticles1Label": "随机阅读：",
@@ -1329,6 +1253,8 @@ public class Buffered_IO {
     $(document).ready(function () {
         page.load();
     page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<header class="module__header">随机阅读</header>');
+    page.loadRelevantArticles('1577495753800', '<header class="module__header">相关阅读</header>');
     Skin.initArticle()
     });
 </script>
@@ -1336,4 +1262,4 @@ public class Buffered_IO {
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 58ms, 2020/07/04 01:28:00 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 267ms, 2021/03/25 21:23:08 -->

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>macOS设置brew安装的软件自启动 - Jokeme Blog</title><meta name="description" content="macOS设置brew安装的软件自启动"/><meta property="og:description" content="macOS设置brew安装的软件自启动"/>    <meta name="keywords" content="Joker,Solo,jokeme.top,jokeme,JokerLee,Blog"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://jokeme.top/images/bk3.png"/><link rel="apple-touch-icon" href="https://jokeme.top/images/bk3.png"><link rel="shortcut icon" type="image/x-icon" href="https://jokeme.top/images/bk3.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="macOS设置brew安装的软件自启动 - Jokeme Blog"/><meta property="og:site_name" content="Jokeme Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html?"/><meta property="og:image" content="https://jokeme.top/images/bk3.png"/><link rel="search" type="application/opensearchdescription+xml" title="macOS设置brew安装的软件自启动 - Jokeme Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html">        <link rel="stylesheet"
+              href="https://jokefrelon.github.io/skins/nijigen/css/base.css?1616666743925"/>
+            <link rel="prev" title="Phicomm N1 刷 OpenWrt 做旁路由" href="https://jokefrelon.github.io/articles/2021/01/28/1611818287056.html">
+            <link rel="next" title="Ubuntu 20.04.2 配置 vsftpd 的脑坑" href="https://jokefrelon.github.io/articles/2021/03/01/1614537942569.html">
+    <!-- 樱花雨 
+<script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--鼠标点击效果 --><script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body>
+<div class="bg"></div>
+<div class="bg bg--1"></div>
+<div class="bg bg--2"></div>
+<div class="bg bg--3"></div>
+<div class="bg bg--4"></div>
+<div class="bg bg--5"></div>
+<div class="bg bg--6"></div>
+<div class="bg bg--7"></div>
+<header class="header">
+    <div class="header__wrap">
+        <a href="https://jokefrelon.github.io" rel="start" class="header__logo">
+            <i class="icon__home"></i> Jokeme Blog
+        </a>
+
+        <nav class="mobile__hidden header__nav">
+                <a href="/my-github-repos" target="_self" rel="section">
+                    <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
+                </a>
+            <a href="https://jokefrelon.github.io/tags.html" rel="section">
+                <i class="icon__tags"></i> 标签墙
+            </a>
+            <a href="https://jokefrelon.github.io/archives.html">
+                <i class="icon__inbox"></i> 存档
+            </a>
+            <a rel="archive" href="https://jokefrelon.github.io/links.html">
+                <i class="icon__link"></i> 友链
+            </a>
+            <a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                <i class="icon__catalina"></i> Catalina
+            </a>
+            <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
+                <i class="icon__rss"></i> RSS
+            </a>
+        </nav>
+
+    </div>
+</header>
+<div class="header__m fn__none">
+    <i class="icon__list fn__none" onclick="$(this).next().slideToggle()"></i>
+    <main class="module__list fn__none"></main>
+    <i class="icon__more" onclick="$(this).next().slideToggle()"></i>
+    <main class="module__list">
+        <ul>
+                <li>
+                    <a href="/my-github-repos" target="_self" rel="section">
+                        <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
+                    </a>
+                </li>
+            <li>
+                <a href="https://jokefrelon.github.io/tags.html" rel="section">
+                    <i class="icon__tags"></i> 标签墙
+                </a>
+            </li>
+            <li>
+                <a href="https://jokefrelon.github.io/archives.html">
+                    <i class="icon__inbox"></i> 存档
+                </a>
+            </li>
+            <li>
+                <a rel="archive" href="https://jokefrelon.github.io/links.html">
+                    <i class="icon__link"></i> 友链
+                </a>
+            </li>
+	    <li>
+            	<a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                	<i class="icon__catalina"></i> Catalina
+            	</a>
+	    </li>
+            <li>
+                <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
+                    <i class="icon__rss"></i> RSS
+                </a>
+            </li>
+        </ul>
+    </main>
+</div>
+<div class="main" id="pjax">
+    
+    <div class="content">
+        <main id="articlePage">
+            <div class="article-list">
+                <div class="item item--active">
+                    <time class="vditor-tooltipped vditor-tooltipped__n item__date"
+                          aria-label="2021年">
+                        03月
+                        <span class="item__day">22</span>
+                    </time>
+
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html">
+                            macOS设置brew安装的软件自启动
+                        </a>
+                    </h2>
+
+                    <div class="item__date--m fn__none">
+                        <i class="icon__date"></i>
+                        2021-03-22
+                    </div>
+
+                    <div class="ft__center">
+                        <span class="tag">
+                            <i class="icon__tags"></i>
+                            <a rel="tag" href="https://jokefrelon.github.io/tags/macOS">
+                                macOS</a>,
+                            <a rel="tag" href="https://jokefrelon.github.io/tags/brew">
+                                brew</a>
+                        </span>
+                            <a class="tag" href="https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html#b3logsolocomments">
+                                <i class="icon__comments"></i> <span data-uvstatcmt="1614003754505">0</span> 评论
+                            </a>
+                        <span class="tag">
+                            <i class="icon__views"></i>
+                        <span data-uvstaturl="https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html">0</span> 浏览
+                        </span>
+                    </div>
+
+                    <div class="vditor-reset">
+                        <h2 id="toc_h2_0">1. Home-brew 简介</h2>
+<p>先介绍一下本篇文章的主角：<strong><a href="https://brew.sh/" target="_blank">Home-brew</a></strong>，它是一款<strong>macOS</strong>的软件包管理器，当然也同样适用于<strong>Linux</strong>（不会真的有人 Linux 服务器用 brew 吧？）。</p>
+<p>它的官网上有关于 brew 非常详细的文档，大家可以自己去看看。介绍了以后就到了我们的安装环节了！</p>
+<h2 id="toc_h2_1">2. 安装 Brew</h2>
+<p>安装 brew 非常的简单，就需要一条命令就可以了，当然大家 99% 会遇到网络问题，安装过程中建议最好用 v 要不然缓慢的到超时的网络会让你年轻漂亮有活力的 ?！</p>
+<pre><code class="language-shell">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+</code></pre>
+<h2 id="toc_h2_2">3. brew 换源</h2>
+<p>平时我们执行 brew 命令安装软件的时候，跟以下 3 个仓库地址有关：</p>
+<ol>
+<li>brew.git</li>
+<li>homebrew-core.git</li>
+<li>homebrew-bottles</li>
+</ol>
+<p>通过以下操作将这 3 个仓库地址全部替换为 Alibaba 提供的地址</p>
+<h3 id="toc_h3_3">1. 替换 / 还原 brew.git 仓库地址</h3>
+<pre><code># 替换成阿里巴巴的 brew.git 仓库地址:
+cd "$(brew --repo)"
+git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
+#=======================================================
+# 还原为官方提供的 brew.git 仓库地址
+cd "$(brew --repo)"
+git remote set-url origin https://github.com/Homebrew/brew.git
+</code></pre>
+<h3 id="toc_h3_4">2. 替换 / 还原 homebrew-core.git 仓库地址</h3>
+<pre><code># 替换成阿里巴巴的 homebrew-core.git 仓库地址:
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+#=======================================================
+# 还原为官方提供的 homebrew-core.git 仓库地址
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+</code></pre>
+<h3 id="toc_h3_5">3. 替换 / 还原 homebrew-bottles 访问地址</h3>
+<p>这个步骤跟你的 macOS 系统使用的 shell 版本有关系</p>
+<p>所以，先来查看当前使用的 shell 版本</p>
+<pre><code>echo $SHELL
+# 如果你的输出结果是 /bin/zsh，参考?的 zsh 终端操作方式
+# 如果你的输出结果是 /bin/bash，参考?的 bash 终端操作方式
+</code></pre>
+<h4 id="toc_h4_6">3.1 zsh 终端操作方式</h4>
+<pre><code># 替换成阿里巴巴的 homebrew-bottles 访问地址:
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+#=======================================================
+# 还原为官方提供的 homebrew-bottles 访问地址
+vi ~/.zshrc
+# 然后，删除 HOMEBREW_BOTTLE_DOMAIN 这一行配置
+source ~/.zshrc
+</code></pre>
+<h4 id="toc_h4_7">3.2 bash 终端操作方式</h4>
+<pre><code># 替换 homebrew-bottles 访问 URL:
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' &gt;&gt; ~/.bash_profile
+source ~/.bash_profile
+#=======================================================
+# 还原为官方提供的 homebrew-bottles 访问地址
+vi ~/.bash_profile
+# 然后，删除 HOMEBREW_BOTTLE_DOMAIN 这一行配置
+source ~/.bash_profile
+</code></pre>
+<h2 id="toc_h2_8">4. 安装软件</h2>
+<p>当我们已经配置好国内源时，我们就可以正式使用 brew 来安装一些软件了</p>
+<p>eg：</p>
+<pre><code>JokerMBP L-🌵-轩-🍂-X ~ 
+812 ◯ : brew install nginx                                                ⏎ [~]
+==&gt; Downloading https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/bottles/ng
+==&gt; Downloading from https://d29vzk4ow07wi7.cloudfront.net/9deda8734db308f21e3c8
+######################################################################## 100.0%
+==&gt; Pouring nginx-1.19.5.big_sur.bottle.tar.gz
+==&gt; Caveats
+Docroot is: /usr/local/var/www
+
+The default port has been set in /usr/local/etc/nginx/nginx.conf to 8080 so that
+nginx can run without sudo.
+
+nginx will load all files in /usr/local/etc/nginx/servers/.
+
+To have launchd start nginx now and restart at login:
+  brew services start nginx
+Or, if you don't want/need a background service you can just run:
+  nginx
+==&gt; Summary
+🍺  /usr/local/Cellar/nginx/1.19.5: 25 files, 2.2MB
+==&gt; `brew cleanup` has not been run in 30 days, running now...
+Pruned 0 symbolic links and 1 directories from /usr/local
+</code></pre>
+<p>可以看到在安装完成后 brew 给了我们很多有用的信息</p>
+<p>我先来总结一下：</p>
+<p>1：<strong>Docroot is: /usr/local/var/www</strong></p>
+<p>默认文档位置在 <strong>/usr/local/var/www</strong></p>
+<p>2：<strong>The default port has been set in /usr/local/etc/nginx/nginx.conf to 8080</strong></p>
+<p>你丫的没有用<strong>sudo</strong>安装，我只能把默认端口给设置为 8080，你丫要是想改默认端口就要修改 <strong>/usr/local/etc/nginx/nginx.conf</strong>里的配置</p>
+<p>3：<strong>To have launchd start nginx now and restart at login: brew services start nginx</strong></p>
+<p>你小子要想让 nginx 开机自启动就要运行： <code>brew services start nginx</code></p>
+<p>4：<strong>if you don't want/need a background service you can just run: nginx</strong></p>
+<p>你小子 <del>要死</del> 要是想让 nginx 不开机自启动，直接运行命令： <code>nginx</code> 就可以了。</p>
+<p>就这一小段话，如果你没有注意，或者直接忽略了，那你可能在以后的使用过程中就会遇到很多的麻烦事！而且百度还可能找不到问题的答案！所以我就建议大家在安装完软件以后留意一下这个<strong>Tips</strong>。</p>
+<h2 id="toc_h2_9">5. 设置软件开机自启</h2>
+<p>既然 brew 可以设置开机自启动那这篇文章还有啥意义？</p>
+<p>其实只是想让大家了解 macOS 开机自启的原理而已</p>
+<p>现在大家应该都知道了 brew 安装软件的具体位置了，没错就是在 <code>/usr/local/Cellar</code> 文件夹下面，比如说我安装的 nginx 就在 <code>/usr/local/Cellar/nginx/</code> 下面。我们不妨看看文件夹里面有啥：</p>
+<pre><code class="language-shell">JokerMBP L-?-轩-?-X /usr/local/Cellar/nginx 
+978 ◯ : ls 1.19.5                                                                                                                                                                                                                       total 640
+-rw-r--r--  1 frelon  staff   300K 11 24 23:06 CHANGES
+-rw-r--r--  1 frelon  staff   791B  2 22 20:09 INSTALL_RECEIPT.json
+-rw-r--r--  1 frelon  staff   1.4K 11 24 23:06 LICENSE
+-rw-r--r--  1 frelon  staff    49B 11 24 23:06 README
+drwxr-xr-x  3 frelon  staff    96B 11 24 23:06 bin
+-rw-r--r--  1 frelon  staff   571B  2 22 20:09 homebrew.mxcl.nginx.plist
+lrwxr-xr-x  1 frelon  staff    16B  2 22 20:09 html -&gt; ../../../var/www
+drwxr-xr-x  4 frelon  staff   128B 11 24 23:06 share
+</code></pre>
+<p>可以看到啊，哪里有一个显眼的 ==.plist== 结尾的文件，此时此刻我相信大家心里面肯定有答案了，开机自启动肯定和这个文件有着千丝万缕的关系。大家不要急哈，一步一步来！先把这个文件软连接到 <code>/Library/LaunchAgents/</code> 目录下，然后就可以执行</p>
+<pre><code>launchctl load /Library/LaunchAgents/homebrew.mxcl.xxx.plist
+</code></pre>
+<p>此时此刻这个软件就可以开机自启了！要知道有一些小众软件并不能通过 brew 安装，我们只能手动编译安装，这个时候如果我们想要使它开机自启动怎么办？没有了 brew 是不是突然就不知所措了！其实这个 ==.plist== 文件我们自己也是可以手动编写的，我们再通过上面的步骤是不是就可以很容易的就让一个自己编译的软件开机自启动了。</p>
+<p>本文参考博客园用户：<a href="https://www.cnblogs.com/wuygblog/" target="_blank">wygbbb</a> &amp; <a href="https://www.cnblogs.com/tulintao/" target="_blank">tulintao</a> 的文章而写，侵联删。</p>
+                            <div>
+                                <hr>
+作者：<a href="https://jokefrelon.github.io" target="_blank">JokerLee</a><br>
+版权声明: 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-SA</a> 许可协议。<br>
+转载请注明来源：<a href="https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html" target="_blank">macOS设置brew安装的软件自启动</a><br>
+<br>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="module mobile__hidden">
+                    <div class="module__content fn__clear">
+                            <a href="https://jokefrelon.github.io/articles/2021/01/28/1611818287056.html" rel="prev" class="fn__left breadcrumb">
+                                旧一篇: Phicomm N1 刷 OpenWrt 做旁路由
+                            </a>
+                            <a href="https://jokefrelon.github.io/articles/2021/03/01/1614537942569.html" rel="next"
+                               class="fn__right breadcrumb">
+                                Ubuntu 20.04.2 配置 vsftpd 的脑坑: 新一篇
+                            </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2021/01/28/1611818287056.html" rel="prev" class="breadcrumb">
+                            旧一篇: Phicomm N1 刷 OpenWrt 做旁路由
+                        </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2021/03/01/1614537942569.html" rel="next"
+                           class="breadcrumb">
+                            新一篇: Ubuntu 20.04.2 配置 vsftpd 的脑坑
+                        </a>
+                    </div>
+                </div>
+                <div id="gitalk-container" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"
+                     data-name="JokerLee" data-postId="1614003754505"></div>
+
+            <div class="fn__flex article__relevant">
+                <div class="fn__flex-1" id="externalRelevantArticlesWrap">
+                    <div class="module">
+                        <div id="externalRelevantArticles" class="module__list"></div>
+                    </div>
+                </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+                <div class="fn__flex-1" id="randomArticlesWrap">
+                    <div class="module">
+                        <div id="randomArticles" class="module__list"></div>
+                    </div>
+                </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
+                <div class="fn__flex-1" id="relevantArticlesWrap">
+                    <div class="module">
+                        <div id="relevantArticles" class="module__list"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+<aside class="side">
+        <div class="module">
+            <div class="module__list">
+<ul class="article__toc">
+        <li class="toc__h2">
+            <a href="#toc_h2_0">1. Home-brew 简介</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_1">2. 安装 Brew</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_2">3. brew 换源</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_3">1. 替换 / 还原 brew.git 仓库地址</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_4">2. 替换 / 还原 homebrew-core.git 仓库地址</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#toc_h3_5">3. 替换 / 还原 homebrew-bottles 访问地址</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_6">3.1 zsh 终端操作方式</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#toc_h4_7">3.2 bash 终端操作方式</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_8">4. 安装软件</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#toc_h2_9">5. 设置软件开机自启</a>
+        </li>
+</ul>            </div>
+        </div>
+        <section class="vditor-reset module">
+            <main class="module__content">
+                人生没有白走的路,每一步都算数。
+<!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
+            </main>
+        </section>
+
+
+    <div class="module item">
+        <header class="module__header ft__center">
+            JokerLee
+        </header>
+        <main class="module__content ft__center">
+            <img class="side__avatar" src="https://img.hacpai.com/avatar/1575322384198_1579086976432.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="JokerLee"/>
+            Debug The World <br> <br>
+    <a href="https://ld246.com/member/JokerLee"
+       title="https://ld246.com/member/JokerLee"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/jokefrelon"
+           title="https://github.com/jokefrelon"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://telegram.me/jokemelee"
+           title="https://telegram.me/jokemelee"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M12.036 27.787c-0.952 0-0.791-0.361-1.119-1.266l-2.805-9.23 21.577-12.802z"></path><path d="M12.036 27.787c0.736 0 1.060-0.336 1.474-0.738l3.923-3.811-4.896-2.953z"></path><path d="M12.536 20.285l11.857 8.76c1.354 0.747 2.331 0.361 2.668-1.256l4.828-22.745c0.496-1.983-0.752-2.88-2.046-2.294l-28.348 10.933c-1.934 0.776-1.925 1.857-0.352 2.338l7.276 2.267 16.838-10.621c0.794-0.48 1.525-0.223 0.926 0.309z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=2643551148"
+           title="2643551148"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        </main>
+    </div>
+
+        <div class="module item">
+            <header class="module__header">
+                分类
+            </header>
+            <main class="module__content fn__clear module__content--three">
+                    <a href="https://jokefrelon.github.io/category/Java"
+                       aria-label="10 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        java</a>
+                    <a href="https://jokefrelon.github.io/category/python"
+                       aria-label="4 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Python</a>
+                    <a href="https://jokefrelon.github.io/category/Linux"
+                       aria-label="16 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Linux</a>
+                    <a href="https://jokefrelon.github.io/category/links"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Links</a>
+                    <a href="https://jokefrelon.github.io/category/Git"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Git</a>
+                    <a href="https://jokefrelon.github.io/category/clang"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        clang</a>
+            </main>
+        </div>
+
+        <div class="module item">
+            <header class="module__header">标签</header>
+            <main class="module__content--three module__content fn__clear">
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Linux"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="16 篇文章">
+                        Linux</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Java"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="10 篇文章">
+                        Java</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/python"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="4 篇文章">
+                        python</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Docker"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="3 篇文章">
+                        Docker</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/OpenWrt"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="3 篇文章">
+                        OpenWrt</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/ffmpeg"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        ffmpeg</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Solo"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Solo</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/nginx"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        nginx</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        日记</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/mysql"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        mysql</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/GitHub"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        GitHub</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/intel"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        intel</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/links"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        links</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/vscode"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        vscode</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Maven"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Maven</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/clang"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        clang</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/N1"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        N1</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/WeChat"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        WeChat</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/SpringBoot"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        SpringBoot</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Git"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Git</a>
+            </main>
+        </div>
+
+    <div class="module item">
+        <div class="module__header">
+            <div class="fn__flex">
+                <a href="https://jokefrelon.github.io/archives.html" class="fn__flex-1 ft__center">
+                    49
+                    文章
+                </a>
+            </div>
+            <br/>
+            <div class="fn__flex">
+                <div class="fn__flex-1 ft__center">
+                    <span data-uvstaturl="https://jokefrelon.github.io">1685</span> <span class="ft-gray">浏览</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+    
+</div>
+</div>
+<div class="icon__up" onclick="Util.goTop()"></div>
+<footer class="footer">
+    &copy; 2021
+    <a href="https://jokefrelon.github.io">Jokeme Blog</a>
+    <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a>
+    <div class="fn__none"></div>
+</footer>
+<div class="icon-up" onclick="Util.goTop()"></div>
+
+<script>
+  var Label = {
+    speech: false,
+    servePath: "https://jokefrelon.github.io",
+    staticServePath: "https://jokefrelon.github.io",
+    luteAvailable: false,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: true,
+    articleId: "1614003754505",
+  }
+</script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/nijigen/js/common.min.js?1616666743925" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1616666743925', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1614003754505",
+        "blogHost": "https://jokefrelon.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<header class="module__header">随机阅读</header>');
+    page.loadRelevantArticles('1614003754505', '<header class="module__header">相关阅读</header>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 262ms, 2021/03/25 21:23:06 -->

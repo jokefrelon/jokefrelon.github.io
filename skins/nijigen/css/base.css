@@ -354,6 +354,9 @@ blockquote {
 .icon__rss:before {
     content: "\e901"
 }
+.icon__catalina:before {
+    content: "\e900"
+}
 .icon__more:before {
     content: "\e902"
 }
@@ -1859,13 +1862,10 @@ blockquote {
 .user__site:hover {
     color: #b94a48
 }
-body {
-    cursor: url(../images/cursor.cur), url(../images/cursor.cur), auto
-}
+
 a {
     -webkit-transition: all .3s;
     transition: all .3s;
-    cursor: url(../images/pointer.cur), url(../images/pointer.cur), auto
 }
 .vditor-reset img {
     vertical-align: sub
@@ -1955,61 +1955,71 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url(https://cdn.jsdelivr.net/gh/88250/solo@44ef7a0/src/main/resources/skins/nijigen/images/background1.jpg);
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina-11a5de7a.jpg);
     background-size: cover;
     background-position: 50%;
     z-index: -1;
-    -webkit-animation: imageAnimation 36s linear 0s infinite;
-    animation: imageAnimation 36s linear 0s infinite;
+    -webkit-animation: imageAnimation 42s linear 0s infinite;
+    animation: imageAnimation 42s linear 0s infinite;
     opacity: 0
 }
 .bg--1 {
-    background-image: url(https://cdn.jsdelivr.net/gh/88250/solo@44ef7a0/src/main/resources/skins/nijigen/images/background2.jpg);
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina3-0ed062aa.jpg );
     -webkit-animation-delay: 6s;
     animation-delay: 6s
 }
 .bg--2 {
-    background-image: url(https://cdn.jsdelivr.net/gh/88250/solo@44ef7a0/src/main/resources/skins/nijigen/images/background3.jpg);
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina4-2853f94e.jpg);
     -webkit-animation-delay: 12s;
     animation-delay: 12s
 }
 .bg--3 {
-    background-image: url(https://cdn.jsdelivr.net/gh/88250/solo@44ef7a0/src/main/resources/skins/nijigen/images/background4.jpg);
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina5-27fa552e.jpg);
     -webkit-animation-delay: 18s;
     animation-delay: 18s
 }
 .bg--4 {
-    background-image: url(https://cdn.jsdelivr.net/gh/88250/solo@44ef7a0/src/main/resources/skins/nijigen/images/background5.jpg);
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina6-c60a10c7.jpg);
     -webkit-animation-delay: 24s;
     animation-delay: 24s
 }
 .bg--5 {
-    background-image: url(https://cdn.jsdelivr.net/gh/88250/solo@44ef7a0/src/main/resources/skins/nijigen/images/background6.jpg);
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina7-feec6da9.jpg);
     -webkit-animation-delay: 30s;
     animation-delay: 30s
+}
+.bg--6 {
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina1-633ad1c3.jpg);
+    -webkit-animation-delay: 36s;
+    animation-delay: 36s
+}
+.bg--7 {
+    background-image: url(https://b3logfile.com/file/2020/07/Catalina2-2584e471.jpg);
+    -webkit-animation-delay: 42s;
+    animation-delay: 42s
 }
 @-webkit-keyframes imageAnimation {
     0% {
         opacity: 0;
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in
+/*        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in*/
     }
     8% {
         opacity: 1;
-        -webkit-transform: scale(1.05);
+/*        -webkit-transform: scale(1.05);
         transform: scale(1.05);
         -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out
+        animation-timing-function: ease-out*/
     }
     17% {
         opacity: 1;
-        -webkit-transform: scale(1.1) rotate(0deg);
-        transform: scale(1.1) rotate(0deg)
+/*        -webkit-transform: scale(1.1) rotate(0deg);
+        transform: scale(1.1) rotate(0deg)*/
     }
     25% {
-        opacity: 0;
-        -webkit-transform: scale(1.1) rotate(0deg);
-        transform: scale(1.1) rotate(0deg)
+        opacity: 0.1;
+/*        -webkit-transform: scale(1.1) rotate(0deg);
+        transform: scale(1.1) rotate(0deg)*/
     }
     to {
         opacity: 0
@@ -2018,25 +2028,25 @@ a {
 @keyframes imageAnimation {
     0% {
         opacity: 0;
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in
+/*        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in*/
     }
     8% {
         opacity: 1;
-        -webkit-transform: scale(1.05);
+/*        -webkit-transform: scale(1.05);
         transform: scale(1.05);
         -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out
+        animation-timing-function: ease-out*/
     }
     17% {
         opacity: 1;
-        -webkit-transform: scale(1.1) rotate(0deg);
-        transform: scale(1.1) rotate(0deg)
+/*        -webkit-transform: scale(1.1) rotate(0deg);
+        transform: scale(1.1) rotate(0deg)*/
     }
     25% {
-        opacity: 0;
-        -webkit-transform: scale(1.1) rotate(0deg);
-        transform: scale(1.1) rotate(0deg)
+        opacity: 0.1;
+/*        -webkit-transform: scale(1.1) rotate(0deg);
+        transform: scale(1.1) rotate(0deg)*/
     }
     to {
         opacity: 0

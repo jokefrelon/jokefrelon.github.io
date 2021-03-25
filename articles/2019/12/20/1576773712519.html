@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Java Collection学习 - Frelon-Lee (●'◡'●) Blog</title><meta name="description" content="Java Collection学习的笔记,😁里面也有我踩得坑,值得记录下来,引以为戒"/><meta property="og:description" content="Java Collection学习的笔记,😁里面也有我踩得坑,值得记录下来,引以为戒"/>    <meta name="keywords" content="Solo,frelon,jokeme"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="/images/bk.png"/><link rel="apple-touch-icon" href="/images/bk.png"><link rel="shortcut icon" type="image/x-icon" href="/images/bk.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Java Collection学习 - Frelon-Lee (●'◡'●) Blog"/><meta property="og:site_name" content="Frelon-Lee (●&#39;◡&#39;●) Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html?"/><meta property="og:image" content="/images/bk.png"/><link rel="search" type="application/opensearchdescription+xml" title="Java Collection学习 - Frelon-Lee (●'◡'●) Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html">        <link rel="stylesheet"
-              href="https://jokefrelon.github.io/skins/nijigen/css/base.css?1593550019882"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Java Collection学习 - Jokeme Blog</title><meta name="description" content="Java Collection学习的笔记,?里面也有我踩得坑,值得记录下来,引以为戒"/><meta property="og:description" content="Java Collection学习的笔记,?里面也有我踩得坑,值得记录下来,引以为戒"/>    <meta name="keywords" content="Joker,Solo,jokeme.top,jokeme,JokerLee,Blog"/><link rel="dns-prefetch" href="https://jokefrelon.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://jokefrelon.github.io"><link rel="icon" type="image/png" href="https://jokeme.top/images/bk3.png"/><link rel="apple-touch-icon" href="https://jokeme.top/images/bk3.png"><link rel="shortcut icon" type="image/x-icon" href="https://jokeme.top/images/bk3.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Java Collection学习 - Jokeme Blog"/><meta property="og:site_name" content="Jokeme Blog"/><meta property="og:url"      content="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html?"/><meta property="og:image" content="https://jokeme.top/images/bk3.png"/><link rel="search" type="application/opensearchdescription+xml" title="Java Collection学习 - Jokeme Blog" href="/opensearch.xml"><link href="https://jokefrelon.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://jokefrelon.github.io/manifest.json">        <link rel="canonical" href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html">        <link rel="stylesheet"
+              href="https://jokefrelon.github.io/skins/nijigen/css/base.css?1616666743925"/>
             <link rel="prev" title="Solo最简安装" href="https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html">
             <link rel="next" title="Java equals方法和contains为什么要重写?" href="https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script>
-<meta name="baidu-site-verification" content="sC1e5r8uUo" /></head>
+    <!-- 樱花雨 
+<script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--鼠标点击效果 --><script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <div class="bg"></div>
 <div class="bg bg--1"></div>
@@ -14,18 +18,17 @@
 <div class="bg bg--3"></div>
 <div class="bg bg--4"></div>
 <div class="bg bg--5"></div>
+<div class="bg bg--6"></div>
+<div class="bg bg--7"></div>
 <header class="header">
     <div class="header__wrap">
         <a href="https://jokefrelon.github.io" rel="start" class="header__logo">
-            <i class="icon__home"></i> Frelon-Lee (●'◡'●) Blog
+            <i class="icon__home"></i> Jokeme Blog
         </a>
 
         <nav class="mobile__hidden header__nav">
                 <a href="/my-github-repos" target="_self" rel="section">
-                    <img class="page-icon" src="/images/github-icon.png">我的开源
-                </a>
-                <a href="https://jokefrelon.github.io/dynamic.html" rel="section">
-                    <i class="icon__refresh"></i> 动态
+                    <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
                 </a>
             <a href="https://jokefrelon.github.io/tags.html" rel="section">
                 <i class="icon__tags"></i> 标签墙
@@ -34,7 +37,10 @@
                 <i class="icon__inbox"></i> 存档
             </a>
             <a rel="archive" href="https://jokefrelon.github.io/links.html">
-                <i class="icon__link"></i> 友情链接
+                <i class="icon__link"></i> 友链
+            </a>
+            <a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                <i class="icon__catalina"></i> Catalina
             </a>
             <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
                 <i class="icon__rss"></i> RSS
@@ -51,12 +57,7 @@
         <ul>
                 <li>
                     <a href="/my-github-repos" target="_self" rel="section">
-                        <img class="page-icon" src="/images/github-icon.png">我的开源
-                    </a>
-                </li>
-                <li>
-                    <a href="https://jokefrelon.github.io/dynamic.html" rel="section">
-                        <i class="icon__refresh"></i> 动态
+                        <img class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源
                     </a>
                 </li>
             <li>
@@ -71,9 +72,14 @@
             </li>
             <li>
                 <a rel="archive" href="https://jokefrelon.github.io/links.html">
-                    <i class="icon__link"></i> 友情链接
+                    <i class="icon__link"></i> 友链
                 </a>
             </li>
+	    <li>
+            	<a rel="section" href="https://jokefrelon.github.io/catalina.html">
+                	<i class="icon__catalina"></i> Catalina
+            	</a>
+	    </li>
             <li>
                 <a rel="alternate" href="https://jokefrelon.github.io/rss.xml" rel="section">
                     <i class="icon__rss"></i> RSS
@@ -81,7 +87,8 @@
             </li>
         </ul>
     </main>
-</div><div class="main" id="pjax">
+</div>
+<div class="main" id="pjax">
     
     <div class="content">
         <main id="articlePage">
@@ -89,19 +96,19 @@
                 <div class="item item--active">
                     <time class="vditor-tooltipped vditor-tooltipped__n item__date"
                           aria-label="2020年">
-                    05月
+                        05月
                         <span class="item__day">06</span>
                     </time>
 
                     <h2 class="item__title">
                         <a rel="bookmark" href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html">
-                        Java Collection学习
+                            Java Collection学习
                         </a>
                     </h2>
 
                     <div class="item__date--m fn__none">
                         <i class="icon__date"></i>
-                    2020-05-06
+                        2020-05-06
                     </div>
 
                     <div class="ft__center">
@@ -110,22 +117,22 @@
                             <a rel="tag" href="https://jokefrelon.github.io/tags/Java">
                                 Java</a>
                         </span>
-                        <a class="tag" href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html#comments">
-                            <i class="icon__comments"></i> 0 评论
-                        </a>
+                            <a class="tag" href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html#b3logsolocomments">
+                                <i class="icon__comments"></i> <span data-uvstatcmt="1576773712519">0</span> 评论
+                            </a>
                         <span class="tag">
                             <i class="icon__views"></i>
-                        <span data-uvstaturl="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html">10</span> 浏览
+                        <span data-uvstaturl="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html">0</span> 浏览
                         </span>
                     </div>
 
                     <div class="vditor-reset">
-                    <p></p><h1 id="b3_solo_h1_0">🥰<strong>collection</strong>集合</h1>
+                        <h1 id="toc_h1_0">?<strong>collection</strong>集合</h1>
 <pre><code class="language-properties">collection--|
 		   |--list:有序,有索引,允许重复元素
 		   |--set:不允许重复元素,元素存取无序
 </code></pre>
-<h2 id="b3_solo_h2_1">1.共性功能</h2>
+<h2 id="toc_h2_1">1.共性功能</h2>
 <p>a.添加</p>
 <pre><code class="language-java">Boolean add (Obj obj);//添加单个对象
 Boolean addAll (Collection c);//添加一组的collection的对象
@@ -150,20 +157,20 @@ toArray([]);
 <p>f.迭代器</p>
 <pre><code class="language-java">Iterator iterator();
 </code></pre>
-<h2 id="b3_solo_h2_2">2. <strong>List</strong>集合</h2>
-<h3 id="b3_solo_h3_3">2.1 <strong>list</strong>集合的具体子类</h3>
+<h2 id="toc_h2_2">2. <strong>List</strong>集合</h2>
+<h3 id="toc_h3_3">2.1 <strong>list</strong>集合的具体子类</h3>
 <pre><code class="language-properties">List----
 	|-- Vector:数组数据结构,长度可变,线程同步&lt;多线程安全&gt;,但是速度比较慢(现在已经不常用-被ArrayList替代),长度按数组长度的100%延长
 	|-- ArrayList:数组结构,长度可变,线程不同步&lt;多线程不安全&gt;.查,速度快,增 删 改速度慢,长度按数组长度的50%延长
 	|-- LinkedList:链表结构,线程不同步&lt;多线程不安全&gt;,增,删,改,速度快,查 速度慢
 </code></pre>
-<h3 id="b3_solo_h3_4">2.2  迭代器使用注意</h3>
+<h3 id="toc_h3_4">2.2  迭代器使用注意</h3>
 <pre><code class="language-properties">Exception in thread "main" java.util.ConcurrentModificationException
 	at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
 	at java.util.ArrayList$Itr.next(Unknown Source)
 </code></pre>
 <p>遇到这种在使用迭代器时还修改迭代器内元素的时候，<strong>JVM</strong>会报错，这时候就需要用<strong>ListIterator</strong></p>
-<h3 id="b3_solo_h3_5">2.3 犯错实记 😖:</h3>
+<h3 id="toc_h3_5">2.3 犯错实记 ?:</h3>
 <pre><code class="language-java">package sourceCode;
 
 import java.util.ArrayList;
@@ -269,9 +276,9 @@ public class person {
 </code></pre>
 <p>这就是导致我卡了两天的细节，我用<strong>List</strong> <strong>new</strong>对象以后代码完美执行了</p>
 <p>这就是因为没有掌握面向对象编程的思想，犯下的一个低级错误</p>
-<h4 id="b3_solo_h4_6"><a href="http://www.jokeme.top/articles/2019/12/20/1576774367244.html" target="_blank">重写 equals和hashcode</a></h4>
-<h3 id="b3_solo_h3_7">2.4 LinkedList</h3>
-<h4 id="b3_solo_h4_8">a.特有方法</h4>
+<h4 id="toc_h4_6"><a href="http://www.jokeme.top/articles/2019/12/20/1576774367244.html" target="_blank">重写 equals和hashcode</a></h4>
+<h3 id="toc_h3_7">2.4 LinkedList</h3>
+<h4 id="toc_h4_8">a.特有方法</h4>
 <table>
 <thead>
 <tr><th align="center">addFirst()</th><th align="center">removeFirst()</th><th align="center">getFirst()</th></tr>
@@ -293,7 +300,7 @@ public class person {
 <tr><td align="center">#添加到最后一个</td><td align="center">#删除最后一个</td><td align="center">#获取最后一个</td></tr>
 </tbody>
 </table>
-<h4 id="b3_solo_h4_9">b.实战演练</h4>
+<h4 id="toc_h4_9">b.实战演练</h4>
 <p>实现  先进后出</p>
 <pre><code class="language-java">package sourceCode;
 
@@ -341,15 +348,15 @@ class test {
 	}
 }
 </code></pre>
-<h2 id="b3_solo_h2_10">3. Set 集合</h2>
+<h2 id="toc_h2_10">3. Set 集合</h2>
 <pre><code class="language-properties">Set--:不允许重复元素,方法和collection相同.set集合只能用Iterator取出元素
 	|--Hashset:不保证存入和取出的顺序一致,不允许重复,效率高 
 			 |--LinkedHashSet:有序的HashSet表,不允许重复	
 	|--Treeset:可以对元素进行排序,其排序方式需要元素具备比较功能,且实现CompareTo()方法,且不允许存储相同元素的方法是依据compareto()返回值是否为0,其数据结构为二叉树结构,
 </code></pre>
-<h3 id="b3_solo_h3_11">3.1HashSet</h3>
+<h3 id="toc_h3_11">3.1HashSet</h3>
 <p><strong>HashSet</strong>主要就是靠<strong>hashcode()<strong>表来确定元素排列的，在使用时必须要重写</strong>hashCode()<strong>方法，而</strong>hashCode()<strong>方法内部又调用到了</strong>equals()<strong>方法来解决</strong>Hash 冲突</strong>,所以在使用时必须要<strong>Overwrite</strong>这两个方法</p>
-<h4 id="b3_solo_h4_12">3.1.1 HashSet 使用示例</h4>
+<h4 id="toc_h4_12">3.1.1 HashSet 使用示例</h4>
 <pre><code class="language-Java">package sourceCode;
 
 import java.util.HashSet;
@@ -386,14 +393,14 @@ person类同上,这里仅写出 Overwrite 部分
 		return result;
 	}
 </code></pre>
-<h3 id="b3_solo_h3_13">3.2 TreeSet</h3>
-<h4 id="b3_solo_h4_14">3.2.1 Comparable 接口的学习</h4>
+<h3 id="toc_h3_13">3.2 TreeSet</h3>
+<h4 id="toc_h4_14">3.2.1 Comparable 接口的学习</h4>
 <pre><code class="language-properties">Exception in thread "main" java.lang.ClassCastException: sourceCode.person cannot be cast to java.lang.Comparable
 	at java.util.TreeMap.compare(Unknown Source)
 	at java.util.TreeMap.put(Unknown Source)
 	at java.util.TreeSet.add(Unknown Source)
 </code></pre>
-<p>这个异常对于学习 TreeSet 的我是一脸懵逼啊 💔,啥啥啥啊，就报了个异常，再看看我这代码没有错啊，编辑器也没有报错啊！</p>
+<p>这个异常对于学习 TreeSet 的我是一脸懵逼啊 ?,啥啥啥啊，就报了个异常，再看看我这代码没有错啊，编辑器也没有报错啊！</p>
 <pre><code class="language-java">package sourceCode;
 
 import java.util.Set;
@@ -428,16 +435,16 @@ public class person implements Comparable {
 	}
     
 ​~~~
-    方法二:完美方案😎
+    方法二:完美方案?
     public int compareTo(Object osi){
         int temp = this.age-seao.age;
         return temp==0?this.name.compareTo(osi.name):temp;
     }
 </code></pre>
 <p>按照方法二改完以后，成功按照年龄(从小到大)排序，并且同姓名，同年龄算一个人，不存进去</p>
-<h4 id="b3_solo_h4_15">3.2.2 实现<strong>Comparator</strong>接口示例</h4>
+<h4 id="toc_h4_15">3.2.2 实现<strong>Comparator</strong>接口示例</h4>
 <p>当我们需要需要 对没有比较功能的元素进行排序时<strong>or</strong> 自定义元素排序方式时，我们就不能再依赖通过实现<strong>Comparable</strong>接口的**CompareTo()**方法，而是要自定义一个新的比较器</p>
-<h5 id="b3_solo_h5_16">3.2.2.1 使用自定义的比较器对<strong>TreeSet</strong>排序</h5>
+<h5 id="toc_h5_16">3.2.2.1 使用自定义的比较器对<strong>TreeSet</strong>排序</h5>
 <pre><code class="language-java">package sourceCode;
 
 import java.util.Set;
@@ -476,7 +483,7 @@ public class diyCompare implements Comparator&lt;Object&gt; {
 
 }
 </code></pre>
-<h5 id="b3_solo_h5_17">3.2.2.2 对根据字符长短排序</h5>
+<h5 id="toc_h5_17">3.2.2.2 对根据字符长短排序</h5>
 <p>下面的方案主要是根据名字的长短来排序的，如长短相同则根据名字的<strong>hashCode</strong>决定谁在前面</p>
 <pre><code class="language-java">package sourceCode;
 
@@ -515,66 +522,54 @@ public class diyCompare implements Comparator&lt;Object&gt; {
 
 }
 </code></pre>
-<h5 id="b3_solo_h5_18">3.2.3 三元运算符</h5>
+<h5 id="toc_h5_18">3.2.3 三元运算符</h5>
 <p>语法为：<strong>条件表达式？表达式 1：表达式 2</strong>。</p>
 <p>说明：问号前面的位置是判断的条件，判断结果为 boolean 型，为 true 时调用表达式 1，为 false 时调用表达式 2。</p>
-<p></p>
-                        <div>
-                            <hr>
+                            <div>
+                                <hr>
 作者：<a href="https://jokefrelon.github.io" target="_blank">JokerLee</a><br>
+版权声明: 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-SA</a> 许可协议。<br>
 转载请注明来源：<a href="https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html" target="_blank">Java Collection学习</a><br>
 <br>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
 
-            <div class="module mobile__hidden">
-                <div class="module__content fn__clear">
-                        <a href="https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html" rel="prev" class="fn__left breadcrumb">
+                <div class="module mobile__hidden">
+                    <div class="module__content fn__clear">
+                            <a href="https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html" rel="prev" class="fn__left breadcrumb">
+                                旧一篇: Solo最简安装
+                            </a>
+                            <a href="https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html" rel="next"
+                               class="fn__right breadcrumb">
+                                Java equals方法和contains为什么要重写?: 新一篇
+                            </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
+                        <a href="https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html" rel="prev" class="breadcrumb">
                             旧一篇: Solo最简安装
                         </a>
+                    </div>
+                </div>
+
+                <div class="module mobile__hidden fn__none">
+                    <div class="module__content">
                         <a href="https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html" rel="next"
-                           class="fn__right breadcrumb">
-                            Java equals方法和contains为什么要重写?: 新一篇
+                           class="breadcrumb">
+                            新一篇: Java equals方法和contains为什么要重写?
                         </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="module mobile__hidden fn__none">
-                <div class="module__content">
-                    <a href="https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html" rel="prev" class="breadcrumb">
-                        旧一篇: Solo最简安装
-                    </a>
-                </div>
-            </div>
-
-            <div class="module mobile__hidden fn__none">
-                <div class="module__content">
-                    <a href="https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html" rel="next"
-                       class="breadcrumb">
-                        新一篇: Java equals方法和contains为什么要重写?
-                    </a>
-                </div>
-            </div>
-
-<div class="comments__item">
-    <div class="comments__meta comments__meta--only">评论</div>
-</div>
-
-<ul class="comments" id="comments">
-</ul>
-
-<div class="comments__item">
-    <div class="comments__meta">
-        发表评论
-    </div>
-    <div class="comments__content">
-        <div class="form">
-            <textarea rows="3" placeholder="发表评论" id="comment"></textarea>
-        </div>
-    </div>
-</div>
+                <div id="gitalk-container" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" class="module__content"
+                     style="border-radius: 5px;margin-bottom: 30px;box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);transition: all .3s;"
+                     data-name="JokerLee" data-postId="1576773712519"></div>
 
             <div class="fn__flex article__relevant">
                 <div class="fn__flex-1" id="externalRelevantArticlesWrap">
@@ -582,13 +577,13 @@ public class diyCompare implements Comparator&lt;Object&gt; {
                         <div id="externalRelevantArticles" class="module__list"></div>
                     </div>
                 </div>
-                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp; </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
                 <div class="fn__flex-1" id="randomArticlesWrap">
                     <div class="module">
                         <div id="randomArticles" class="module__list"></div>
                     </div>
                 </div>
-                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp; </div>
+                <div class="mobile__hidden">&nbsp; &nbsp; &nbsp; &nbsp;</div>
                 <div class="fn__flex-1" id="relevantArticlesWrap">
                     <div class="module">
                         <div id="relevantArticles" class="module__list"></div>
@@ -602,71 +597,68 @@ public class diyCompare implements Comparator&lt;Object&gt; {
             <div class="module__list">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#b3_solo_h1_0">🥰collection集合</a>
+            <a href="#toc_h1_0">?collection集合</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_1">1.共性功能</a>
+            <a href="#toc_h2_1">1.共性功能</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_2">2. List集合</a>
+            <a href="#toc_h2_2">2. List集合</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_3">2.1 list集合的具体子类</a>
+            <a href="#toc_h3_3">2.1 list集合的具体子类</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_4">2.2 迭代器使用注意</a>
+            <a href="#toc_h3_4">2.2 迭代器使用注意</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_5">2.3 犯错实记 😖:</a>
+            <a href="#toc_h3_5">2.3 犯错实记 ?:</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_6">重写 equals和hashcode</a>
+            <a href="#toc_h4_6">重写 equals和hashcode</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_7">2.4 LinkedList</a>
+            <a href="#toc_h3_7">2.4 LinkedList</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_8">a.特有方法</a>
+            <a href="#toc_h4_8">a.特有方法</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_9">b.实战演练</a>
+            <a href="#toc_h4_9">b.实战演练</a>
         </li>
         <li class="toc__h2">
-            <a href="#b3_solo_h2_10">3. Set 集合</a>
+            <a href="#toc_h2_10">3. Set 集合</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_11">3.1HashSet</a>
+            <a href="#toc_h3_11">3.1HashSet</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_12">3.1.1 HashSet 使用示例</a>
+            <a href="#toc_h4_12">3.1.1 HashSet 使用示例</a>
         </li>
         <li class="toc__h3">
-            <a href="#b3_solo_h3_13">3.2 TreeSet</a>
+            <a href="#toc_h3_13">3.2 TreeSet</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_14">3.2.1 Comparable 接口的学习</a>
+            <a href="#toc_h4_14">3.2.1 Comparable 接口的学习</a>
         </li>
         <li class="toc__h4">
-            <a href="#b3_solo_h4_15">3.2.2 实现Comparator接口示例</a>
+            <a href="#toc_h4_15">3.2.2 实现Comparator接口示例</a>
         </li>
         <li class="toc__h5">
-            <a href="#b3_solo_h5_16">3.2.2.1 使用自定义的比较器对TreeSet排序</a>
+            <a href="#toc_h5_16">3.2.2.1 使用自定义的比较器对TreeSet排序</a>
         </li>
         <li class="toc__h5">
-            <a href="#b3_solo_h5_17">3.2.2.2 对根据字符长短排序</a>
+            <a href="#toc_h5_17">3.2.2.2 对根据字符长短排序</a>
         </li>
         <li class="toc__h5">
-            <a href="#b3_solo_h5_18">3.2.3 三元运算符</a>
+            <a href="#toc_h5_18">3.2.3 三元运算符</a>
         </li>
 </ul>            </div>
         </div>
         <section class="vditor-reset module">
             <main class="module__content">
-                Life is but a span🥰FreLon_Lee🥰
-
-
+                人生没有白走的路,每一步都算数。
 <!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
-
             </main>
         </section>
 
@@ -677,9 +669,9 @@ public class diyCompare implements Comparator&lt;Object&gt; {
         </header>
         <main class="module__content ft__center">
             <img class="side__avatar" src="https://img.hacpai.com/avatar/1575322384198_1579086976432.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="JokerLee"/>
-            记录精彩的Debug人生 <br> <br>
-    <a href="https://hacpai.com/member/JokerLee"
-       title="https://hacpai.com/member/JokerLee"
+            Debug The World <br> <br>
+    <a href="https://ld246.com/member/JokerLee"
+       title="https://ld246.com/member/JokerLee"
        class="user__site"
        target="_blank" rel="noopener nofollow">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -723,21 +715,29 @@ public class diyCompare implements Comparator&lt;Object&gt; {
             </header>
             <main class="module__content fn__clear module__content--three">
                     <a href="https://jokefrelon.github.io/category/Java"
-                       aria-label="1 个标签"
+                       aria-label="10 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         java</a>
                     <a href="https://jokefrelon.github.io/category/python"
-                       aria-label="1 个标签"
+                       aria-label="4 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         Python</a>
                     <a href="https://jokefrelon.github.io/category/Linux"
-                       aria-label="1 个标签"
+                       aria-label="16 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         Linux</a>
                     <a href="https://jokefrelon.github.io/category/links"
-                       aria-label="1 个标签"
+                       aria-label="1 文章"
                        class="tag vditor-tooltipped vditor-tooltipped__n">
                         Links</a>
+                    <a href="https://jokefrelon.github.io/category/Git"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        Git</a>
+                    <a href="https://jokefrelon.github.io/category/clang"
+                       aria-label="1 文章"
+                       class="tag vditor-tooltipped vditor-tooltipped__n">
+                        clang</a>
             </main>
         </div>
 
@@ -747,7 +747,7 @@ public class diyCompare implements Comparator&lt;Object&gt; {
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Linux"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="12 篇文章">
+                       aria-label="16 篇文章">
                         Linux</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Java"
@@ -762,53 +762,18 @@ public class diyCompare implements Comparator&lt;Object&gt; {
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Docker"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="2 篇文章">
+                       aria-label="3 篇文章">
                         Docker</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/GitHub"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        GitHub</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/WSL2"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        WSL2</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/intel"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        intel</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/ffmpeg"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        ffmpeg</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/links"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        links</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/WeChat"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        WeChat</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/OpenWrt"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
+                       aria-label="3 篇文章">
                         OpenWrt</a>
                     <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/SpringBoot"
+                       href="https://jokefrelon.github.io/tags/ffmpeg"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        SpringBoot</a>
-                    <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/%E5%BC%80%E6%BA%90"
-                       class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
-                        开源</a>
+                       aria-label="2 篇文章">
+                        ffmpeg</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/Solo"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
@@ -817,94 +782,68 @@ public class diyCompare implements Comparator&lt;Object&gt; {
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/nginx"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
+                       aria-label="2 篇文章">
                         nginx</a>
                     <a rel="tag"
                        href="https://jokefrelon.github.io/tags/%E6%97%A5%E8%AE%B0"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
-                       aria-label="1 篇文章">
+                       aria-label="2 篇文章">
                         日记</a>
                     <a rel="tag"
-                       href="https://jokefrelon.github.io/tags/Frp"
+                       href="https://jokefrelon.github.io/tags/mysql"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        mysql</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/GitHub"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="2 篇文章">
+                        GitHub</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/intel"
                        class="tag vditor-tooltipped vditor-tooltipped__n"
                        aria-label="1 篇文章">
-                        Frp</a>
-            </main>
-        </div>
-
-        <div class="module item">
-            <header class="module__header">评论最多的文章</header>
-            <main class="module__list">
-                <ul>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html">
-                                微信小程序遇到的坑
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/06/14/1592141097046.html">
-                                利用Python爬虫获取bing.com每天的高清壁纸
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html">
-                                收集整理一些我不经常使用,但是使用时又找不到的网站链接
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/07/03/1593768976855.html">
-                                Python 报错集锦
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2020/07/01/1593533676745.html">
-                                Python 爬虫抓取😳播放源(m3u8)
-                            </a>
-                        </li>
-                </ul>
-            </main>
-        </div>
-
-        <div class="module item">
-            <header class="module__header">访问最多的文章</header>
-            <main class="module__list">
-                <ul>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html">
-                                Java IO 文件的读写与高效率IO
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/my-github-repos">
-                                我在 GitHub 上的开源项目
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html">
-                                Solo最简安装
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html">
-                                Java equals方法和contains为什么要重写?
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow"
-                               href="https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html">
-                                Java 时间类API的使用
-                            </a>
-                        </li>
-                </ul>
+                        intel</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/links"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        links</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/vscode"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        vscode</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Maven"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Maven</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/clang"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        clang</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/N1"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        N1</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/WeChat"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        WeChat</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/SpringBoot"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        SpringBoot</a>
+                    <a rel="tag"
+                       href="https://jokefrelon.github.io/tags/Git"
+                       class="tag vditor-tooltipped vditor-tooltipped__n"
+                       aria-label="1 篇文章">
+                        Git</a>
             </main>
         </div>
 
@@ -912,67 +851,52 @@ public class diyCompare implements Comparator&lt;Object&gt; {
         <div class="module__header">
             <div class="fn__flex">
                 <a href="https://jokefrelon.github.io/archives.html" class="fn__flex-1 ft__center">
-                    29
+                    49
                     文章
                 </a>
-                    <a href="https://jokefrelon.github.io/dynamic.html" class="fn__flex-1 ft__center">
-                        4
-                        评论
-                    </a>
             </div>
             <br/>
             <div class="fn__flex">
                 <div class="fn__flex-1 ft__center">
                     <span data-uvstaturl="https://jokefrelon.github.io">1685</span> <span class="ft-gray">浏览</span>
                 </div>
-                <div class="fn__flex-1 ft__center">
-                    34 <span class="ft-gray">访客</span>
-                </div>
             </div>
         </div>
     </div>
 </aside>
     
-    </div>
+</div>
 </div>
 <div class="icon__up" onclick="Util.goTop()"></div>
 <footer class="footer">
-    &copy; 2020
-    <a href="https://jokefrelon.github.io">Frelon-Lee (●'◡'●) Blog</a>
-    <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a>  <span class="fn__none--m">&nbsp; • &nbsp;</span>
+    &copy; 2021
+    <a href="https://jokefrelon.github.io">Jokeme Blog</a>
+    <a href="http://www.beian.miit.gov.cn">皖ICP备19024475号-1</a>
     <div class="fn__none"></div>
-    <br/>
-
-    Powered by <a href="https://solo.b3log.org" target="_blank">Solo</a>
-    <div class="fn__none"></div>
-    &nbsp; &heartsuit;  &nbsp;
-    Theme nijigen
-    <sup>[<a href="https://github.com/ZEROKISEKI/hexo-theme-gal" target="_blank">ref</a>]</sup>
-    by <a href="http://vanessa.b3log.org" target="_blank">Vanessa</a>
 </footer>
 <div class="icon-up" onclick="Util.goTop()"></div>
 
-<script type="text/javascript" src="https://jokefrelon.github.io/js/lib/compress/pjax.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/js/common.min.js?1593550019882" charset="utf-8"></script>
-<script type="text/javascript" src="https://jokefrelon.github.io/skins/nijigen/js/common.min.js?1593550019882" charset="utf-8"></script>
-<script src="https://cdn.jsdelivr.net/npm/uvstat@v1.0.4/dist/index.min.js"></script>
 <script>
-    var Label = {
-        servePath: "https://jokefrelon.github.io",
-        staticServePath: "https://jokefrelon.github.io",
-        luteAvailable: false,
-        hljsStyle: 'github',
-        langLabel: "zh_CN",
-        version: "3.7.0",
-    }
-    Util.init()
+  var Label = {
+    speech: false,
+    servePath: "https://jokefrelon.github.io",
+    staticServePath: "https://jokefrelon.github.io",
+    luteAvailable: false,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: true,
+    articleId: "1576773712519",
+  }
 </script>
+<script type="text/javascript" src="https://jokefrelon.github.io/skins/nijigen/js/common.min.js?1616666743925" charset="utf-8"></script>
 
 
 <script type="text/javascript">
-    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1593550019882', 'soloPageScript')
+    Util.addScript('https://jokefrelon.github.io/js/page.min.js?1616666743925', 'soloPageScript')
     var page = new Page({
-        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1576773712519",
         "blogHost": "https://jokefrelon.github.io",
         "randomArticles1Label": "随机阅读：",
@@ -981,6 +905,8 @@ public class diyCompare implements Comparator&lt;Object&gt; {
     $(document).ready(function () {
         page.load();
     page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<header class="module__header">随机阅读</header>');
+    page.loadRelevantArticles('1576773712519', '<header class="module__header">相关阅读</header>');
     Skin.initArticle()
     });
 </script>
@@ -988,4 +914,4 @@ public class diyCompare implements Comparator&lt;Object&gt; {
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 25ms, 2020/07/04 01:28:00 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 276ms, 2021/03/25 21:23:09 -->
