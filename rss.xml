@@ -2,15 +2,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Jokeme Blog</title>
-    <link>https://jokefrelon.github.io</link>
-    <atom:link href="https://jokefrelon.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <link>https://jokeme.top</link>
+    <atom:link href="https://jokeme.top/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Debug The World</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Thu, 25 Mar 2021 21:23:05 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Mar 2021 22:07:38 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>Nginx目录美化</title>
-      <link>https://jokefrelon.github.io/articles/2021/03/23/1616436106293.html</link>
+      <link>https://jokeme.top/articles/2021/03/23/1616436106293.html</link>
       <description><![CDATA[<h1>Nginx目录美化</h1>
 <p>我们大家都知道啊! nginx是一个高性能的Web服务器,用于分享文件也是一个非常不错的选择,但是由于Nginx默认的目录太丑了, 都不好意思拿出手。这就有了本篇文章。</p>
 <p>先来说一下我的环境: <code>Ubuntu 20.04.1</code> ，<code>Nginx 1.18</code></p>
@@ -347,13 +347,13 @@ table.table-hover &gt; tbody &gt; tr:hover &gt; th {
 <p>这个时候你就会发现默认的目录已经变好看了一丢丢，当然你可以基于这些代码继续更改。直到你满意为止。</p>
 <p>本文参考 ：<a href="https://www.91yunbbs.com/discussion/441/autoindex-html" target="_blank"><strong>91yun论坛</strong></a> 	侵联删</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2021/03/23/1616436106293.html</guid>
+      <guid>https://jokeme.top/articles/2021/03/23/1616436106293.html</guid>
       <category>nginx</category>
       <pubDate>Tue, 23 Mar 2021 11:32:10 +0800</pubDate>
     </item>
     <item>
       <title>ffmpeg设置请求头</title>
-      <link>https://jokefrelon.github.io/articles/2021/03/23/1616437882432.html</link>
+      <link>https://jokeme.top/articles/2021/03/23/1616437882432.html</link>
       <description><![CDATA[<p>ffmpeg是一款非常强大的工具,它可以在命令行下对视频类文件进行多种操作,之前我也介绍过ffmpeg,<a href="https://jokeme.top/articles/2020/04/15/1586944809634.html">戳这里</a></p>
 <p>在使用过程中我们经常可以遇到使用ffmpeg无法下载文件的情况,那这是为什么呢？</p>
 <p>其实有时候,服务端会对我们客户端的请求进行检验,其中最简单的就是检查请求头：<strong>User-Agent</strong> ，如果你连请求头都没,那你肯定就暴露了你不是正常的用户，你既然不是正常的用户，那那服务器那边就会拒绝你的访问请求，所以就导致了你被403。</p>
@@ -365,13 +365,13 @@ table.table-hover &gt; tbody &gt; tr:hover &gt; th {
 <pre><code>ffmpeg -user_agent "User-Agent: AppleCoreMedia/1.0.0.18C66 (iPhone; U; CPU OS 14_3 like Mac OS X; zh_cn)" -headers "Authorization: fudkmnso-... ...9-0sdf-0ea"$'\r\n'"Xplay-session-ID:9885998" -i https://www.baidu.com/xxx.mp4\?id\=2399977 -c copy str4.mp4
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2021/03/23/1616437882432.html</guid>
+      <guid>https://jokeme.top/articles/2021/03/23/1616437882432.html</guid>
       <category>ffmpeg</category>
       <pubDate>Tue, 23 Mar 2021 02:31:22 +0800</pubDate>
     </item>
     <item>
       <title>macOS设置brew安装的软件自启动</title>
-      <link>https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html</link>
+      <link>https://jokeme.top/articles/2021/02/22/1614003754505.html</link>
       <description><![CDATA[<h2>1. Home-brew 简介</h2>
 <p>先介绍一下本篇文章的主角：<strong><a href="https://brew.sh/" target="_blank">Home-brew</a></strong>，它是一款<strong>macOS</strong>的软件包管理器，当然也同样适用于<strong>Linux</strong>（不会真的有人 Linux 服务器用 brew 吧？）。</p>
 <p>它的官网上有关于 brew 非常详细的文档，大家可以自己去看看。介绍了以后就到了我们的安装环节了！</p>
@@ -490,14 +490,14 @@ drwxr-xr-x  4 frelon  staff   128B 11 24 23:06 share
 <p>此时此刻这个软件就可以开机自启了！要知道有一些小众软件并不能通过 brew 安装，我们只能手动编译安装，这个时候如果我们想要使它开机自启动怎么办？没有了 brew 是不是突然就不知所措了！其实这个 ==.plist== 文件我们自己也是可以手动编写的，我们再通过上面的步骤是不是就可以很容易的就让一个自己编译的软件开机自启动了。</p>
 <p>本文参考博客园用户：<a href="https://www.cnblogs.com/wuygblog/" target="_blank">wygbbb</a> &amp; <a href="https://www.cnblogs.com/tulintao/" target="_blank">tulintao</a> 的文章而写，侵联删。</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2021/02/22/1614003754505.html</guid>
-      <category>macOS</category>
+      <guid>https://jokeme.top/articles/2021/02/22/1614003754505.html</guid>
       <category>brew</category>
+      <category>macOS</category>
       <pubDate>Mon, 22 Mar 2021 12:20:03 +0800</pubDate>
     </item>
     <item>
       <title>收集整理一些我不经常使用,但是使用时又找不到的网站链接</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html</link>
+      <link>https://jokeme.top/articles/2020/07/03/1593769988253.html</link>
       <description><![CDATA[<p><a href="https://" target="_blank"></a>所有排名不分先后，我是看到一个收录一个</p>
 <ol>
 <li><a href="http://downloads.pangubox.com:6380/pandorabox/" target="_blank">Pandorabox 固件官网</a></li>
@@ -528,13 +528,13 @@ drwxr-xr-x  4 frelon  staff   128B 11 24 23:06 share
 <li><a href="http://www.coolsite360.com/resources/hao.html" target="_blank">网页设计导航</a></li>
 </ol>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/03/1593769988253.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/03/1593769988253.html</guid>
       <category>links</category>
       <pubDate>Sun, 21 Mar 2021 12:38:26 +0800</pubDate>
     </item>
     <item>
       <title>记录最近捯饬Linux的收获</title>
-      <link>https://jokefrelon.github.io/articles/2021/03/21/1616297937888.html</link>
+      <link>https://jokeme.top/articles/2021/03/21/1616297937888.html</link>
       <description><![CDATA[<h1>记录最近捯饬Linux的收获</h1>
 <p>虽然最近在准备专升本考试吧，但是也没有认真的复习，最近还是天天玩Linux，在这里记录一下。</p>
 <h2>1. Windows Terminal设置</h2>
@@ -574,13 +574,13 @@ drwxr-xr-x  4 frelon  staff   128B 11 24 23:06 share
 </code></pre>
 <p>这个就是把文件内部的xxx替换为yyy。如果需要在文件行首添加字符，就可以<code>sed -i 's/^/yyy/g' filename</code>，有行首肯定是有行尾，那行尾把 <code>^</code>换成<code>$</code>就可以了。</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2021/03/21/1616297937888.html</guid>
+      <guid>https://jokeme.top/articles/2021/03/21/1616297937888.html</guid>
       <category>Linux</category>
       <pubDate>Sun, 21 Mar 2021 11:38:57 +0800</pubDate>
     </item>
     <item>
       <title>Ubuntu 20.04.2 配置 vsftpd 的脑坑</title>
-      <link>https://jokefrelon.github.io/articles/2021/03/01/1614537942569.html</link>
+      <link>https://jokeme.top/articles/2021/03/01/1614537942569.html</link>
       <description><![CDATA[<h1>Ubuntu 20.04.2 配置 vsftpd 的脑坑</h1>
 <p>今天是 2020-03-01 02:13:13，刚结束了我在我哥饭店帮忙的欢乐时光，刚下班回来的我就准备掏出我的大宝贝好好的爽一爽，毕竟大半个月都没有咋用我的电脑了。因为之前刚换的<strong>Ubuntu20</strong>还有好多东西没有配置好，我就想着今天晚上把 ftp 整一下，然后就遇到了我特别尴尬的一幕，记录一下。</p>
 <h2>安装 VsFtpd</h2>
@@ -619,13 +619,13 @@ utf8_filesystem=YES
 <p>我就特喵的在这一步出现了问题了。因为我平时使用<strong>samba</strong>比较多，在 Windows 下面映射一下就可以把局域网的 samba 当本地硬盘使，所以我就莫名其妙的输入了 <code>sudo systemctl restart smbd</code> ,我就本能的，条件反射的输入了 smbd，然后我就用我的用户名登陆 ftp，一下子给我整的不自信了，咋回事？这 ftp 咋还不能用呢，卧槽？ftp 出问题啦？我就改了半天的配置文件。甚至允许匿名登陆都特喵的不能用，当时就心态炸了。然后又检查了好几遍配置文件，还把防火墙给关了也于事无用</p>
 <p>我当时甚至怀疑系统出问题啦，还把服务器给重启了一遍（重启的时候我偏偏手贱，把配置文件还原了）,还不能登陆，我就接着改配置文件 ，接着重启 smbd，然后我打算放弃了，觉得这 ftp 是不是出现了 bug。我本来打算去洗澡的，但是心里面又有一点不甘，用手机接着来，当我又一次打算重启 smbd 的时候我突然发现了问题，我特喵的用的是 ftp，我老在这重启 samba 干啥？？？这就像你抓鲁迅关我周树人什么事一样的感觉。我就突然觉得挺对不起我的 samba 的，逮着它就是一顿重启，阿哈哈哈。</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2021/03/01/1614537942569.html</guid>
+      <guid>https://jokeme.top/articles/2021/03/01/1614537942569.html</guid>
       <category>Linux</category>
       <pubDate>Mon, 01 Mar 2021 02:50:56 +0800</pubDate>
     </item>
     <item>
       <title>Phicomm N1 刷 OpenWrt 做旁路由</title>
-      <link>https://jokefrelon.github.io/articles/2021/01/28/1611818287056.html</link>
+      <link>https://jokeme.top/articles/2021/01/28/1611818287056.html</link>
       <description><![CDATA[<p>众所周知啊！N1 这个产品呢比较的全能，可以刷<strong>armbian</strong>、<strong>Openwrt</strong>、<strong>Android 电视盒子</strong>甚至<strong>windows</strong>也都不在话下。</p>
 <p>在去年也是以低价入手了一个盒子，但是一直就没有机会捯饬，因为我个人还有一个 x86 架构的低功耗小主机用于个人服务器使用，并且也是在 Docker 里面部署了一个 Openwrt 做旁路由来方便自己上墙，其实我个人是比较喜欢这种旁路由的方式的。因为连上局域网以后必须要手动指定网关才可以上墙，直接 DHCP 分配的用户没有任何影响，这样就不会对没有需求的用户产生影响。</p>
 <p>这里说一下我的设备，我的 N1 买回来就是刷好的电视盒子系统，所以就没有降级的步骤了，但是降级工具包都包含在了 N1 工具包里面了可以自行百度如何降级，其实都非常简单，输入一个 IP 地址回车就可以了。</p>
@@ -659,14 +659,14 @@ utf8_filesystem=YES
 <pre><code>sed -i 's/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g' /etc/opkg/distfeeds.conf
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2021/01/28/1611818287056.html</guid>
+      <guid>https://jokeme.top/articles/2021/01/28/1611818287056.html</guid>
       <category>OpenWrt</category>
       <category>N1</category>
       <pubDate>Thu, 11 Feb 2021 15:18:25 +0800</pubDate>
     </item>
     <item>
       <title>Python 爬虫抓取?播放源(m3u8)</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/01/1593533676745.html</link>
+      <link>https://jokeme.top/articles/2020/07/01/1593533676745.html</link>
       <description><![CDATA[<h1>Python 爬虫抓取播放源(m3u8)</h1>
 <p>今天没有事的时候在捯饬 <a href="https://apps.apple.com/cn/app/id1455092592" target="_blank">dotPlayer</a> [IOS 平台 APP/￥ 收费？] 时发现这个东西是个宝贝呀！可以看 m3u8 格式的视频，这都不是重点，重点是使用起来非常舒服，虽然直接复制 m3u8 链接到 Safari 也可以播放，但是 <strong>dotPlayer</strong> 还可以有封面和标题！这两者体验可谓是天差地别(我没有收钱哈！我是真的觉得好用，希望 dotplayer 的作者看到了打一下广告费！)</p>
 <p>具体可以看</p>
@@ -768,13 +768,13 @@ utf8_filesystem=YES
 <p>虽然我爬虫很菜，但是我在一点点的学习！一起加油吧！!!</p>
 <p>最新代码在 <a href="https://github.com/jokefrelon/python/blob/master/getM3u8.py" target="_blank">Github</a> 上，这篇文章，以后就不更新了</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/01/1593533676745.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/01/1593533676745.html</guid>
       <category>python</category>
       <pubDate>Wed, 06 Jan 2021 21:17:20 +0800</pubDate>
     </item>
     <item>
       <title>数学思想</title>
-      <link>https://jokefrelon.github.io/articles/2020/12/06/1607245769542.html</link>
+      <link>https://jokeme.top/articles/2020/12/06/1607245769542.html</link>
       <description><![CDATA[<h1>数学思想</h1>
 <blockquote>
 <p>先声明一下！我是数学菜鸡！以下内容是我个人总结在学习数学中的一些重要的数学思想，写的不好！望海涵！!!</p>
@@ -804,13 +804,13 @@ f(-x)=ln(\frac{1}{\sqrt{x^2+1}+x})=ln(\sqrt{x^2+1}+x)^{-1}=-ln(\sqrt{x^2+1}+x)<b
 $$</p>
 <p><em>文章持续更新 ing</em>❤️️</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/12/06/1607245769542.html</guid>
+      <guid>https://jokeme.top/articles/2020/12/06/1607245769542.html</guid>
       <category>Math</category>
       <pubDate>Sun, 06 Dec 2020 17:17:17 +0800</pubDate>
     </item>
     <item>
       <title>Ubuntu &amp;&amp; Docker 使用建议</title>
-      <link>https://jokefrelon.github.io/articles/2020/11/15/1605378926228.html</link>
+      <link>https://jokeme.top/articles/2020/11/15/1605378926228.html</link>
       <description><![CDATA[<p><strong>Ubuntu</strong>一直是我喜欢用的<strong>Linux</strong>发行版本,界面简洁,上手简单,用户广泛</p>
 <p>在<strong>Ubuntu</strong>中使用<strong>docker</strong>时,一直就有两个问题困扰着我</p>
 <h2>1. Ubuntu pull 镜像速度太缓慢</h2>
@@ -837,14 +837,14 @@ sudo systemctl restart docker
 </code></pre>
 <p>少侠记得重启加载一下配置文件</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/11/15/1605378926228.html</guid>
-      <category>Linux</category>
+      <guid>https://jokeme.top/articles/2020/11/15/1605378926228.html</guid>
       <category>Docker</category>
+      <category>Linux</category>
       <pubDate>Sun, 15 Nov 2020 02:35:26 +0800</pubDate>
     </item>
     <item>
       <title>记录一次OpenWrt安装zsh</title>
-      <link>https://jokefrelon.github.io/articles/2020/10/07/1602055989143.html</link>
+      <link>https://jokeme.top/articles/2020/10/07/1602055989143.html</link>
       <description><![CDATA[<p>众所周知啊，OpenWrt 是一个非常优秀的路由器 OS,但是因为是为路由器优化的，所以我们在使用的时候就会遇到各种各样的问题，就比如安装 <code>ohmyzsh</code></p>
 <p>因为网络问题，咱可以直接去<a href="https://github.com/ohmyzsh/ohmyzsh/" target="_blank"><strong>GitHub</strong></a>看源码，顺便 Ctrl C / V</p>
 <h2>1.安装依赖</h2>
@@ -858,13 +858,13 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 <p>开始造作啦！?</p>
 <p>如果你内存空间不够安装 <strong>zsh</strong>,那你可以看看<a href="https://itcao.com/2020/06031516.html" target="_blank">飞尘@IT草</a>的文章,最小化安装<strong>zsh</strong>后,仅占用不到的1m空间</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/10/07/1602055989143.html</guid>
+      <guid>https://jokeme.top/articles/2020/10/07/1602055989143.html</guid>
       <category>OpenWrt</category>
       <pubDate>Wed, 07 Oct 2020 15:42:16 +0800</pubDate>
     </item>
     <item>
       <title>Ubuntu 使用 netplan 配置 WIFI</title>
-      <link>https://jokefrelon.github.io/articles/2020/05/06/1588694708444.html</link>
+      <link>https://jokeme.top/articles/2020/05/06/1588694708444.html</link>
       <description><![CDATA[<h1>Ubuntu 使用 netplan 配置 WIFI</h1>
 <p>在折腾 Ubuntu 的时候，我突然发现 Ubuntu 有好几套网络管理方案，但是在安装了图形化界面以后，只有<strong>Network Manager &amp; Systemd-networkd</strong> 之一生效，</p>
 <p>那像我这种爱折腾的人，肯定是不满足被束缚啊，为什么不能用命令行来连接 ? WiFi 呢？</p>
@@ -959,13 +959,13 @@ $ ~ sudo netplan apply
 </code></pre>
 <p>可以参考下面的文章,写的很规范 : <strong><a href="https://itsfoss.com/connect-wifi-terminal-ubuntu/" target="_blank">connect-wifi-terminal-ubuntu</a></strong></p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/05/06/1588694708444.html</guid>
+      <guid>https://jokeme.top/articles/2020/05/06/1588694708444.html</guid>
       <category>Linux</category>
       <pubDate>Thu, 01 Oct 2020 17:50:36 +0800</pubDate>
     </item>
     <item>
       <title>笔记本坏了，这几天不能敲代码了</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/27/1595854655734.html</link>
+      <link>https://jokeme.top/articles/2020/07/27/1595854655734.html</link>
       <description><![CDATA[<p>&lt;2020-07-27 14:25&gt;</p>
 <p>笔记本坏了，这几天不能写代码了</p>
 <p>太难受了，换了一个 Ubuntu 系统的老电脑，卡的怀疑人生，还没有好的中文输入法，明天就去修电脑去，希望小米的授权维修店不会坑我吧</p>
@@ -990,13 +990,13 @@ $ ~ sudo netplan apply
 <p>好了，今天算是完结了！</p>
 <p>...............................................................</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/27/1595854655734.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/27/1595854655734.html</guid>
       <category>日记</category>
       <pubDate>Fri, 25 Sep 2020 21:27:06 +0800</pubDate>
     </item>
     <item>
       <title>OpenStack 常用命令</title>
-      <link>https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html</link>
+      <link>https://jokeme.top/articles/2020/09/25/1601015004916.html</link>
       <description><![CDATA[<h1>OpenStack 常用命令</h1>
 <h2>1. MySQL</h2>
 <pre><code class="language-mysql">show variables like "storage_engine";	//查询默认存储引擎InnoDB
@@ -1403,13 +1403,13 @@ port delete                                zone transfer request set
 port show                                  zone transfer request show
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/09/25/1601015004916.html</guid>
+      <guid>https://jokeme.top/articles/2020/09/25/1601015004916.html</guid>
       <category>OpenStack</category>
       <pubDate>Fri, 25 Sep 2020 14:23:25 +0800</pubDate>
     </item>
     <item>
       <title>CentOS 7 磁盘扩容</title>
-      <link>https://jokefrelon.github.io/articles/2020/09/25/1601014454374.html</link>
+      <link>https://jokeme.top/articles/2020/09/25/1601014454374.html</link>
       <description><![CDATA[<h1>CentOS 7 磁盘扩容</h1>
 <p>假设已经添加了磁盘,到了需要在系统里操作的步骤</p>
 <h2>对新增加的硬盘进行分区</h2>
@@ -1666,13 +1666,13 @@ tar: Removing leading `/' from member names
 <p>可以看到home下面100G的磁盘容量已经转移到root下面了，至此，转移任务结束。此为在CentOS7.2系统下测试使用的，在CentOS6版本下还没测试过。</p>
 <p>声明 : 文章来自互联网(实在是找不到原作者链接出处了),<strong>侵联删</strong></p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/09/25/1601014454374.html</guid>
+      <guid>https://jokeme.top/articles/2020/09/25/1601014454374.html</guid>
       <category>Linux</category>
       <pubDate>Fri, 25 Sep 2020 14:14:35 +0800</pubDate>
     </item>
     <item>
       <title>clang 学习笔记</title>
-      <link>https://jokefrelon.github.io/articles/2020/08/31/1598851343874.html</link>
+      <link>https://jokeme.top/articles/2020/08/31/1598851343874.html</link>
       <description><![CDATA[<h1>clang 学习笔记</h1>
 <h2>1.什么是 c</h2>
 <p>C 语言是一种通用的高级语言，最初是由丹尼斯·里奇在贝尔实验室为开发 UNIX 操作系统而设计的。C 语言最开始是于 1972 年在 DEC PDP-11 计算机上被首次实现。</p>
@@ -2225,13 +2225,13 @@ void write_extern(void)
 <pre><code>count is 5
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/08/31/1598851343874.html</guid>
+      <guid>https://jokeme.top/articles/2020/08/31/1598851343874.html</guid>
       <category>clang</category>
       <pubDate>Fri, 04 Sep 2020 23:38:11 +0800</pubDate>
     </item>
     <item>
       <title>解决一个Ubuntu 18 安装MySQL 5.7不能远程登录的问题</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/28/1595932645078.html</link>
+      <link>https://jokeme.top/articles/2020/07/28/1595932645078.html</link>
       <description><![CDATA[<p>首先编辑 /etc/mysql/mysql.conf.d/mysqld.cnf 配置文件：</p>
 <pre><code>nano  /etc/mysql/mysql.conf.d/mysqld.cnf
 </code></pre>
@@ -2254,13 +2254,13 @@ flush privileges;
 <p>很多人都是忽略了这条命令，导致一直无法远程登录上<strong>MySQL</strong>*<br>
 必要的话可以重启一下MySQL哦！</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/28/1595932645078.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/28/1595932645078.html</guid>
       <category>mysql</category>
       <pubDate>Tue, 28 Jul 2020 18:37:25 +0800</pubDate>
     </item>
     <item>
       <title>关于 Maven 下载插件缓慢的问题</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/23/1595502243908.html</link>
+      <link>https://jokeme.top/articles/2020/07/23/1595502243908.html</link>
       <description><![CDATA[<h1>关于 Maven 下载插件缓慢的问题</h1>
 <p>众所周知,咱们大天朝由于各种原因,只能活在局域网里面.这可能对那些不深度使用网络的人来说不痛不痒,但是你要是搞开发,搞运维,那才是各种烦呢</p>
 <p>就拿 <code>maven</code>来说,我™下载一个几kb得依赖都要好几个小时,甚至还要看运气</p>
@@ -2278,14 +2278,14 @@ p.s. 需要先安装 <strong>Tampermonkey</strong> 再安装 <strong><a href="ht
 <p>文章转自博客园作者:<strong><a href="https://www.cnblogs.com/lisongyu/p/12600952.html" target="_blank">lisongyu</a></strong><br>
 原文链接:<strong><a href="https://www.cnblogs.com/lisongyu/p/12600952.html" target="_blank">关于maven使用阿里源无法生效问题</a></strong></p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/23/1595502243908.html</guid>
-      <category>Maven</category>
+      <guid>https://jokeme.top/articles/2020/07/23/1595502243908.html</guid>
       <category>Tampermonkey</category>
+      <category>Maven</category>
       <pubDate>Thu, 23 Jul 2020 19:04:04 +0800</pubDate>
     </item>
     <item>
       <title>简单解释 NAT</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/15/1594823469464.html</link>
+      <link>https://jokeme.top/articles/2020/07/15/1594823469464.html</link>
       <description><![CDATA[<h1>简单解释 NAT[转自知乎]</h1>
 <p>NAT 大家应该十分熟悉了，它分为几种。一种就叫做 NAT，它只对 IP 地址进行转换；另一种叫做 NAPT（Network Address/Port Translation），它可以对整个会话的端点（由 IP 地址和端口号组成）做转换，这是一种更加常见的 NAT 变种。</p>
 <p>当然了，NAPT 也分为许多种，我们这里就不深入探讨了，大家如果有兴趣可以查阅相关的文献。</p>
@@ -2309,13 +2309,13 @@ p.s. 需要先安装 <strong>Tampermonkey</strong> 再安装 <strong><a href="ht
 <p>至此，NAT A 与 NAT B 都互相为对方保留了端口，就可以愉快地通讯了。</p>
 <p>本文 <del>参考</del> 抄袭自知乎文章 <a href="https://zhuanlan.zhihu.com/p/40816201" target="_blank">简单解释 NAT</a></p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/15/1594823469464.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/15/1594823469464.html</guid>
       <category>NAT</category>
       <pubDate>Fri, 17 Jul 2020 01:21:50 +0800</pubDate>
     </item>
     <item>
       <title>VS code 快捷键大全</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/17/1594919904452.html</link>
+      <link>https://jokeme.top/articles/2020/07/17/1594919904452.html</link>
       <description><![CDATA[<h2>General</h2>
 <p>Ctrl+Shift+P, F1 Show Command Palette</p>
 <p>Ctrl+P Quick Open, Go to File…</p>
@@ -2579,13 +2579,13 @@ p.s. 需要先安装 <strong>Tampermonkey</strong> 再安装 <strong><a href="ht
 <p>Ctrl + Home / End滚动到顶部/底部</p>
 <h4>本文在 <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" target="_blank">visualstudiocode</a> 快捷键的原文基础上进行整理修改</h4>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/17/1594919904452.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/17/1594919904452.html</guid>
       <category>vscode</category>
       <pubDate>Fri, 17 Jul 2020 01:18:24 +0800</pubDate>
     </item>
     <item>
       <title>在微软官网下载 Windows10 ISO 安装包</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/14/1594738294949.html</link>
+      <link>https://jokeme.top/articles/2020/07/14/1594738294949.html</link>
       <description><![CDATA[<h1>教大家如何在微软官网下载 Windows10 ISO 安装包</h1>
 <ol>
 <li>进入 <a href="https://www.microsoft.com/zh-cn/software-download/windows10" target="_blank">Windows10</a> 下载页面</li>
@@ -2595,13 +2595,13 @@ p.s. 需要先安装 <strong>Tampermonkey</strong> 再安装 <strong><a href="ht
 然后一路下来也没有啥难点了,他就会为你创建一个24H内有效的链接,记得尽快下载系统哦</p>
 <p>就这了</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/14/1594738294949.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/14/1594738294949.html</guid>
       <category>Windows10</category>
       <pubDate>Tue, 14 Jul 2020 22:51:35 +0800</pubDate>
     </item>
     <item>
       <title>Linux 常用的小技巧</title>
-      <link>https://jokefrelon.github.io/articles/2020/06/10/1591792331001.html</link>
+      <link>https://jokeme.top/articles/2020/06/10/1591792331001.html</link>
       <description><![CDATA[<h1>Linux 常用的小技巧</h1>
 <h3>1 .apt-get remove vsftpd --purge</h3>
 <p>删除所有配置，下次安装的时候会重新生成配置文件</p>
@@ -2630,13 +2630,13 @@ p.s. 需要先安装 <strong>Tampermonkey</strong> 再安装 <strong><a href="ht
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/06/10/1591792331001.html</guid>
+      <guid>https://jokeme.top/articles/2020/06/10/1591792331001.html</guid>
       <category>Linux</category>
       <pubDate>Tue, 14 Jul 2020 05:12:28 +0800</pubDate>
     </item>
     <item>
       <title>两小时 Git 入门</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html</link>
+      <link>https://jokeme.top/articles/2020/07/14/1594662739208.html</link>
       <description><![CDATA[<h1>两小时 Git 入门</h1>
 <h2>1.建立 Git 仓库</h2>
 <pre><code>$ git init
@@ -2831,14 +2831,14 @@ $ git push frelon --tags 一次性推送全部尚未推送到远程的本地标�
 <h3>本文参考 <a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank">廖雪峰的官方网站/Git教程</a></h3>
 <p>曾经在微信公众上也发过，但是因为公众号维护起来比较麻烦就拖到这里来了，文章写的匆忙，如有错误欢迎评论区指导/纠正</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/14/1594662739208.html</guid>
-      <category>GitHub</category>
+      <guid>https://jokeme.top/articles/2020/07/14/1594662739208.html</guid>
       <category>Git</category>
+      <category>GitHub</category>
       <pubDate>Tue, 14 Jul 2020 04:52:13 +0800</pubDate>
     </item>
     <item>
       <title>Python 报错集锦</title>
-      <link>https://jokefrelon.github.io/articles/2020/07/03/1593768976855.html</link>
+      <link>https://jokeme.top/articles/2020/07/03/1593768976855.html</link>
       <description><![CDATA[<ol>
 <li>
 <h2>UnicodeEncodeError: 'ascii' codec can't encode characters in position ... ...</h2>
@@ -2848,13 +2848,13 @@ $ git push frelon --tags 一次性推送全部尚未推送到远程的本地标�
 linux 下执行 <code>export LANG=en_US.UTF-8</code><br>
 不要使用网上那些导入 <code>sys</code>,在reload什么的,都没有用</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/07/03/1593768976855.html</guid>
+      <guid>https://jokeme.top/articles/2020/07/03/1593768976855.html</guid>
       <category>python</category>
       <pubDate>Fri, 03 Jul 2020 17:36:16 +0800</pubDate>
     </item>
     <item>
       <title>利用Python爬虫获取bing.com每天的高清壁纸</title>
-      <link>https://jokefrelon.github.io/articles/2020/06/14/1592141097046.html</link>
+      <link>https://jokeme.top/articles/2020/06/14/1592141097046.html</link>
       <description><![CDATA[<h1>利用 Python 爬虫获取 bing.com 每天的高清壁纸</h1>
 <p>众所周知，必应是主力做壁纸の搜索引擎！</p>
 <p>每天都更新搜索页面的背景图片，这些图片也的的确确很好看，那我们要是 ❤️心动了，想保存欣赏欣赏怎么办呐？</p>
@@ -2927,14 +2927,14 @@ print("Get The Picture of Bing Successfully! "+"The Picture in \""+picfile+"\"")
 <p>这样的话，每天凌晨 12:30 就会自动执行该命令啦</p>
 <p>使用须知：这个脚本爬取的是 <strong>Bing</strong> 国际版的图片，所以当天中午 15:00 以后爬取的图片和第二天中午 15:00 之前爬取的图片一致，也就是第一天会出现这种情况，以后都没有问题的</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/06/14/1592141097046.html</guid>
+      <guid>https://jokeme.top/articles/2020/06/14/1592141097046.html</guid>
       <category>Linux</category>
       <category>python</category>
       <pubDate>Sun, 21 Jun 2020 02:08:17 +0800</pubDate>
     </item>
     <item>
       <title>CentOS编译安装Nano</title>
-      <link>https://jokefrelon.github.io/articles/2020/06/10/1591793250425.html</link>
+      <link>https://jokeme.top/articles/2020/06/10/1591793250425.html</link>
       <description><![CDATA[<h1>CentOS编译安装Nano</h1>
 <p>众所周知,因为 <strong>CentOS</strong> 非常的稳定,所以导致 <strong>CentOS</strong> の <strong>YUM</strong> 源里面的软件非常的老旧<br>
 就拿 <strong>Nano</strong> 来说, 官方已经到了 4.0版本, 而 <strong>CentOS</strong> 这边还在2.0徘徊,这就非常的难受了.所以咱就手动编译安装!</p>
@@ -2966,13 +2966,13 @@ echo  'set linenumbers'  &gt;&gt;  /root/.nanorc
 </code></pre>
 <p>本文参考: <a href="https://hiwbb.com/2019/12/centos-install-nano-46-syntax/" target="_blank">Hiwbb.com</a></p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/06/10/1591793250425.html</guid>
+      <guid>https://jokeme.top/articles/2020/06/10/1591793250425.html</guid>
       <category>Linux</category>
       <pubDate>Wed, 10 Jun 2020 20:47:30 +0800</pubDate>
     </item>
     <item>
       <title>Frp 内网穿透</title>
-      <link>https://jokefrelon.github.io/articles/2020/06/08/1591555886634.html</link>
+      <link>https://jokeme.top/articles/2020/06/08/1591555886634.html</link>
       <description><![CDATA[<h1>Frp 内网穿透</h1>
 <p>自打搞一个软路由，我就玩的可带劲了，什么 <strong>Linux , Docker , Java</strong> 各种技术都被逼提升了很多。 闲话不多说，直接说重点了</p>
 <h2>1. 准备工作：</h2>
@@ -3067,14 +3067,14 @@ remote_port = 11484
 <p><strong>IE 浏览器也打不开网页</strong></p>
 <p>别急！ ! 换<strong>Firefox</strong>浏览器试一下  / |&amp;&amp;| \ 使用<strong>Chrome</strong>的无痕模式打开试一下</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/06/08/1591555886634.html</guid>
+      <guid>https://jokeme.top/articles/2020/06/08/1591555886634.html</guid>
       <category>Frp</category>
       <category>Linux</category>
       <pubDate>Mon, 08 Jun 2020 03:02:29 +0800</pubDate>
     </item>
     <item>
       <title>SpringBoot学习笔记(1)</title>
-      <link>https://jokefrelon.github.io/articles/2020/05/29/1590754071333.html</link>
+      <link>https://jokeme.top/articles/2020/05/29/1590754071333.html</link>
       <description><![CDATA[<h1>Spring学习</h1>
 <p>提醒⏰:在开始之前,我们需要配置以下基本环境(还有文件的编码方式也要注意)</p>
 <ol>
@@ -3573,14 +3573,14 @@ java -jar spring-boot-02-0.0.1-SNAPSHOT.jar --server.port=8088 --server.context-
     ②6、8所指的jar包外指的是和jar包同一个文件夹下
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/05/29/1590754071333.html</guid>
+      <guid>https://jokeme.top/articles/2020/05/29/1590754071333.html</guid>
       <category>SpringBoot</category>
       <category>Java</category>
       <pubDate>Fri, 29 May 2020 20:08:25 +0800</pubDate>
     </item>
     <item>
       <title>我在 GitHub 上的开源项目</title>
-      <link>https://jokefrelon.github.io/my-github-repos</link>
+      <link>https://jokeme.top/my-github-repos</link>
       <description><![CDATA[<!-- 该页面会被定时任务自动覆盖，所以请勿手工更新 -->
 <!-- 如果你有更漂亮的排版方式，请发 issue 告诉我们 -->
 <h3>1. <a href="https://github.com/jokefrelon/make" target="_blank">make</a> <kbd title="主要编程语言">Shell</kbd> <span style="font-size: 12px;"><a href="https://github.com/jokefrelon/make/watchers" title="关注数" target="_blank">]]>🤩<![CDATA[<code>0</code></a>&nbsp;&nbsp;<a href="https://github.com/jokefrelon/make/stargazers" title="收藏数" target="_blank">⭐️<code>1</code></a>&nbsp;&nbsp;<a href="https://github.com/jokefrelon/make/network/members" title="分叉数" target="_blank">]]>🖖<![CDATA[<code>0</code></a></span></h3>
@@ -3600,14 +3600,14 @@ java -jar spring-boot-02-0.0.1-SNAPSHOT.jar --server.port=8088 --server.context-
 <h3>7. <a href="https://github.com/jokefrelon/javawork" target="_blank">javawork</a> <kbd title="主要编程语言">Java</kbd> <span style="font-size: 12px;"><a href="https://github.com/jokefrelon/javawork/watchers" title="关注数" target="_blank">]]>🤩<![CDATA[<code>1</code></a>&nbsp;&nbsp;<a href="https://github.com/jokefrelon/javawork/stargazers" title="收藏数" target="_blank">⭐️<code>0</code></a>&nbsp;&nbsp;<a href="https://github.com/jokefrelon/javawork/network/members" title="分叉数" target="_blank">]]>🖖<![CDATA[<code>0</code></a></span></h3>
 <p>java homework</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/my-github-repos</guid>
+      <guid>https://jokeme.top/my-github-repos</guid>
       <category>开源</category>
       <category>GitHub</category>
       <pubDate>Wed, 06 May 2020 00:33:17 +0800</pubDate>
     </item>
     <item>
       <title>Java Collection学习</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html</link>
+      <link>https://jokeme.top/articles/2019/12/20/1576773712519.html</link>
       <description><![CDATA[<h1>?<strong>collection</strong>集合</h1>
 <pre><code class="language-properties">collection--|
 		   |--list:有序,有索引,允许重复元素
@@ -4007,13 +4007,13 @@ public class diyCompare implements Comparator&lt;Object&gt; {
 <p>语法为：<strong>条件表达式？表达式 1：表达式 2</strong>。</p>
 <p>说明：问号前面的位置是判断的条件，判断结果为 boolean 型，为 true 时调用表达式 1，为 false 时调用表达式 2。</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/20/1576773712519.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/20/1576773712519.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:32:52 +0800</pubDate>
     </item>
     <item>
       <title>Java equals方法和contains为什么要重写?</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html</link>
+      <link>https://jokeme.top/articles/2019/12/20/1576774367244.html</link>
       <description><![CDATA[<h1><strong>equals() &amp;&amp; contains()</strong></h1>
 <p>Java 中常见的比较有<strong>equals</strong>和<strong>hashcode</strong></p>
 <p>今天在学习的时候就遇到了一个头疼的问题(菜鸟级的我有大大疑问)</p>
@@ -4038,13 +4038,13 @@ public class diyCompare implements Comparator&lt;Object&gt; {
 //这样写就是错误的,equals()方法不允许传入非 Object 类
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/20/1576774367244.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/20/1576774367244.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:32:31 +0800</pubDate>
     </item>
     <item>
       <title>nginx反向代理</title>
-      <link>https://jokefrelon.github.io/articles/2020/01/10/1578638927507.html</link>
+      <link>https://jokeme.top/articles/2020/01/10/1578638927507.html</link>
       <description><![CDATA[<h2>nginx 反向代理</h2>
 <p>nginx 一直都是我们比较常用的工具，它不仅功能强悍，而且性能也非常好 ?,一直深受开发者的喜爱</p>
 <p>并且我们经常用 <strong>nginx</strong> 反代来做负载均衡，那么 <strong>nginx</strong> の反代原理我也就不说了，咱就说咋操作吧</p>
@@ -4083,14 +4083,14 @@ server{
 <p>而且当用户通过 80 端口访问 <strong>http</strong> 的时候还会自动转到 443 端口的 <strong>https</strong> 这个就是下面的那个 <strong>server</strong> <strong>rewrite</strong>实现的</p>
 <p>还有一个就是大家反代的时候一定要确认你那个端口是允许访问的，要不然你的配置没有问题，但就是拒接连接，或者连接超时，昨天晚上我就出现了这种情况，配置没有问题，但是网站就是不能访问，然后倒腾了一圈，才想起来是我防火墙没有开放端口 ?</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/01/10/1578638927507.html</guid>
+      <guid>https://jokeme.top/articles/2020/01/10/1578638927507.html</guid>
       <category>Linux</category>
       <category>nginx</category>
       <pubDate>Wed, 06 May 2020 00:31:22 +0800</pubDate>
     </item>
     <item>
       <title>Python 爬虫</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html</link>
+      <link>https://jokeme.top/articles/2019/12/31/1577785161692.html</link>
       <description><![CDATA[<h1>Python 爬虫 ?</h1>
 <p>用<strong>python</strong>写爬虫其实是比较简单的，主要还是靠第三方的库 ?常用的有 <strong>requests &amp; urllib</strong> 至于解析 HTML,我目前使用的是 <strong>xpath</strong> ,了解了基本操作，咱就试试看吧</p>
 <h3>代码附上</h3>
@@ -4268,13 +4268,13 @@ print("?")
 }
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/31/1577785161692.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/31/1577785161692.html</guid>
       <category>python</category>
       <pubDate>Wed, 06 May 2020 00:30:52 +0800</pubDate>
     </item>
     <item>
       <title>Java 时间类API的使用</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</link>
+      <link>https://jokeme.top/articles/2019/12/22/1576958773512.html</link>
       <description><![CDATA[<h1>时间类 API</h1>
 <p>在日常学习生活中，我们经常遇到时间相关的问题，现在虽然 Date 类已经不是主流了，但任然有许多方法要学习</p>
 <h2>1.1DateFormat</h2>
@@ -4408,13 +4408,13 @@ MILLISECOND=445]
 </code></pre>
 <p>个人认为作用不是很大</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/22/1576958773512.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/22/1576958773512.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:30:16 +0800</pubDate>
     </item>
     <item>
       <title>Collection-Map学习总结</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html</link>
+      <link>https://jokeme.top/articles/2019/12/28/1577494146348.html</link>
       <description><![CDATA[<h1>Collection-Map</h1>
 <pre><code class="language-properties">Map--|双列集合,一次存一对键值对,必须保证唯一性
 	 --|HashMap:哈希表,不同步,允许空的Key,Value
@@ -4506,13 +4506,13 @@ kEREd
 导入后也可以在当前空间直接使用Entry。
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577494146348.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/28/1577494146348.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:29:54 +0800</pubDate>
     </item>
     <item>
       <title>Collections 学习</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495325749.html</link>
+      <link>https://jokeme.top/articles/2019/12/28/1577495325749.html</link>
       <description><![CDATA[<h1>Collection 框架的工具类</h1>
 <h2>1. Collections</h2>
 <h3>1.1.1  sort 按照自然顺序排序</h3>
@@ -4569,13 +4569,13 @@ public class compareByLength implements Comparator&lt;String&gt; {
 <p>**上面我们可以看出 reverseOrder() 就是万金油，不传参就是倒序排列自然排序的 List , 而传参就可以自定义我们需要的比较方法 &lt;  注意 reverseOrder 要联合 sort 使用，只有 reverse 可以单独使用 &gt; **</p>
 <h2>2 将非同步集合转为同步集合</h2>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495325749.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/28/1577495325749.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:29:37 +0800</pubDate>
     </item>
     <item>
       <title>java 泛型,必须要学好的一个基础</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html</link>
+      <link>https://jokeme.top/articles/2019/12/28/1577495553196.html</link>
       <description><![CDATA[<h1>泛型</h1>
 <h2>1 泛型特性</h2>
 <p>百度得如下解释：</p>
@@ -4678,13 +4678,13 @@ public &lt;T extends Number&gt; T showKeyName(Generic&lt;T&gt; container){
 </code></pre>
 <p>下面使用<a href="http://docs.oracle.com/javase/tutorial/extra/generics/fineprint.html" target="_blank">Sun</a><a href="http://docs.oracle.com/javase/tutorial/extra/generics/fineprint.html" target="_blank">的一篇文档</a>的一个例子来说明这个问题：</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495553196.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/28/1577495553196.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:29:21 +0800</pubDate>
     </item>
     <item>
       <title>Java IO 文件的读写与高效率IO</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html</link>
+      <link>https://jokeme.top/articles/2019/12/28/1577495753800.html</link>
       <description><![CDATA[<h1>Java-IO? Part 1</h1>
 <p>Java Input-Output 主要是用于文件的存储和读取，相关操作一般都会放在 Java.io 包中</p>
 <h2>1 File 类</h2>
@@ -5396,13 +5396,13 @@ public class Buffered_IO {
 <pre><code class="language-properties">复制文件时使用字节流:复制文本文件时使用字符流
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/28/1577495753800.html</guid>
+      <guid>https://jokeme.top/articles/2019/12/28/1577495753800.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:29:06 +0800</pubDate>
     </item>
     <item>
       <title>微信小程序遇到的坑</title>
-      <link>https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</link>
+      <link>https://jokeme.top/articles/2020/01/10/1578626602884.html</link>
       <description><![CDATA[<h1>微信小程序遇到的坑</h1>
 <p>微信小程序其实很简单，和 <strong>HTML</strong> 差不多，但是又加入了微信的很多特色，我也是本着写着玩的心态写了几天的小程序，发现有很多坑哦，和 <strong>HTML</strong>还是有点差距的</p>
 <h2>1 文本超出隐藏并加…</h2>
@@ -5523,26 +5523,26 @@ onLoad: function (option) {
 </code></pre>
 <p>这大概就是这几天踩得坑，虽然都不难，但是对于我们这种初学者还是有一点难度的 ?,暂时就更新到这里，过几天遇到了坑，再继续更新</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/01/10/1578626602884.html</guid>
+      <guid>https://jokeme.top/articles/2020/01/10/1578626602884.html</guid>
       <category>WeChat</category>
       <pubDate>Wed, 06 May 2020 00:28:25 +0800</pubDate>
     </item>
     <item>
       <title>vim 格式化代码</title>
-      <link>https://jokefrelon.github.io/articles/2020/02/01/1580546067262.html</link>
+      <link>https://jokeme.top/articles/2020/02/01/1580546067262.html</link>
       <description><![CDATA[<p>(1) 按两下 gg，定位光标到第一行。<br>
 (2) 按住 Shift+v，进入可视化编辑的列编辑模式。<br>
 (3) Shift+g，选中整个代码。<br>
 (4) 按下等号 =，格式化所有代码。<br>
 (5)❤️️ 新年快乐 ?</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/02/01/1580546067262.html</guid>
+      <guid>https://jokeme.top/articles/2020/02/01/1580546067262.html</guid>
       <category>Linux</category>
       <pubDate>Wed, 06 May 2020 00:27:28 +0800</pubDate>
     </item>
     <item>
       <title>Java jdbc操作MySQL</title>
-      <link>https://jokefrelon.github.io/articles/2020/02/01/1580555730319.html</link>
+      <link>https://jokeme.top/articles/2020/02/01/1580555730319.html</link>
       <description><![CDATA[<h1>Java JDBC 操作 MySQL</h1>
 <h2>1 . Maven 导包</h2>
 <pre><code class="language-xml">&lt;dependency&gt;
@@ -5696,13 +5696,13 @@ public void Solomon() throws SQLException, IOException {
 </code></pre>
 <p>写完先测试一下</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/02/01/1580555730319.html</guid>
+      <guid>https://jokeme.top/articles/2020/02/01/1580555730319.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:27:16 +0800</pubDate>
     </item>
     <item>
       <title>Java 注解（Annotation）</title>
-      <link>https://jokefrelon.github.io/articles/2020/02/01/1580556355859.html</link>
+      <link>https://jokeme.top/articles/2020/02/01/1580556355859.html</link>
       <description><![CDATA[<h1>Java 注解（Annotation）</h1>
 <p>Java 注解其实并不难，从名字上你都知道注解是帮助 Java 代码执行的，它的形式跟接口很类似，不过前面多了一个 @ 符号</p>
 <h2>1 Java 元注解</h2>
@@ -5796,13 +5796,13 @@ public @interface Annotation {
 }
 </code></pre>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/02/01/1580556355859.html</guid>
+      <guid>https://jokeme.top/articles/2020/02/01/1580556355859.html</guid>
       <category>Java</category>
       <pubDate>Wed, 06 May 2020 00:26:59 +0800</pubDate>
     </item>
     <item>
       <title>Bay Trail主板安装Linux的坑</title>
-      <link>https://jokefrelon.github.io/articles/2020/03/16/1584344826236.html</link>
+      <link>https://jokeme.top/articles/2020/03/16/1584344826236.html</link>
       <description><![CDATA[<h1>Bay Trail 主板安装 Linux 的坑</h1>
 <p>最近搞了一个 <strong>N2920</strong> 的低功耗小主机，本来打算搞软路由，但是家里网速不行，就打算先刷个 <strong>Linux</strong> 玩玩，于是我就被这个问题烦了将近半个月！</p>
 <p>一开始我打算安装一个 <strong>CentOS 7</strong> 玩玩，当我下载完系统刻录完开始安装的时候发现 <strong>CentOS 7</strong> 的 installer 异常的卡顿，而且耗时也非常的多，差不多需要将近半个小时才可以到图形界面的安装(我这个小主机是有固态的，这个速度肯定有很大的问题),而且好不容易到了图形界面的安装环节，还经常卡死！刚开始 我还以为可能是这个 ISO 镜像有问题，又换了一个 <strong>CentOS 8</strong> 的镜像。</p>
@@ -5878,14 +5878,14 @@ sudo update-grub
 <p>反正大概意思就是这种主板有残疾，在引导的时候会导致一些问题，需要加上这些参数就可以了</p>
 <p>至此，这个烦了我将近半个月的问题没有了，就在引导的时候加了几个参数，鼠标正常了，键盘也可以用了，也不会卡顿了</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/03/16/1584344826236.html</guid>
-      <category>intel</category>
+      <guid>https://jokeme.top/articles/2020/03/16/1584344826236.html</guid>
       <category>Linux</category>
+      <category>intel</category>
       <pubDate>Wed, 06 May 2020 00:26:42 +0800</pubDate>
     </item>
     <item>
       <title>Docker 中运行 OpenWrt</title>
-      <link>https://jokefrelon.github.io/articles/2020/03/20/1584702695341.html</link>
+      <link>https://jokeme.top/articles/2020/03/20/1584702695341.html</link>
       <description><![CDATA[<h1>Docker  中运行  OpenWrt</h1>
 <p>前几天解决了小主机 <strong>Ubuntu</strong> 系统的引导问题以后。便开始折腾 <strong>OpenWrt</strong> 了，在 <strong>GitHub</strong> 上找到了 <strong>L 大</strong> 的 <strong><a href="https://github.com/coolsnowwolf/lede" target="_blank">Lede</a></strong> 源码，需要自己编译。</p>
 <p>关于如何编译我也不说了，<strong>L 大</strong> 在 Readme 里面说的清清楚楚的，没有难度，就是需要有耐心和良好的网络环境，编译过程会很慢(建议扶梯子，我没有用梯子，整整编译了两天才完成！? ? ?) 也可以用我编译好的 <strong><a href="https://github.com/jokefrelon/linux-series/releases" target="_blank">x86_64</a></strong> 的固件(集成有<strong>ssr,v2ray,adblock plus,samba,vsftpd</strong>等常用插件)</p>
@@ -6013,15 +6013,15 @@ docker exec -it OpenWrt /etc/init.d/network restart
 <li>美丽应用 :  <a href="https://mlapp.cn/376.html" target="_blank">https://mlapp.cn/376.html</a></li>
 </ol>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/03/20/1584702695341.html</guid>
+      <guid>https://jokeme.top/articles/2020/03/20/1584702695341.html</guid>
       <category>Docker</category>
-      <category>OpenWrt</category>
       <category>Linux</category>
+      <category>OpenWrt</category>
       <pubDate>Wed, 06 May 2020 00:26:29 +0800</pubDate>
     </item>
     <item>
       <title>一辈子都不想安装系统了!</title>
-      <link>https://jokefrelon.github.io/articles/2020/03/31/1585624128468.html</link>
+      <link>https://jokeme.top/articles/2020/03/31/1585624128468.html</link>
       <description><![CDATA[<h1>安装 Linux 系统(Ubuntu)经验总结</h1>
 <p>进来将近两三个星期的装系统经历，让我异常痛苦，先是 <strong>Bay Trail</strong> 主板的一些坑，然后是显卡驱动，然后又是一堆莫名其妙的问题......</p>
 <h3>1. Bay Trail 主板的先天问题</h3>
@@ -6038,13 +6038,13 @@ docker exec -it OpenWrt /etc/init.d/network restart
 <h3>4.开机卡只有鼠标和壁纸</h3>
 <p>说实话这个问题最好解决了，鼠标键盘都可以正常使用，<strong>ctrl + alt + t</strong> 打开 terminal,把 <strong>gnome</strong> 删掉即可，如果喜欢用图形界面还可以在重启以后在安装回来</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/03/31/1585624128468.html</guid>
+      <guid>https://jokeme.top/articles/2020/03/31/1585624128468.html</guid>
       <category>Linux</category>
       <pubDate>Wed, 06 May 2020 00:25:54 +0800</pubDate>
     </item>
     <item>
       <title> Ubuntu安装ffmpeg下载m3u8格式的视频</title>
-      <link>https://jokefrelon.github.io/articles/2020/04/15/1586944809634.html</link>
+      <link>https://jokeme.top/articles/2020/04/15/1586944809634.html</link>
       <description><![CDATA[<h1>Ubuntu 安装 <strong>FFMPEG</strong> 下载 m3u8 格式的视频</h1>
 <p>最近想下载一个某音视频，但是我能看不能下载，这不是扯吗？于是不能忍的我就打算盘盘这个视频</p>
 <h2>1 . 准备环境：Ubuntu 18.04 , FFMPEG</h2>
@@ -6062,14 +6062,14 @@ docker exec -it OpenWrt /etc/init.d/network restart
 </code></pre>
 <p>然后就需要慢慢等待下载完成就可以了，真的是特别特别的简单</p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2020/04/15/1586944809634.html</guid>
-      <category>ffmpeg</category>
+      <guid>https://jokeme.top/articles/2020/04/15/1586944809634.html</guid>
       <category>Linux</category>
+      <category>ffmpeg</category>
       <pubDate>Wed, 06 May 2020 00:25:24 +0800</pubDate>
     </item>
     <item>
       <title>Solo最简安装</title>
-      <link>https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html</link>
+      <link>https://jokeme.top/articles/2019/12/05/1575541246758.html</link>
       <description><![CDATA[<h1>Solo 安装 ❤️</h1>
 <p>最近突然就想搭建一个自己的 Blog 服务器用来写一些自己的学习经验和解决问题的方法，刚刚好之前在<strong>GitHub</strong>上看到了一个叫<strong>Solo</strong>的 Blog 系统，而且颜值也很高，我就打算用这个</p>
 <p><strong>Solo</strong>的<a href="https://github.com/88250/solo" target="_blank">Github</a>链接</p>
@@ -6154,11 +6154,11 @@ b3log/solo --listen_port=8080 --server_scheme=http --server_host=172.17.151.7
 <p>大概过程就这样了，因为就我一个人用，我也懒得搞后面的步骤，还要搭建<strong>Nginx</strong>,</p>
 <p>官方安装步骤：<a href="https://hacpai.com/article/1565021959471" target="_blank">Solo安装</a></p>]]></description>
       <author>JokerLee</author>
-      <guid>https://jokefrelon.github.io/articles/2019/12/05/1575541246758.html</guid>
-      <category>Linux</category>
-      <category>Solo</category>
+      <guid>https://jokeme.top/articles/2019/12/05/1575541246758.html</guid>
       <category>WSL2</category>
       <category>Docker</category>
+      <category>Linux</category>
+      <category>Solo</category>
       <pubDate>Wed, 06 May 2020 00:24:56 +0800</pubDate>
     </item>
   </channel>
