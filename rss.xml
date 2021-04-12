@@ -6,8 +6,51 @@
     <atom:link href="https://jokeme.top/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Debug The World</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Thu, 25 Mar 2021 22:07:38 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Apr 2021 05:34:14 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>Dockerfile编写</title>
+      <link>https://jokeme.top/articles/2021/04/13/1618263133842.html</link>
+      <description><![CDATA[<p>今天也是摸鱼的一天没怎么看书,一直在玩Linux。并且在无意间看到了我之前下载的 <a href="https://github.com/DirectoryLister/DirectoryLister" target="_blank">DirectoryLister</a>，就想着在Docker里面部署玩一下。</p>
+<p>一开始我是没有想写Dockerfile的，直接在开了一个Ubuntu容器整的，但是想了想，以后想用肯定不方便，这个容器我随时随地都有可以废了它。所以就从网上看了看Dockerfile怎么写，开整！</p>
+<p>首先我并不想介绍Dockerfile怎么样去写，网上的教程一大把，自己看就可以了 我是参考<a href="https://www.runoob.com/docker/docker-dockerfile.html" target="_blank">菜鸟教程</a>的教程。</p>
+<p>Dockerfile无非就是一个自动化的过程，至少在我看来就是这样的，可能我刚接触了解不深吧。但是按照这个思路是绝对可以写出来Dockerfile的，因为我自己就是例子]]>🌰<![CDATA[。</p>
+<p>来看看我的build</p>
+<pre><code>7168 ◯ : docker build -t flt:v1.0 .
+... ...
+Removing intermediate container 8fe78ec98a65
+ ---&gt; da56585b17c1
+Step 4/4 : CMD ["/root/np.sh"]
+ ---&gt; Running in 23bd36103ddd
+Removing intermediate container 23bd36103ddd
+ ---&gt; 114c7dec7e2f
+Successfully built 114c7dec7e2f
+Successfully tagged flt:v1.0
+</code></pre>
+<h2>1. 选择基础镜像</h2>
+<p>因为Dockerfile是基于一些底层的镜像制作的，所以在这里我选择的是 <code>ubuntu:20.04</code></p>
+<p>因为我平时就是在Ubuntu环境使用的比较多,你要是使用CentOS更顺手你也可以选择使用Redhat系的基础镜像。</p>
+<p>这里无可争议，过。</p>
+<pre><code>FROM ubuntu:20.04
+</code></pre>
+<h2>2. 配置环境变量</h2>
+<p>其实我这里也没有啥环境变量，我也不知道啥东西要设置为环境变量，就把<strong>DirectoryLister</strong>的版本号设置为环境变量了，方便以后升级。哈哈哈哈，比较菜只能想到这东西了。</p>
+<pre><code>ENV DL_VERSION 3.7.7
+</code></pre>
+<h2>3. 自动化运行命令</h2>
+<p>这里也没有啥好说的，有点Linux基础就可以，就是这个写法很操蛋！要不停的 &amp;&amp; ... ... \，至于为什么要这样呢，我查了一下，说是一个RUN就是一层，你要是写太多RUN就会套太多层，非常的臃肿。这些暂时也不是我需要考虑的，别人怎么写，我就怎么写。</p>
+<p>这里我遇到了一个自动化安装软件时，需要用户手动输入参数的问题，平时咱手动输入参数可以，但是这自动化的时候可不能这样呀，废了老大劲网上找到了解决办法，就是利用 debconf 提前配置好参数，详细解决办法见<a href="https://ubuntuqa.com/zh-tw/article/7684.html" target="_blank">Ubuntu问答</a> 。</p>
+<p>这里我特喵的还是要喷一喷CSDN，妈的一篇帖子万人抄，也不管对不对，往自己的的账号里面薅就对了。妈的好几页都是垃圾文章，浪费我的时间。</p>
+<p>自动化里面基本上就是安装软件修改配置等等，强化了一下我的awk和sed。这俩命令太重要了！一定要学好！</p>
+<h2>4. CMD命令</h2>
+<p>没错我直接跳到了CMD命令，啥<strong>COPY</strong>、<strong>ADD</strong>、<strong>ENTRYPOINT</strong>、<strong>ARG</strong>、<strong>VOLUME</strong>、<strong>EXPOSE</strong>、<strong>WORKDIR</strong>、<strong>USER</strong>、<strong>HEALTHCHECK</strong>、<strong>ONBUILD</strong> 我都没有用上，真的是不知道在哪里用，也用不好，索性就不用了，直接一个CMD就打完收工。</p>
+<p>CMD里面的脚本也是我倒腾半天网上学来的，这样写虽然不太优雅，但是总比一开始的时候，一运行就结束了好。说到这我就觉得这里还是有点坑的，因为Docker容器里面必须有一个前台的进程，要是没有进程就会整个容器停止运行，我一开始还傻傻的看网上的教程写nohup，写了半天也不行。然鹅nohup并不是真正的前台进程，因为你再按一次回车就直接退出来了，nohup并没有在前台继续运行，只是nohup的那个命令或者脚本没死在后台活着，但是前台没有进程就会直接退出。正是这种命令或者脚本还活着的幻觉让我们觉得这他妈的Docker是不是有病呀？我这居然还不行！</p>
+<p>所以有些东西还是要靠自己慢慢的积累，网上很多东西也都是错误的，不知道我上面的观点对不对，欢迎指正。</p>]]></description>
+      <author>JokerLee</author>
+      <guid>https://jokeme.top/articles/2021/04/13/1618263133842.html</guid>
+      <category>Dockerfile</category>
+      <pubDate>Tue, 13 Apr 2021 05:32:13 +0800</pubDate>
+    </item>
     <item>
       <title>Nginx目录美化</title>
       <link>https://jokeme.top/articles/2021/03/23/1616436106293.html</link>
@@ -491,8 +534,8 @@ drwxr-xr-x  4 frelon  staff   128B 11 24 23:06 share
 <p>本文参考博客园用户：<a href="https://www.cnblogs.com/wuygblog/" target="_blank">wygbbb</a> &amp; <a href="https://www.cnblogs.com/tulintao/" target="_blank">tulintao</a> 的文章而写，侵联删。</p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2021/02/22/1614003754505.html</guid>
-      <category>brew</category>
       <category>macOS</category>
+      <category>brew</category>
       <pubDate>Mon, 22 Mar 2021 12:20:03 +0800</pubDate>
     </item>
     <item>
@@ -660,8 +703,8 @@ utf8_filesystem=YES
 </code></pre>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2021/01/28/1611818287056.html</guid>
-      <category>OpenWrt</category>
       <category>N1</category>
+      <category>OpenWrt</category>
       <pubDate>Thu, 11 Feb 2021 15:18:25 +0800</pubDate>
     </item>
     <item>
@@ -838,8 +881,8 @@ sudo systemctl restart docker
 <p>少侠记得重启加载一下配置文件</p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2020/11/15/1605378926228.html</guid>
-      <category>Docker</category>
       <category>Linux</category>
+      <category>Docker</category>
       <pubDate>Sun, 15 Nov 2020 02:35:26 +0800</pubDate>
     </item>
     <item>
@@ -3068,8 +3111,8 @@ remote_port = 11484
 <p>别急！ ! 换<strong>Firefox</strong>浏览器试一下  / |&amp;&amp;| \ 使用<strong>Chrome</strong>的无痕模式打开试一下</p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2020/06/08/1591555886634.html</guid>
-      <category>Frp</category>
       <category>Linux</category>
+      <category>Frp</category>
       <pubDate>Mon, 08 Jun 2020 03:02:29 +0800</pubDate>
     </item>
     <item>
@@ -3574,8 +3617,8 @@ java -jar spring-boot-02-0.0.1-SNAPSHOT.jar --server.port=8088 --server.context-
 </code></pre>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2020/05/29/1590754071333.html</guid>
-      <category>SpringBoot</category>
       <category>Java</category>
+      <category>SpringBoot</category>
       <pubDate>Fri, 29 May 2020 20:08:25 +0800</pubDate>
     </item>
     <item>
@@ -3601,8 +3644,8 @@ java -jar spring-boot-02-0.0.1-SNAPSHOT.jar --server.port=8088 --server.context-
 <p>java homework</p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/my-github-repos</guid>
-      <category>开源</category>
       <category>GitHub</category>
+      <category>开源</category>
       <pubDate>Wed, 06 May 2020 00:33:17 +0800</pubDate>
     </item>
     <item>
@@ -4084,8 +4127,8 @@ server{
 <p>还有一个就是大家反代的时候一定要确认你那个端口是允许访问的，要不然你的配置没有问题，但就是拒接连接，或者连接超时，昨天晚上我就出现了这种情况，配置没有问题，但是网站就是不能访问，然后倒腾了一圈，才想起来是我防火墙没有开放端口 ?</p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2020/01/10/1578638927507.html</guid>
-      <category>Linux</category>
       <category>nginx</category>
+      <category>Linux</category>
       <pubDate>Wed, 06 May 2020 00:31:22 +0800</pubDate>
     </item>
     <item>
@@ -5879,8 +5922,8 @@ sudo update-grub
 <p>至此，这个烦了我将近半个月的问题没有了，就在引导的时候加了几个参数，鼠标正常了，键盘也可以用了，也不会卡顿了</p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2020/03/16/1584344826236.html</guid>
-      <category>Linux</category>
       <category>intel</category>
+      <category>Linux</category>
       <pubDate>Wed, 06 May 2020 00:26:42 +0800</pubDate>
     </item>
     <item>
@@ -6014,9 +6057,9 @@ docker exec -it OpenWrt /etc/init.d/network restart
 </ol>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2020/03/20/1584702695341.html</guid>
+      <category>OpenWrt</category>
       <category>Docker</category>
       <category>Linux</category>
-      <category>OpenWrt</category>
       <pubDate>Wed, 06 May 2020 00:26:29 +0800</pubDate>
     </item>
     <item>
@@ -6063,8 +6106,8 @@ docker exec -it OpenWrt /etc/init.d/network restart
 <p>然后就需要慢慢等待下载完成就可以了，真的是特别特别的简单</p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2020/04/15/1586944809634.html</guid>
-      <category>Linux</category>
       <category>ffmpeg</category>
+      <category>Linux</category>
       <pubDate>Wed, 06 May 2020 00:25:24 +0800</pubDate>
     </item>
     <item>
@@ -6155,10 +6198,10 @@ b3log/solo --listen_port=8080 --server_scheme=http --server_host=172.17.151.7
 <p>官方安装步骤：<a href="https://hacpai.com/article/1565021959471" target="_blank">Solo安装</a></p>]]></description>
       <author>JokerLee</author>
       <guid>https://jokeme.top/articles/2019/12/05/1575541246758.html</guid>
-      <category>WSL2</category>
+      <category>Solo</category>
       <category>Docker</category>
       <category>Linux</category>
-      <category>Solo</category>
+      <category>WSL2</category>
       <pubDate>Wed, 06 May 2020 00:24:56 +0800</pubDate>
     </item>
   </channel>
